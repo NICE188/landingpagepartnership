@@ -1,403 +1,311 @@
-/* =========================================
-   RESET
-========================================= */
+*{
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+margin:0;
+padding:0;
+box-sizing:border-box;
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #243b55 0%,
-            #141e30 45%,
-            #0b0f16 100%
-        );
-
-    color: #ffffff;
-    overflow-x: hidden;
 }
 
 
-/* =========================================
-   MAIN CONTAINER
-========================================= */
 
-.container {
-    width: 100%;
-    min-height: 100vh;
+body{
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+font-family:
+Arial,
+sans-serif;
 
-    padding: 40px 20px 20px;
+
+background:
+linear-gradient(
+135deg,
+#111827,
+#1e3a8a
+);
+
+
+color:white;
+
+min-height:100vh;
+
 }
 
 
-/* =========================================
-   LOGO
-========================================= */
 
-.logo-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container{
 
-    margin-bottom: 35px;
-}
+max-width:1200px;
 
-.logo {
-    display: block;
+margin:auto;
 
-    max-width: 180px;
-    width: auto;
-    height: auto;
+padding:40px 20px;
 
-    object-fit: contain;
 }
 
 
-/* =========================================
-   HERO
-========================================= */
 
-.hero {
-    width: 100%;
-    max-width: 650px;
+header{
 
-    text-align: center;
+text-align:center;
 
-    margin: auto 0;
-}
+margin-bottom:40px;
 
-.hero h1 {
-    font-size: 48px;
-    font-weight: 800;
-    line-height: 1.15;
-
-    margin-bottom: 15px;
-
-    letter-spacing: -1px;
-}
-
-.subtitle {
-    max-width: 520px;
-
-    margin: 0 auto 30px;
-
-    color: rgba(255, 255, 255, 0.75);
-
-    font-size: 18px;
-    line-height: 1.6;
 }
 
 
-/* =========================================
-   PROMOTION CARD
-========================================= */
 
-.promo-card {
-    width: 100%;
+header h1{
 
-    padding: 40px 35px;
+font-size:42px;
 
-    border-radius: 24px;
+margin-bottom:10px;
 
-    background: rgba(255, 255, 255, 0.08);
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.promo-card:hover {
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.45);
-}
-
-.promo-card h2 {
-    font-size: 28px;
-    font-weight: 700;
-
-    margin-bottom: 15px;
-}
-
-.promo-card p {
-    color: rgba(255, 255, 255, 0.72);
-
-    font-size: 16px;
-    line-height: 1.6;
-
-    margin-bottom: 30px;
 }
 
 
-/* =========================================
-   CTA BUTTON
-========================================= */
 
-.cta-button {
-    display: flex;
+header p{
 
-    width: 100%;
-    min-height: 58px;
+opacity:.7;
 
-    align-items: center;
-    justify-content: center;
-
-    padding: 15px 25px;
-
-    border-radius: 14px;
-
-    background: linear-gradient(
-        135deg,
-        #00c6ff,
-        #0072ff
-    );
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-size: 17px;
-    font-weight: 700;
-
-    letter-spacing: 0.3px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 114, 255, 0.35);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        opacity 0.2s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 15px 40px rgba(0, 114, 255, 0.5);
-}
-
-.cta-button:active {
-    transform: scale(0.98);
-}
-
-.cta-button:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.35);
-    outline-offset: 3px;
 }
 
 
-/* =========================================
-   LOADING
-========================================= */
 
-.loading {
-    display: none;
 
-    position: fixed;
 
-    inset: 0;
+.cards{
 
-    z-index: 9999;
+display:grid;
 
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+grid-template-columns:
+repeat(3,1fr);
 
-    gap: 15px;
+gap:25px;
 
-    background: rgba(5, 8, 15, 0.95);
-}
-
-.loading.active {
-    display: flex;
-}
-
-.loading p {
-    color: rgba(255, 255, 255, 0.75);
-
-    font-size: 14px;
 }
 
 
-/* =========================================
-   SPINNER
-========================================= */
-
-.spinner {
-    width: 42px;
-    height: 42px;
-
-    border-radius: 50%;
-
-    border: 4px solid rgba(255, 255, 255, 0.15);
-
-    border-top-color: #ffffff;
-
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
 
 
-/* =========================================
-   FOOTER
-========================================= */
 
-footer {
-    width: 100%;
+.card{
 
-    text-align: center;
+background:
+rgba(255,255,255,.1);
 
-    margin-top: 40px;
-    padding-top: 20px;
-}
 
-footer p {
-    color: rgba(255, 255, 255, 0.45);
+border-radius:20px;
 
-    font-size: 13px;
+
+padding:25px;
+
+
+text-align:center;
+
+
+backdrop-filter:blur(15px);
+
+
+transition:.3s;
+
+
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
 
-@media (max-width: 768px) {
+.card:hover{
 
-    .container {
-        padding: 30px 18px 18px;
-    }
+transform:translateY(-8px);
 
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    .subtitle {
-        font-size: 16px;
-    }
-
-    .promo-card {
-        padding: 32px 25px;
-    }
-
-    .promo-card h2 {
-        font-size: 25px;
-    }
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
 
-@media (max-width: 480px) {
 
-    .container {
-        padding: 25px 15px 15px;
-    }
 
-    .logo-wrapper {
-        margin-bottom: 25px;
-    }
+.card-image{
 
-    .logo {
-        max-width: 150px;
-    }
+width:100%;
 
-    .hero h1 {
-        font-size: 34px;
-    }
+height:200px;
 
-    .subtitle {
-        font-size: 15px;
 
-        margin-bottom: 25px;
-    }
+object-fit:cover;
 
-    .promo-card {
-        padding: 28px 20px;
 
-        border-radius: 20px;
-    }
+border-radius:15px;
 
-    .promo-card h2 {
-        font-size: 23px;
-    }
 
-    .promo-card p {
-        font-size: 15px;
+margin-bottom:20px;
 
-        margin-bottom: 25px;
-    }
-
-    .cta-button {
-        min-height: 55px;
-
-        font-size: 16px;
-    }
-
-    footer {
-        margin-top: 30px;
-    }
 }
 
 
-/* =========================================
-   REDUCED MOTION
-========================================= */
 
-@media (prefers-reduced-motion: reduce) {
 
-    html {
-        scroll-behavior: auto;
-    }
+.card h2{
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+font-size:24px;
+
+margin-bottom:10px;
+
+}
+
+
+
+.card p{
+
+opacity:.75;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+.button{
+
+display:block;
+
+padding:15px;
+
+
+background:
+linear-gradient(
+135deg,
+#00c6ff,
+#0072ff
+);
+
+
+border-radius:12px;
+
+
+color:white;
+
+
+text-decoration:none;
+
+
+font-weight:bold;
+
+}
+
+
+
+
+.loading{
+
+display:none;
+
+
+position:fixed;
+
+inset:0;
+
+
+background:
+rgba(0,0,0,.8);
+
+
+align-items:center;
+
+justify-content:center;
+
+
+flex-direction:column;
+
+}
+
+
+
+.loading.active{
+
+display:flex;
+
+}
+
+
+
+.spinner{
+
+width:45px;
+
+height:45px;
+
+
+border:5px solid #ddd;
+
+
+border-top-color:transparent;
+
+
+border-radius:50%;
+
+
+animation:spin .8s linear infinite;
+
+
+}
+
+
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+
+
+footer{
+
+text-align:center;
+
+margin-top:50px;
+
+opacity:.5;
+
+}
+
+
+
+
+@media(max-width:900px){
+
+
+.cards{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+header h1{
+
+font-size:30px;
+
+}
+
+
 }
