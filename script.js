@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           ELEMENTS
+           SIDE MENU
         ================================================= */
 
         const menuButton =
@@ -12,24 +12,20 @@ document.addEventListener(
                 "menuButton"
             );
 
-
         const sideMenu =
             document.getElementById(
                 "sideMenu"
             );
-
 
         const overlay =
             document.getElementById(
                 "overlay"
             );
 
-
         const refreshBtn =
             document.getElementById(
                 "refreshBtn"
             );
-
 
         const sideLinks =
             document.querySelectorAll(
@@ -37,28 +33,15 @@ document.addEventListener(
             );
 
 
-        const loading =
-            document.getElementById(
-                "loading"
-            );
-
-
-
-        /* =================================================
-           SIDE MENU
-        ================================================= */
-
         function openMenu() {
 
             sideMenu?.classList.add(
                 "active"
             );
 
-
             overlay?.classList.add(
                 "active"
             );
-
 
             document.body.classList.add(
                 "menu-open"
@@ -67,25 +50,21 @@ document.addEventListener(
         }
 
 
-
         function closeMenu() {
 
             sideMenu?.classList.remove(
                 "active"
             );
 
-
             overlay?.classList.remove(
                 "active"
             );
-
 
             document.body.classList.remove(
                 "menu-open"
             );
 
         }
-
 
 
         function toggleMenu() {
@@ -105,7 +84,6 @@ document.addEventListener(
             }
 
         }
-
 
 
         menuButton?.addEventListener(
@@ -130,11 +108,6 @@ document.addEventListener(
         );
 
 
-
-        /* =================================================
-           SIDE MENU ACTIVE
-        ================================================= */
-
         sideLinks.forEach(
             function (link) {
 
@@ -151,7 +124,6 @@ document.addEventListener(
 
                             }
                         );
-
 
                         link.classList.add(
                             "active"
@@ -178,7 +150,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT POPUPS
+           CONTACT POPUP
         ================================================= */
 
         const popupButtons =
@@ -191,7 +163,6 @@ document.addEventListener(
             document.querySelectorAll(
                 ".contact-popup"
             );
-
 
 
         function openPopup(
@@ -209,17 +180,12 @@ document.addEventListener(
             }
 
 
-            /*
-             CLOSE OTHER POPUP
-            */
-
             contactPopups.forEach(
                 function (item) {
 
                     item.classList.remove(
                         "active"
                     );
-
 
                     item.setAttribute(
                         "aria-hidden",
@@ -248,7 +214,6 @@ document.addEventListener(
         }
 
 
-
         function closePopup(
             popup
         ) {
@@ -269,20 +234,11 @@ document.addEventListener(
             );
 
 
-            if (
-                !document.querySelector(
-                    ".contact-popup.active"
-                )
-            ) {
-
-                document.body.classList.remove(
-                    "contact-popup-open"
-                );
-
-            }
+            document.body.classList.remove(
+                "contact-popup-open"
+            );
 
         }
-
 
 
         popupButtons.forEach(
@@ -292,13 +248,9 @@ document.addEventListener(
                     "click",
                     function () {
 
-                        const popupId =
-                            button.dataset
-                                .contactPopup;
-
-
                         openPopup(
-                            popupId
+                            button.dataset
+                                .contactPopup
                         );
 
                     }
@@ -306,7 +258,6 @@ document.addEventListener(
 
             }
         );
-
 
 
         contactPopups.forEach(
@@ -391,7 +342,7 @@ document.addEventListener(
 
 
         /* =================================================
-           URL TRACKING PARAMETERS
+           URL TRACKING
         ================================================= */
 
         const currentParams =
@@ -417,7 +368,7 @@ document.addEventListener(
 
 
         /* =================================================
-           REFERRAL LINKS
+           REFERRAL
         ================================================= */
 
         const referralButtons =
@@ -425,6 +376,11 @@ document.addEventListener(
                 ".referral"
             );
 
+
+        const loading =
+            document.getElementById(
+                "loading"
+            );
 
 
         referralButtons.forEach(
@@ -487,6 +443,7 @@ document.addEventListener(
                     button.href =
                         referralUrl.toString();
 
+
                 } catch (error) {
 
                     console.warn(
@@ -495,7 +452,6 @@ document.addEventListener(
                     );
 
                 }
-
 
 
                 button.addEventListener(
@@ -569,6 +525,7 @@ document.addEventListener(
 
                             );
 
+
                         } catch (error) {
 
                             console.warn(
@@ -603,14 +560,13 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT ACCOUNT TRACKING
+           CONTACT TRACKING
         ================================================= */
 
         const contactAccounts =
             document.querySelectorAll(
                 ".contact-account-item"
             );
-
 
 
         contactAccounts.forEach(
@@ -622,50 +578,41 @@ document.addEventListener(
 
                         try {
 
-                            const contactData = {
-
-                                type:
-                                    account.dataset
-                                        .contactType ||
-                                    "",
-
-                                name:
-                                    account.dataset
-                                        .contactName ||
-                                    "",
-
-                                destination:
-                                    account.href,
-
-                                sourcePage:
-                                    window.location.href,
-
-                                utmSource:
-                                    currentParams.get(
-                                        "utm_source"
-                                    ) || "",
-
-                                utmCampaign:
-                                    currentParams.get(
-                                        "utm_campaign"
-                                    ) || "",
-
-                                time:
-                                    new Date()
-                                        .toISOString()
-
-                            };
-
-
                             localStorage.setItem(
 
                                 "last_contact_click",
 
-                                JSON.stringify(
-                                    contactData
-                                )
+                                JSON.stringify({
+
+                                    type:
+                                        account.dataset
+                                            .contactType ||
+                                        "",
+
+                                    name:
+                                        account.dataset
+                                            .contactName ||
+                                        "",
+
+                                    destination:
+                                        account.href,
+
+                                    sourcePage:
+                                        window.location.href,
+
+                                    utmSource:
+                                        currentParams.get(
+                                            "utm_source"
+                                        ) || "",
+
+                                    time:
+                                        new Date()
+                                            .toISOString()
+
+                                })
 
                             );
+
 
                         } catch (error) {
 
