@@ -43,7 +43,6 @@ document.addEventListener(
             );
 
 
-
         /* =================================================
            SIDE MENU
         ================================================= */
@@ -54,18 +53,14 @@ document.addEventListener(
                 "active"
             );
 
-
             overlay?.classList.add(
                 "active"
             );
 
-
             document.body.classList.add(
                 "menu-open"
             );
-
         }
-
 
 
         function closeMenu() {
@@ -74,18 +69,14 @@ document.addEventListener(
                 "active"
             );
 
-
             overlay?.classList.remove(
                 "active"
             );
 
-
             document.body.classList.remove(
                 "menu-open"
             );
-
         }
-
 
 
         function toggleMenu() {
@@ -101,11 +92,8 @@ document.addEventListener(
             } else {
 
                 openMenu();
-
             }
-
         }
-
 
 
         menuButton?.addEventListener(
@@ -125,10 +113,8 @@ document.addEventListener(
             function () {
 
                 window.location.reload();
-
             }
         );
-
 
 
         /* =================================================
@@ -142,14 +128,12 @@ document.addEventListener(
                     "click",
                     function () {
 
-
                         sideLinks.forEach(
                             function (item) {
 
                                 item.classList.remove(
                                     "active"
                                 );
-
                             }
                         );
 
@@ -167,15 +151,11 @@ document.addEventListener(
                                 closeMenu,
                                 100
                             );
-
                         }
-
                     }
                 );
-
             }
         );
-
 
 
         /* =================================================
@@ -194,7 +174,6 @@ document.addEventListener(
             );
 
 
-
         function openContactPopup(
             popupId
         ) {
@@ -206,9 +185,7 @@ document.addEventListener(
 
 
             if (!popup) {
-
                 return;
-
             }
 
 
@@ -219,12 +196,10 @@ document.addEventListener(
                         "active"
                     );
 
-
                     item.setAttribute(
                         "aria-hidden",
                         "true"
                     );
-
                 }
             );
 
@@ -243,9 +218,7 @@ document.addEventListener(
             document.body.classList.add(
                 "contact-popup-open"
             );
-
         }
-
 
 
         function closeContactPopup(
@@ -253,9 +226,7 @@ document.addEventListener(
         ) {
 
             if (!popup) {
-
                 return;
-
             }
 
 
@@ -273,9 +244,7 @@ document.addEventListener(
             document.body.classList.remove(
                 "contact-popup-open"
             );
-
         }
-
 
 
         popupButtons.forEach(
@@ -289,18 +258,14 @@ document.addEventListener(
                             button.dataset
                                 .contactPopup
                         );
-
                     }
                 );
-
             }
         );
 
 
-
         contactPopups.forEach(
             function (popup) {
-
 
                 const closeButton =
                     popup.querySelector(
@@ -321,7 +286,6 @@ document.addEventListener(
                         closeContactPopup(
                             popup
                         );
-
                     }
                 );
 
@@ -333,13 +297,10 @@ document.addEventListener(
                         closeContactPopup(
                             popup
                         );
-
                     }
                 );
-
             }
         );
-
 
 
         /* =================================================
@@ -350,38 +311,32 @@ document.addEventListener(
             "keydown",
             function (event) {
 
-
                 if (
                     event.key !== "Escape"
                 ) {
-
                     return;
-
                 }
 
 
-                const activeContactPopup =
+                const activePopup =
                     document.querySelector(
                         ".contact-popup.active"
                     );
 
 
-                if (activeContactPopup) {
+                if (activePopup) {
 
                     closeContactPopup(
-                        activeContactPopup
+                        activePopup
                     );
 
                     return;
-
                 }
 
 
                 closeMenu();
-
             }
         );
-
 
 
         /* =================================================
@@ -409,7 +364,6 @@ document.addEventListener(
         ];
 
 
-
         /* =================================================
            REFERRAL LINKS
         ================================================= */
@@ -423,7 +377,6 @@ document.addEventListener(
         referralButtons.forEach(
             function (button) {
 
-
                 const originalUrl =
                     button.getAttribute(
                         "href"
@@ -436,14 +389,11 @@ document.addEventListener(
                         "YOUR-REFERRAL"
                     )
                 ) {
-
                     return;
-
                 }
 
 
                 try {
-
 
                     const referralUrl =
                         new URL(
@@ -455,28 +405,21 @@ document.addEventListener(
                     trackingParameters.forEach(
                         function (key) {
 
-
                             if (
                                 currentParams.has(
                                     key
                                 )
                             ) {
 
-
                                 referralUrl
                                     .searchParams
                                     .set(
-
                                         key,
-
                                         currentParams.get(
                                             key
                                         )
-
                                     );
-
                             }
-
                         }
                     );
 
@@ -484,26 +427,20 @@ document.addEventListener(
                     button.href =
                         referralUrl.toString();
 
-
                 } catch (error) {
-
 
                     console.warn(
                         "Invalid referral URL:",
                         originalUrl
                     );
-
                 }
-
 
 
                 button.addEventListener(
                     "click",
                     function () {
 
-
                         try {
-
 
                             localStorage.setItem(
 
@@ -547,32 +484,24 @@ document.addEventListener(
 
                             const clickCount =
                                 Number(
-
                                     localStorage.getItem(
                                         "referral_click_count"
                                     ) || 0
-
                                 );
 
 
                             localStorage.setItem(
-
                                 "referral_click_count",
-
                                 String(
                                     clickCount + 1
                                 )
-
                             );
 
-
                         } catch (error) {
-
 
                             console.warn(
                                 "Tracking unavailable."
                             );
-
                         }
 
 
@@ -587,18 +516,13 @@ document.addEventListener(
                                 loading?.classList.remove(
                                     "active"
                                 );
-
                             },
                             1200
                         );
-
-
                     }
                 );
-
             }
         );
-
 
 
         /* =================================================
@@ -614,14 +538,11 @@ document.addEventListener(
         contactAccounts.forEach(
             function (account) {
 
-
                 account.addEventListener(
                     "click",
                     function () {
 
-
                         try {
-
 
                             localStorage.setItem(
 
@@ -648,27 +569,20 @@ document.addEventListener(
 
                             );
 
-
                         } catch (error) {
-
 
                             console.warn(
                                 "Contact tracking unavailable."
                             );
-
                         }
-
-
                     }
                 );
-
             }
         );
 
 
-
         /* =================================================
-           BACK BUTTON
+           BACK BUTTON FIX
         ================================================= */
 
         window.addEventListener(
@@ -678,7 +592,6 @@ document.addEventListener(
                 loading?.classList.remove(
                     "active"
                 );
-
             }
         );
 
