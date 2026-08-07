@@ -16,969 +16,978 @@
         content="Official promotion page"
     >
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
 
-    <!-- =================================================
-         TOP LEFT BAR
-    ================================================== -->
+<!-- =================================================
+     TOP LEFT BAR
+================================================= -->
 
-    <div class="top-user-bar">
+<div class="top-user-bar">
 
-        <!-- USER -->
-        <div class="user-box">
+    <div class="user-box">
 
-            <span class="user-icon">
-
-                <svg viewBox="0 0 24 24">
-
-                    <circle
-                        cx="12"
-                        cy="8"
-                        r="3"
-                    ></circle>
-
-                    <path
-                        d="M5 20C5.5 15.5 8 13.5 12 13.5C16 13.5 18.5 15.5 19 20"
-                    ></path>
-
-                </svg>
-
-            </span>
-
-
-            <span class="user-name">
-                admin
-            </span>
-
-        </div>
-
-
-        <!-- REFRESH -->
-
-        <button
-            id="refreshBtn"
-            class="top-icon-btn"
-            type="button"
-            aria-label="Refresh"
-        >
+        <span class="user-icon">
 
             <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="3"></circle>
 
                 <path
-                    d="M20 11A8 8 0 1 0 18 16"
+                    d="M5 20C5.5 15.5 8 13.5 12 13.5C16 13.5 18.5 15.5 19 20"
                 ></path>
-
-                <path
-                    d="M20 5V11H14"
-                ></path>
-
             </svg>
 
-        </button>
+        </span>
 
-
-        <!-- MENU TOGGLE -->
-
-        <button
-            id="menuButton"
-            class="top-icon-btn menu-toggle-btn"
-            type="button"
-            aria-label="Open menu"
-        >
-
-            <svg viewBox="0 0 24 24">
-
-                <path d="M10 6H20"></path>
-
-                <path d="M10 12H20"></path>
-
-                <path d="M10 18H20"></path>
-
-                <path
-                    d="M4 8L7 12L4 16"
-                ></path>
-
-            </svg>
-
-        </button>
+        <span class="user-name">
+            admin
+        </span>
 
     </div>
 
 
-
-    <!-- =================================================
-         OVERLAY
-    ================================================== -->
-
-    <div
-        id="overlay"
-        class="side-overlay"
-    ></div>
-
-
-
-    <!-- =================================================
-         SIDE MENU
-    ================================================== -->
-
-    <aside
-        id="sideMenu"
-        class="side-menu"
+    <button
+        id="refreshBtn"
+        class="top-icon-btn"
+        type="button"
+        aria-label="Refresh"
     >
 
+        <svg viewBox="0 0 24 24">
+            <path d="M20 11A8 8 0 1 0 18 16"></path>
+            <path d="M20 5V11H14"></path>
+        </svg>
 
-        <!-- BRAND -->
-
-        <div class="side-brand">
+    </button>
 
 
-            <div class="side-logo-box">
+    <button
+        id="menuButton"
+        class="top-icon-btn"
+        type="button"
+        aria-label="Open Menu"
+    >
 
-                <img
-                    src="https://YOUR-CLOUD-LOGO.png"
-                    alt="Logo"
-                    class="side-logo"
-                >
+        <svg viewBox="0 0 24 24">
+            <path d="M10 6H20"></path>
+            <path d="M10 12H20"></path>
+            <path d="M10 18H20"></path>
+            <path d="M4 8L7 12L4 16"></path>
+        </svg>
 
+    </button>
+
+</div>
+
+
+<!-- =================================================
+     SIDE OVERLAY
+================================================= -->
+
+<div
+    id="overlay"
+    class="side-overlay"
+></div>
+
+
+<!-- =================================================
+     SIDE MENU
+================================================= -->
+
+<aside
+    id="sideMenu"
+    class="side-menu"
+>
+
+    <div class="side-brand">
+
+        <div class="side-logo-box">
+
+            <img
+                src="https://YOUR-CLOUD-LOGO.png"
+                alt="Brand Logo"
+                class="side-logo"
+            >
+
+        </div>
+
+        <div class="side-brand-text">
+
+            <div class="brand-name">
+                Your Brand
             </div>
 
-
-            <div class="side-brand-text">
-
-                <div class="brand-name">
-                    Your Brand
-                </div>
-
-                <div class="brand-subtitle">
-                    Promotion Panel
-                </div>
-
+            <div class="brand-subtitle">
+                Promotion Panel
             </div>
 
         </div>
 
+    </div>
 
 
-        <!-- MENU SCROLL -->
+    <div class="side-menu-scroll">
 
-        <div class="side-menu-scroll">
+        <nav class="side-nav">
 
+            <!-- HOME -->
+            <a
+                href="#home"
+                class="side-link active"
+            >
 
-            <nav class="side-nav">
-
-
-                <!-- HOME -->
-
-                <a
-                    href="#home"
-                    class="side-link active"
-                    data-page="home"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M3 11L12 4L21 11"
-                            ></path>
-
-                            <path
-                                d="M5 10V20H19V10"
-                            ></path>
-
-                            <path
-                                d="M9 20V14H15V20"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Home
-                    </span>
-
-                </a>
-
-
-
-                <!-- MESSAGE -->
-
-                <a
-                    href="#contact"
-                    class="side-link"
-                    data-page="message"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M4 5H20V16H8L4 20V5Z"
-                            ></path>
-
-                            <path
-                                d="M8 9H16"
-                            ></path>
-
-                            <path
-                                d="M8 12H14"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Message
-                    </span>
-
-                </a>
-
-
-
-                <!-- PROMOTION -->
-
-                <a
-                    href="#promotion"
-                    class="side-link"
-                    data-page="promotion"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M4 13L14 4L20 10L11 19H4V13Z"
-                            ></path>
-
-                            <path
-                                d="M13 7L17 11"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Promotion
-                    </span>
-
-                </a>
-
-
-
-                <!-- COMPANIES -->
-
-                <a
-                    href="#promotion"
-                    class="side-link"
-                    data-page="companies"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M4 20V8H12V20"
-                            ></path>
-
-                            <path
-                                d="M12 20V4H20V20"
-                            ></path>
-
-                            <path
-                                d="M7 11H9"
-                            ></path>
-
-                            <path
-                                d="M7 14H9"
-                            ></path>
-
-                            <path
-                                d="M15 8H17"
-                            ></path>
-
-                            <path
-                                d="M15 11H17"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Companies
-                    </span>
-
-                </a>
-
-
-
-                <!-- REFERRAL -->
-
-                <a
-                    href="#promotion"
-                    class="side-link"
-                    data-page="referral"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <circle
-                                cx="8"
-                                cy="8"
-                                r="3"
-                            ></circle>
-
-                            <circle
-                                cx="17"
-                                cy="7"
-                                r="2.5"
-                            ></circle>
-
-                            <path
-                                d="M3 20C3.5 15.5 6 14 8 14C10 14 12.5 15.5 13 20"
-                            ></path>
-
-                            <path
-                                d="M14 14C17 14 20 15.5 20.5 19"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Referral
-                    </span>
-
-                </a>
-
-
-
-                <!-- ANALYTICS -->
-
-                <a
-                    href="#"
-                    class="side-link"
-                    data-page="analytics"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M4 20V12"
-                            ></path>
-
-                            <path
-                                d="M10 20V5"
-                            ></path>
-
-                            <path
-                                d="M16 20V9"
-                            ></path>
-
-                            <path
-                                d="M22 20V3"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Analytics
-                    </span>
-
-                </a>
-
-
-
-                <!-- SETTINGS -->
-
-                <a
-                    href="#"
-                    class="side-link"
-                    data-page="settings"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="3"
-                            ></circle>
-
-                            <path
-                                d="M19 12A7 7 0 1 1 5 12A7 7 0 1 1 19 12Z"
-                            ></path>
-
-                            <path
-                                d="M12 2V5"
-                            ></path>
-
-                            <path
-                                d="M12 19V22"
-                            ></path>
-
-                            <path
-                                d="M2 12H5"
-                            ></path>
-
-                            <path
-                                d="M19 12H22"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Settings
-                    </span>
-
-                </a>
-
-
-
-                <!-- SUPPORT -->
-
-                <a
-                    href="#contact"
-                    class="side-link"
-                    data-page="support"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="9"
-                            ></circle>
-
-                            <path
-                                d="M8 15C9 16.5 10.3 17 12 17C13.7 17 15 16.5 16 15"
-                            ></path>
-
-                            <path
-                                d="M8 10V12"
-                            ></path>
-
-                            <path
-                                d="M16 10V12"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Support
-                    </span>
-
-                </a>
-
-
-
-                <!-- ABOUT -->
-
-                <a
-                    href="#about"
-                    class="side-link"
-                    data-page="about"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="9"
-                            ></circle>
-
-                            <path
-                                d="M12 10V17"
-                            ></path>
-
-                            <path
-                                d="M12 7H12.01"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        About
-                    </span>
-
-                </a>
-
-
-
-                <!-- CONTACT -->
-
-                <a
-                    href="#contact"
-                    class="side-link"
-                    data-page="contact"
-                >
-
-                    <span class="side-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M6 3H10L12 8L9 10C10.5 13 12 14.5 15 16L17 13L22 15V19C22 20.1 21.1 21 20 21C10.6 20.4 3.6 13.4 3 4C3 3.4 3.4 3 4 3H6Z"
-                            ></path>
-
-                        </svg>
-
-                    </span>
-
-                    <span class="side-link-text">
-                        Contact
-                    </span>
-
-                </a>
-
-
-            </nav>
-
-
-        </div>
-
-
-
-        <!-- BOTTOM -->
-
-        <div class="side-bottom">
-
-            <div class="side-bottom-status">
-
-                <span class="status-dot"></span>
+                <span class="side-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 11L12 4L21 11"></path>
+                        <path d="M5 10V20H19V10"></path>
+                        <path d="M9 20V14H15V20"></path>
+                    </svg>
+                </span>
 
                 <span>
-                    Online
+                    Home
                 </span>
 
-            </div>
+            </a>
 
 
-            <span class="side-version">
-                v1.0
+            <!-- PROMOTION -->
+            <a
+                href="#promotion"
+                class="side-link"
+            >
+
+                <span class="side-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 13L14 4L20 10L11 19H4V13Z"></path>
+                        <path d="M13 7L17 11"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    Promotion
+                </span>
+
+            </a>
+
+
+            <!-- COMPANIES -->
+            <a
+                href="#promotion"
+                class="side-link"
+            >
+
+                <span class="side-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 20V8H12V20"></path>
+                        <path d="M12 20V4H20V20"></path>
+                        <path d="M7 11H9"></path>
+                        <path d="M7 14H9"></path>
+                        <path d="M15 8H17"></path>
+                        <path d="M15 11H17"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    Companies
+                </span>
+
+            </a>
+
+
+            <!-- SUPPORT -->
+            <a
+                href="#contact"
+                class="side-link"
+            >
+
+                <span class="side-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M8 15C9 16.5 10.3 17 12 17C13.7 17 15 16.5 16 15"></path>
+                        <path d="M8 10V12"></path>
+                        <path d="M16 10V12"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    Support
+                </span>
+
+            </a>
+
+
+            <!-- ABOUT -->
+            <a
+                href="#about"
+                class="side-link"
+            >
+
+                <span class="side-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 10V17"></path>
+                        <path d="M12 7H12.01"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    About
+                </span>
+
+            </a>
+
+        </nav>
+
+    </div>
+
+
+    <div class="side-bottom">
+
+        <div class="side-bottom-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                Online
             </span>
 
         </div>
 
+        <span>
+            v1.0
+        </span>
 
-    </aside>
+    </div>
 
+</aside>
+
+
+<!-- =================================================
+     MAIN PAGE
+================================================= -->
+
+<main
+    id="home"
+    class="main-container"
+>
+
+    <header class="hero">
+
+        <p class="hero-label">
+            OFFICIAL PROMOTION
+        </p>
+
+        <h1>
+            Exclusive Promotions
+        </h1>
+
+        <p class="hero-description">
+            Choose your preferred company below.
+        </p>
+
+    </header>
 
 
     <!-- =================================================
-         MAIN PAGE
+         CARDS
     ================================================== -->
 
-    <main
-        id="home"
-        class="main-container"
+    <section
+        id="promotion"
+        class="cards"
     >
 
-
-        <!-- HERO -->
-
-        <header class="hero">
-
-            <p class="hero-label">
-                OFFICIAL PROMOTION
-            </p>
-
-            <h1>
-                Exclusive Promotions
-            </h1>
-
-            <p class="hero-description">
-                Choose your preferred company below.
-            </p>
-
-        </header>
-
-
-
-        <!-- =================================================
-             CARDS
-        ================================================== -->
-
-        <section
-            id="promotion"
-            class="cards"
-        >
-
-
-            <!-- CARD 1 -->
-
-            <article class="card">
-
-                <div class="image-box">
-
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-1.jpg"
-                        alt="Company One"
-                    >
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>
-                        Company One
-                    </h2>
-
-                    <p>
-                        Latest promotion and exclusive offer.
-                    </p>
-
-
-                    <a
-                        href="https://YOUR-REFERRAL-LINK-1.com"
-                        class="referral-button referral"
-                        data-company="Company One"
-                    >
-                        Visit Now
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- CARD 2 -->
-
-            <article class="card">
-
-                <div class="image-box">
-
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-2.jpg"
-                        alt="Company Two"
-                    >
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>
-                        Company Two
-                    </h2>
-
-                    <p>
-                        Discover our latest promotion.
-                    </p>
-
-
-                    <a
-                        href="https://YOUR-REFERRAL-LINK-2.com"
-                        class="referral-button referral"
-                        data-company="Company Two"
-                    >
-                        Visit Now
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- CARD 3 -->
-
-            <article class="card">
-
-                <div class="image-box">
-
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-3.jpg"
-                        alt="Company Three"
-                    >
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>
-                        Company Three
-                    </h2>
-
-                    <p>
-                        Special offer available now.
-                    </p>
-
-
-                    <a
-                        href="https://YOUR-REFERRAL-LINK-3.com"
-                        class="referral-button referral"
-                        data-company="Company Three"
-                    >
-                        Visit Now
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- CARD 4 -->
-
-            <article class="card">
-
-                <div class="image-box">
-
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-4.jpg"
-                        alt="Company Four"
-                    >
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>
-                        Company Four
-                    </h2>
-
-                    <p>
-                        Check out our latest offers.
-                    </p>
-
-
-                    <a
-                        href="https://YOUR-REFERRAL-LINK-4.com"
-                        class="referral-button referral"
-                        data-company="Company Four"
-                    >
-                        Visit Now
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- CARD 5 -->
-
-            <article class="card">
-
-                <div class="image-box">
-
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-5.jpg"
-                        alt="Company Five"
-                    >
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>
-                        Company Five
-                    </h2>
-
-                    <p>
-                        Explore our latest promotion.
-                    </p>
-
-
-                    <a
-                        href="https://YOUR-REFERRAL-LINK-5.com"
-                        class="referral-button referral"
-                        data-company="Company Five"
-                    >
-                        Visit Now
-
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-        </section>
-
-
-
-        <!-- ABOUT -->
-
-        <section
-            id="about"
-            class="info-section"
-        >
-
-            <div class="info-card">
-
-                <span class="info-label">
-                    ABOUT
-                </span>
-
-                <h2>
-                    Your Brand
-                </h2>
-
-                <p>
-                    Welcome to our official promotion page.
-                </p>
+        <!-- CARD 1 -->
+        <article class="card">
+
+            <div class="image-box">
+
+                <img
+                    src="https://YOUR-CLOUD-IMAGE-1.jpg"
+                    alt="Company One"
+                >
 
             </div>
 
-        </section>
-
-
-
-        <!-- CONTACT -->
-
-        <section
-            id="contact"
-            class="info-section"
-        >
-
-            <div class="info-card">
-
-                <span class="info-label">
-                    SUPPORT
-                </span>
+            <div class="card-content">
 
                 <h2>
-                    Contact Us
+                    Company One
                 </h2>
 
                 <p>
-                    Need assistance? Contact our support team.
+                    Latest promotion and exclusive offer.
                 </p>
 
+                <a
+                    href="https://YOUR-REFERRAL-LINK-1.com"
+                    class="referral-button referral"
+                    data-company="Company One"
+                >
+                    Visit Now
 
-                <div class="contact-buttons">
-
-                    <a
-                        href="https://wa.me/YOUR-WHATSAPP-NUMBER"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        WhatsApp
-                    </a>
-
-
-                    <a
-                        href="https://t.me/YOUR-TELEGRAM"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Telegram
-                    </a>
-
-                </div>
+                    <span>
+                        →
+                    </span>
+                </a>
 
             </div>
 
-        </section>
+        </article>
 
 
+        <!-- CARD 2 -->
+        <article class="card">
 
-        <!-- FOOTER -->
+            <div class="image-box">
 
-        <footer class="page-footer">
+                <img
+                    src="https://YOUR-CLOUD-IMAGE-2.jpg"
+                    alt="Company Two"
+                >
 
-            <p>
-                © 2026 Your Brand. All Rights Reserved.
-            </p>
+            </div>
 
-        </footer>
+            <div class="card-content">
+
+                <h2>
+                    Company Two
+                </h2>
+
+                <p>
+                    Discover our latest promotion.
+                </p>
+
+                <a
+                    href="https://YOUR-REFERRAL-LINK-2.com"
+                    class="referral-button referral"
+                    data-company="Company Two"
+                >
+                    Visit Now
+
+                    <span>
+                        →
+                    </span>
+                </a>
+
+            </div>
+
+        </article>
 
 
-    </main>
+        <!-- CARD 3 -->
+        <article class="card">
 
+            <div class="image-box">
+
+                <img
+                    src="https://YOUR-CLOUD-IMAGE-3.jpg"
+                    alt="Company Three"
+                >
+
+            </div>
+
+            <div class="card-content">
+
+                <h2>
+                    Company Three
+                </h2>
+
+                <p>
+                    Special offer available now.
+                </p>
+
+                <a
+                    href="https://YOUR-REFERRAL-LINK-3.com"
+                    class="referral-button referral"
+                    data-company="Company Three"
+                >
+                    Visit Now
+
+                    <span>
+                        →
+                    </span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 4 -->
+        <article class="card">
+
+            <div class="image-box">
+
+                <img
+                    src="https://YOUR-CLOUD-IMAGE-4.jpg"
+                    alt="Company Four"
+                >
+
+            </div>
+
+            <div class="card-content">
+
+                <h2>
+                    Company Four
+                </h2>
+
+                <p>
+                    Check out our latest offer.
+                </p>
+
+                <a
+                    href="https://YOUR-REFERRAL-LINK-4.com"
+                    class="referral-button referral"
+                    data-company="Company Four"
+                >
+                    Visit Now
+
+                    <span>
+                        →
+                    </span>
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 5 -->
+        <article class="card">
+
+            <div class="image-box">
+
+                <img
+                    src="https://YOUR-CLOUD-IMAGE-5.jpg"
+                    alt="Company Five"
+                >
+
+            </div>
+
+            <div class="card-content">
+
+                <h2>
+                    Company Five
+                </h2>
+
+                <p>
+                    Explore our latest promotion.
+                </p>
+
+                <a
+                    href="https://YOUR-REFERRAL-LINK-5.com"
+                    class="referral-button referral"
+                    data-company="Company Five"
+                >
+                    Visit Now
+
+                    <span>
+                        →
+                    </span>
+                </a>
+
+            </div>
+
+        </article>
+
+    </section>
 
 
     <!-- =================================================
-         LOADING
+         ABOUT
     ================================================== -->
+
+    <section
+        id="about"
+        class="info-section"
+    >
+
+        <div class="info-card">
+
+            <span class="info-label">
+                ABOUT
+            </span>
+
+            <h2>
+                Your Brand
+            </h2>
+
+            <p>
+                Welcome to our official promotion page.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CONTACT
+    ================================================== -->
+
+    <section
+        id="contact"
+        class="info-section"
+    >
+
+        <div class="info-card">
+
+            <span class="info-label">
+                SUPPORT
+            </span>
+
+            <h2>
+                Contact Us
+            </h2>
+
+            <p>
+                Need assistance? Choose your preferred support channel.
+            </p>
+
+
+            <div class="contact-buttons">
+
+                <!-- WHATSAPP BUTTON -->
+                <button
+                    type="button"
+                    class="contact-main-btn whatsapp-main-btn"
+                    data-contact-popup="whatsappPopup"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 11.5A8 8 0 0 1 8.3 18.6L4 20L5.4 15.9A8 8 0 1 1 20 11.5Z"></path>
+                        <path d="M9 8.5C9.5 11.5 12 14 15 14.5"></path>
+                    </svg>
+
+                    <span>
+                        WhatsApp
+                    </span>
+
+                </button>
+
+
+                <!-- TELEGRAM BUTTON -->
+                <button
+                    type="button"
+                    class="contact-main-btn telegram-main-btn"
+                    data-contact-popup="telegramPopup"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 4L3 11L10 14L14 20L21 4Z"></path>
+                        <path d="M10 14L21 4"></path>
+                    </svg>
+
+                    <span>
+                        Telegram
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="page-footer">
+
+        <p>
+            © 2026 Your Brand. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</main>
+
+
+<!-- =================================================
+     WHATSAPP POPUP
+================================================= -->
+
+<div
+    id="whatsappPopup"
+    class="contact-popup"
+    aria-hidden="true"
+>
+
+    <div class="contact-popup-backdrop"></div>
+
 
     <div
-        id="loading"
-        class="loading-overlay"
+        class="contact-popup-dialog"
+        role="dialog"
+        aria-modal="true"
     >
 
-        <div class="loading-box">
+        <div class="contact-popup-header">
 
-            <div class="spinner"></div>
+            <div>
 
-            <p>
-                Loading...
-            </p>
+                <span class="popup-small-title">
+                    WHATSAPP SUPPORT
+                </span>
+
+                <h3>
+                    Choose WhatsApp
+                </h3>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="contact-popup-close"
+                aria-label="Close"
+            >
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 6L18 18"></path>
+                    <path d="M18 6L6 18"></path>
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <p class="contact-popup-description">
+            Select one of our available WhatsApp support accounts.
+        </p>
+
+
+        <div class="contact-account-list">
+
+
+            <!-- =================================================
+                 WHATSAPP 1
+            ================================================== -->
+
+            <a
+                href="https://wa.me/60123456789"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-account-item"
+                data-contact-type="whatsapp"
+                data-contact-name="WhatsApp 01"
+            >
+
+                <div
+                    class="account-icon whatsapp-account-icon"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 11.5A8 8 0 0 1 8.3 18.6L4 20L5.4 15.9A8 8 0 1 1 20 11.5Z"></path>
+                        <path d="M9 8.5C9.5 11.5 12 14 15 14.5"></path>
+                    </svg>
+
+                </div>
+
+
+                <div class="account-info">
+
+                    <strong>
+                        WhatsApp 01
+                    </strong>
+
+                    <span>
+                        +60 12-345 6789
+                    </span>
+
+                </div>
+
+
+                <div class="account-status">
+
+                    <span class="online-dot"></span>
+
+                    <span>
+                        Online
+                    </span>
+
+                </div>
+
+
+                <span class="account-arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 WHATSAPP 2
+            ================================================== -->
+
+            <a
+                href="https://wa.me/60198765432"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-account-item"
+                data-contact-type="whatsapp"
+                data-contact-name="WhatsApp 02"
+            >
+
+                <div
+                    class="account-icon whatsapp-account-icon"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 11.5A8 8 0 0 1 8.3 18.6L4 20L5.4 15.9A8 8 0 1 1 20 11.5Z"></path>
+                        <path d="M9 8.5C9.5 11.5 12 14 15 14.5"></path>
+                    </svg>
+
+                </div>
+
+
+                <div class="account-info">
+
+                    <strong>
+                        WhatsApp 02
+                    </strong>
+
+                    <span>
+                        +60 19-876 5432
+                    </span>
+
+                </div>
+
+
+                <div class="account-status">
+
+                    <span class="online-dot"></span>
+
+                    <span>
+                        Online
+                    </span>
+
+                </div>
+
+
+                <span class="account-arrow">
+                    ›
+                </span>
+
+            </a>
+
 
         </div>
 
     </div>
 
+</div>
 
 
-    <script src="script.js"></script>
+<!-- =================================================
+     TELEGRAM POPUP
+================================================= -->
+
+<div
+    id="telegramPopup"
+    class="contact-popup"
+    aria-hidden="true"
+>
+
+    <div class="contact-popup-backdrop"></div>
+
+
+    <div
+        class="contact-popup-dialog"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="contact-popup-header">
+
+            <div>
+
+                <span class="popup-small-title">
+                    TELEGRAM SUPPORT
+                </span>
+
+                <h3>
+                    Choose Telegram
+                </h3>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="contact-popup-close"
+                aria-label="Close"
+            >
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 6L18 18"></path>
+                    <path d="M18 6L6 18"></path>
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <p class="contact-popup-description">
+            Select one of our available Telegram support accounts.
+        </p>
+
+
+        <div class="contact-account-list">
+
+
+            <!-- =================================================
+                 TELEGRAM 1
+            ================================================== -->
+
+            <a
+                href="https://t.me/YOUR_TELEGRAM_1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-account-item"
+                data-contact-type="telegram"
+                data-contact-name="Telegram 01"
+            >
+
+                <div
+                    class="account-icon telegram-account-icon"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 4L3 11L10 14L14 20L21 4Z"></path>
+                        <path d="M10 14L21 4"></path>
+                    </svg>
+
+                </div>
+
+
+                <div class="account-info">
+
+                    <strong>
+                        Telegram 01
+                    </strong>
+
+                    <span>
+                        @yourtelegram1
+                    </span>
+
+                </div>
+
+
+                <div class="account-status">
+
+                    <span class="online-dot"></span>
+
+                    <span>
+                        Online
+                    </span>
+
+                </div>
+
+
+                <span class="account-arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 TELEGRAM 2
+            ================================================== -->
+
+            <a
+                href="https://t.me/YOUR_TELEGRAM_2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-account-item"
+                data-contact-type="telegram"
+                data-contact-name="Telegram 02"
+            >
+
+                <div
+                    class="account-icon telegram-account-icon"
+                >
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 4L3 11L10 14L14 20L21 4Z"></path>
+                        <path d="M10 14L21 4"></path>
+                    </svg>
+
+                </div>
+
+
+                <div class="account-info">
+
+                    <strong>
+                        Telegram 02
+                    </strong>
+
+                    <span>
+                        @yourtelegram2
+                    </span>
+
+                </div>
+
+
+                <div class="account-status">
+
+                    <span class="online-dot"></span>
+
+                    <span>
+                        Online
+                    </span>
+
+                </div>
+
+
+                <span class="account-arrow">
+                    ›
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     LOADING
+================================================= -->
+
+<div
+    id="loading"
+    class="loading-overlay"
+>
+
+    <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <p>
+            Loading...
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 
