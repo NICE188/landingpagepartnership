@@ -39,9 +39,6 @@ html {
     --page-bg: #06121f;
     --page-bg-2: #081a2a;
 
-    --card-bg:
-        rgba(255, 255, 255, 0.055);
-
     --card-border:
         rgba(255, 255, 255, 0.09);
 
@@ -86,13 +83,14 @@ body {
 }
 
 
-body.menu-open {
+body.menu-open,
+body.contact-popup-open {
     overflow: hidden;
 }
 
 
 /* =====================================================
-   TOP USER BAR
+   TOP BAR
 ===================================================== */
 
 .top-user-bar {
@@ -141,8 +139,6 @@ body.menu-open {
     width: 13px;
     height: 13px;
 
-    flex: 0 0 13px;
-
     display: flex;
 }
 
@@ -152,11 +148,8 @@ body.menu-open {
     height: 100%;
 
     fill: none;
-
     stroke: #dceaf1;
-
     stroke-width: 1.6;
-
     stroke-linecap: round;
     stroke-linejoin: round;
 }
@@ -166,12 +159,6 @@ body.menu-open {
     color: #ffffff;
 
     font-size: 10px;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
 }
 
 
@@ -182,8 +169,6 @@ body.menu-open {
     flex: 0 0 42px;
 
     border: 0;
-
-    outline: none;
 
     background: transparent;
 
@@ -214,11 +199,8 @@ body.menu-open {
     height: 14px;
 
     fill: none;
-
     stroke: currentColor;
-
     stroke-width: 1.6;
-
     stroke-linecap: round;
     stroke-linejoin: round;
 }
@@ -237,14 +219,11 @@ body.menu-open {
     width: var(--side-menu-width);
 
     height:
-        calc(
-            100dvh - var(--top-bar-height)
-        );
+        calc(100dvh - var(--top-bar-height));
 
     z-index: 6000;
 
     display: flex;
-
     flex-direction: column;
 
     background:
@@ -258,8 +237,7 @@ body.menu-open {
         1px solid var(--sidebar-border);
 
     box-shadow:
-        7px 0 25px
-        rgba(0,0,0,.22);
+        7px 0 25px rgba(0,0,0,.22);
 
     transform:
         translateX(
@@ -267,9 +245,7 @@ body.menu-open {
         );
 
     transition:
-        transform
-        .25s
-        cubic-bezier(.2,.8,.2,1);
+        transform .25s ease;
 }
 
 
@@ -320,14 +296,9 @@ body.menu-open {
     width: 100%;
     height: 100%;
 
-    padding: 3px;
-
     object-fit: contain;
-}
 
-
-.side-brand-text {
-    min-width: 0;
+    padding: 3px;
 }
 
 
@@ -337,12 +308,6 @@ body.menu-open {
     font-size: 11px;
 
     font-weight: 600;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
 }
 
 
@@ -352,17 +317,11 @@ body.menu-open {
     color: var(--sidebar-muted);
 
     font-size: 8px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
 }
 
 
 /* =====================================================
-   SIDE MENU SCROLL
+   SIDE SCROLL
 ===================================================== */
 
 .side-menu-scroll {
@@ -371,7 +330,6 @@ body.menu-open {
     min-height: 0;
 
     overflow-y: auto;
-    overflow-x: hidden;
 
     padding:
         8px
@@ -385,22 +343,11 @@ body.menu-open {
 }
 
 
-.side-menu-scroll::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-
 .side-menu-scroll::-webkit-scrollbar-thumb {
     border-radius: 10px;
 
     background:
         rgba(171,199,213,.42);
-}
-
-
-.side-menu-scroll::-webkit-scrollbar-thumb:hover {
-    background:
-        rgba(192,218,230,.62);
 }
 
 
@@ -410,7 +357,6 @@ body.menu-open {
 
 .side-nav {
     display: flex;
-
     flex-direction: column;
 
     gap: 1px;
@@ -419,8 +365,6 @@ body.menu-open {
 
 .side-link {
     position: relative;
-
-    width: 100%;
 
     min-height: 36px;
 
@@ -435,13 +379,9 @@ body.menu-open {
 
     font-size: 10px;
 
-    line-height: 1;
-
     text-decoration: none;
 
     border-radius: 2px;
-
-    white-space: nowrap;
 
     transition:
         background .15s ease,
@@ -452,14 +392,16 @@ body.menu-open {
 .side-link:hover {
     color: #ffffff;
 
-    background: var(--sidebar-hover);
+    background:
+        var(--sidebar-hover);
 }
 
 
 .side-link.active {
     color: #ffffff;
 
-    background: var(--sidebar-active);
+    background:
+        var(--sidebar-active);
 }
 
 
@@ -474,17 +416,10 @@ body.menu-open {
 
     width: 3px;
 
-    background: var(--sidebar-accent);
-
-    border-radius:
-        0
-        3px
-        3px
-        0;
+    background:
+        var(--sidebar-accent);
 }
 
-
-/* ICON */
 
 .side-icon {
     width: 17px;
@@ -495,8 +430,6 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    color: #d7e9f1;
 }
 
 
@@ -505,27 +438,10 @@ body.menu-open {
     height: 15px;
 
     fill: none;
-
     stroke: currentColor;
-
     stroke-width: 1.55;
-
     stroke-linecap: round;
-
     stroke-linejoin: round;
-}
-
-
-.side-link:hover .side-icon,
-.side-link.active .side-icon {
-    color: #ffffff;
-}
-
-
-.side-link-text {
-    overflow: hidden;
-
-    text-overflow: ellipsis;
 }
 
 
@@ -541,9 +457,7 @@ body.menu-open {
     padding: 0 9px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     border-top:
@@ -557,14 +471,14 @@ body.menu-open {
 
 .side-bottom-status {
     display: flex;
-
     align-items: center;
 
     gap: 5px;
 }
 
 
-.status-dot {
+.status-dot,
+.online-dot {
     width: 6px;
     height: 6px;
 
@@ -573,13 +487,12 @@ body.menu-open {
     background: #41d884;
 
     box-shadow:
-        0 0 7px
-        rgba(65,216,132,.5);
+        0 0 7px rgba(65,216,132,.5);
 }
 
 
 /* =====================================================
-   OVERLAY
+   SIDE OVERLAY
 ===================================================== */
 
 .side-overlay {
@@ -599,8 +512,8 @@ body.menu-open {
     backdrop-filter: blur(1px);
 
     transition:
-        opacity .22s ease,
-        visibility .22s ease;
+        opacity .2s ease,
+        visibility .2s ease;
 }
 
 
@@ -612,15 +525,13 @@ body.menu-open {
 
 
 /* =====================================================
-   MAIN CONTAINER
+   MAIN PAGE
 ===================================================== */
 
 .main-container {
     width: 100%;
 
     max-width: 1180px;
-
-    min-height: 100vh;
 
     margin: 0 auto;
 
@@ -639,40 +550,33 @@ body.menu-open {
     max-width: 760px;
 
     margin:
-        0
-        auto
-        45px;
+        0 auto 45px;
 
     text-align: center;
 }
 
 
-.hero-label {
-    margin-bottom: 9px;
-
+.hero-label,
+.info-label,
+.popup-small-title {
     color: #4bc1ee;
 
-    font-size: 11px;
+    font-size: 9px;
 
     font-weight: 700;
 
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
 }
 
 
 .hero h1 {
-    margin-bottom: 13px;
+    margin:
+        9px 0 13px;
 
     font-size:
-        clamp(
-            32px,
-            5vw,
-            52px
-        );
+        clamp(32px,5vw,52px);
 
     line-height: 1.1;
-
-    letter-spacing: -1.5px;
 }
 
 
@@ -680,28 +584,22 @@ body.menu-open {
     color: var(--text-muted);
 
     font-size: 15px;
-
-    line-height: 1.6;
 }
 
 
 /* =====================================================
-   CARDS GRID
+   CARDS
 ===================================================== */
 
 .cards {
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(0,1fr));
+        repeat(3,minmax(0,1fr));
 
     gap: 20px;
 }
 
-
-/* =====================================================
-   CARD
-===================================================== */
 
 .card {
     overflow: hidden;
@@ -712,61 +610,47 @@ body.menu-open {
     border-radius: 16px;
 
     background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.035)
-        );
+        rgba(255,255,255,.045);
 
     box-shadow:
-        0 18px 45px
-        rgba(0,0,0,.16);
-
-    backdrop-filter: blur(12px);
+        0 18px 45px rgba(0,0,0,.16);
 
     transition:
         transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
+        border-color .25s ease;
 }
 
 
 .card:hover {
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
     border-color:
-        rgba(61,185,235,.3);
-
-    box-shadow:
-        0 24px 55px
-        rgba(0,0,0,.24);
+        rgba(73,189,236,.28);
 }
 
 
 /* =====================================================
-   IMAGE
+   CARD IMAGE
 ===================================================== */
 
 .image-box {
     width: 100%;
-
     height: 205px;
 
     padding: 14px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
+
+    overflow: hidden;
 
     background:
         rgba(0,20,32,.38);
 
     border-bottom:
         1px solid var(--card-border);
-
-    overflow: hidden;
 }
 
 
@@ -793,16 +677,14 @@ body.menu-open {
 }
 
 
-.card h2 {
+.card-content h2 {
     margin-bottom: 8px;
 
     font-size: 19px;
-
-    font-weight: 650;
 }
 
 
-.card p {
+.card-content p {
     min-height: 42px;
 
     margin-bottom: 18px;
@@ -827,9 +709,7 @@ body.menu-open {
     padding: 0 14px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     border-radius: 8px;
@@ -844,14 +724,9 @@ body.menu-open {
     color: #ffffff;
 
     font-size: 13px;
-
     font-weight: 600;
 
     text-decoration: none;
-
-    box-shadow:
-        0 10px 24px
-        rgba(11,143,216,.18);
 
     transition:
         transform .18s ease,
@@ -860,21 +735,17 @@ body.menu-open {
 
 
 .referral-button:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 14px 30px
-        rgba(11,143,216,.29);
-}
-
-
-.referral-button:active {
-    transform: scale(.985);
+        0 10px 25px
+        rgba(11,143,216,.25);
 }
 
 
 /* =====================================================
-   INFO SECTIONS
+   INFO SECTION
 ===================================================== */
 
 .info-section {
@@ -895,23 +766,9 @@ body.menu-open {
 }
 
 
-.info-label {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    color: #47bcec;
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.6px;
-}
-
-
 .info-card h2 {
-    margin-bottom: 8px;
+    margin:
+        10px 0 8px;
 
     font-size: 21px;
 }
@@ -925,7 +782,7 @@ body.menu-open {
 
 
 /* =====================================================
-   CONTACT
+   CONTACT MAIN BUTTON
 ===================================================== */
 
 .contact-buttons {
@@ -933,36 +790,460 @@ body.menu-open {
 
     display: flex;
 
+    flex-wrap: wrap;
+
     gap: 10px;
 }
 
 
-.contact-buttons a {
-    min-width: 110px;
+.contact-main-btn {
+    min-width: 120px;
+    height: 44px;
 
-    padding: 11px 15px;
-
-    text-align: center;
+    padding: 0 16px;
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.15);
 
-    border-radius: 7px;
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.055);
 
     color: #ffffff;
 
-    background:
-        rgba(255,255,255,.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
 
     font-size: 12px;
 
-    text-decoration: none;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform .18s ease,
+        background .18s ease;
 }
 
 
-.contact-buttons a:hover {
+.contact-main-btn:hover {
+    transform:
+        translateY(-2px);
+
     background:
         rgba(255,255,255,.1);
+}
+
+
+.contact-main-btn svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.whatsapp-main-btn:hover {
+    border-color:
+        rgba(84,217,140,.45);
+}
+
+
+.telegram-main-btn:hover {
+    border-color:
+        rgba(77,183,239,.45);
+}
+
+
+/* =====================================================
+   CONTACT POPUP
+===================================================== */
+
+.contact-popup {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition:
+        opacity .2s ease,
+        visibility .2s ease;
+}
+
+
+.contact-popup.active {
+    visibility: visible;
+
+    opacity: 1;
+}
+
+
+.contact-popup-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0,7,13,.78);
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* =====================================================
+   POPUP DIALOG
+===================================================== */
+
+.contact-popup-dialog {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 460px;
+
+    max-height: 85vh;
+
+    padding: 22px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #10202f,
+            #091724
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55);
+
+    transform:
+        translateY(12px)
+        scale(.98);
+
+    transition:
+        transform .2s ease;
+}
+
+
+.contact-popup.active
+.contact-popup-dialog {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   POPUP HEADER
+===================================================== */
+
+.contact-popup-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.contact-popup-header h3 {
+    margin-top: 5px;
+
+    font-size: 21px;
+}
+
+
+.contact-popup-close {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: #b6c8d2;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+
+.contact-popup-close:hover {
+    background:
+        rgba(255,255,255,.1);
+
+    color: #ffffff;
+}
+
+
+.contact-popup-close svg {
+    width: 15px;
+    height: 15px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+}
+
+
+/* =====================================================
+   POPUP DESCRIPTION
+===================================================== */
+
+.contact-popup-description {
+    margin-top: 10px;
+
+    color: #8098a6;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   ACCOUNT LIST
+===================================================== */
+
+.contact-account-list {
+    max-height: 410px;
+
+    margin-top: 18px;
+
+    padding-right: 3px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    overflow-y: auto;
+}
+
+
+.contact-account-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.contact-account-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background:
+        rgba(174,199,212,.3);
+}
+
+
+/* =====================================================
+   ACCOUNT ITEM
+===================================================== */
+
+.contact-account-item {
+    min-height: 64px;
+
+    padding: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border:
+        1px solid rgba(255,255,255,.075);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transition:
+        background .16s ease,
+        border-color .16s ease,
+        transform .16s ease;
+}
+
+
+.contact-account-item:hover {
+    transform:
+        translateX(2px);
+
+    background:
+        rgba(255,255,255,.07);
+
+    border-color:
+        rgba(73,189,236,.25);
+}
+
+
+/* =====================================================
+   ACCOUNT ICON
+===================================================== */
+
+.account-icon {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+}
+
+
+.account-icon svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.whatsapp-account-icon {
+    color: #54d98c;
+
+    background:
+        rgba(84,217,140,.1);
+}
+
+
+.telegram-account-icon {
+    color: #4db7ef;
+
+    background:
+        rgba(77,183,239,.1);
+}
+
+
+/* =====================================================
+   ACCOUNT INFO
+===================================================== */
+
+.account-info {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.account-info strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #f3f8fb;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.account-info span {
+    display: block;
+
+    overflow: hidden;
+
+    color: #7f98a6;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.account-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #6f8b98;
+
+    font-size: 8px;
+}
+
+
+.account-arrow {
+    color: #607c8c;
+
+    font-size: 20px;
+
+    line-height: 1;
 }
 
 
@@ -993,7 +1274,7 @@ body.menu-open {
 
     inset: 0;
 
-    z-index: 9000;
+    z-index: 12000;
 
     display: flex;
 
@@ -1011,8 +1292,8 @@ body.menu-open {
     backdrop-filter: blur(5px);
 
     transition:
-        opacity .16s ease,
-        visibility .16s ease;
+        opacity .15s ease,
+        visibility .15s ease;
 }
 
 
@@ -1035,7 +1316,7 @@ body.menu-open {
 
 
 .loading-box p {
-    color: #9bb1be;
+    color: #8098a6;
 
     font-size: 11px;
 }
@@ -1046,18 +1327,15 @@ body.menu-open {
     height: 35px;
 
     border:
-        3px solid
-        rgba(255,255,255,.15);
+        3px solid rgba(255,255,255,.15);
 
-    border-top-color: #47bcec;
+    border-top-color:
+        #47bcec;
 
     border-radius: 50%;
 
     animation:
-        spin
-        .75s
-        linear
-        infinite;
+        spin .75s linear infinite;
 }
 
 
@@ -1103,8 +1381,10 @@ body.menu-open {
     }
 
 
-    .hero {
-        margin-bottom: 30px;
+    .cards {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
     }
 
 
@@ -1113,32 +1393,39 @@ body.menu-open {
     }
 
 
-    .cards {
-        grid-template-columns: 1fr;
-
-        gap: 15px;
-    }
-
-
     .image-box {
         height: 200px;
     }
 
 
-    .side-link {
-        min-height: 39px;
-
-        font-size: 10.5px;
+    .contact-popup {
+        padding: 12px;
     }
 
 
-    .contact-buttons {
-        flex-direction: column;
+    .contact-popup-dialog {
+        padding: 18px;
+
+        max-height: 88vh;
+
+        border-radius: 13px;
     }
 
 
-    .contact-buttons a {
-        width: 100%;
+    .contact-account-list {
+        max-height: 55vh;
+    }
+
+
+    .account-status {
+        display: none;
+    }
+
+
+    .contact-main-btn {
+        flex: 1;
+
+        min-width: 130px;
     }
 
 }
