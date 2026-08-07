@@ -9,25 +9,172 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Official Promotion</title>
+    <title>Your Brand | Official Promotion</title>
 
     <meta
         name="description"
-        content="Official promotion landing page"
+        content="Discover our latest promotions, partners and entertainment."
     >
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="keywords"
+        content="promotion, entertainment, official platform"
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+
+    <meta
+        property="og:title"
+        content="Your Brand | Official Promotion"
+    >
+
+    <meta
+        property="og:description"
+        content="Discover our latest promotions and entertainment."
+    >
+
+    <meta
+        property="og:image"
+        content="https://i.imgur.com/YOUR-SHARE-IMAGE.jpg"
+    >
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <!-- =====================================================
+         OPTIONAL GOOGLE ANALYTICS 4
+
+         如果你以后有 GA4 ID，例如：
+         G-ABC123456
+
+         把下面代码取消注释，并换成自己的 ID
+    ====================================================== -->
+
+    <!--
+    <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-ID">
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+
+        gtag(
+            "config",
+            "G-YOUR-ID"
+        );
+    </script>
+    -->
+
 </head>
+
 
 <body>
 
 
 <!-- =====================================================
-     BACKGROUND OVERLAY
+     WALLPAPER
 ===================================================== -->
 
-<div class="page-wallpaper"></div>
-<div class="page-overlay"></div>
+<div
+    class="page-wallpaper"
+    aria-hidden="true"
+></div>
+
+
+<div
+    class="page-overlay"
+    aria-hidden="true"
+></div>
+
+
+
+<!-- =====================================================
+     PARTICLES
+===================================================== -->
+
+<canvas
+    id="particleCanvas"
+    class="particle-canvas"
+    aria-hidden="true"
+></canvas>
+
+
+
+<!-- =====================================================
+     MOUSE GLOW
+===================================================== -->
+
+<div
+    id="mouseGlow"
+    class="mouse-glow"
+    aria-hidden="true"
+></div>
+
+
+
+<!-- =====================================================
+     OPENING LOADER
+===================================================== -->
+
+<div
+    id="openingLoader"
+    class="opening-loader"
+>
+
+    <div class="opening-logo">
+
+        <img
+            src="https://i.imgur.com/YOUR-LOGO.png"
+            alt="Brand Logo"
+        >
+
+    </div>
+
+
+    <div class="opening-title">
+        YOUR BRAND
+    </div>
+
+
+    <div class="opening-line">
+        <span></span>
+    </div>
+
+</div>
+
 
 
 <!-- =====================================================
@@ -41,17 +188,28 @@
         <span class="user-icon">
 
             <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="3"></circle>
-                <path d="M5 20C5.5 15.5 8 13.5 12 13.5C16 13.5 18.5 15.5 19 20"></path>
+
+                <circle
+                    cx="12"
+                    cy="8"
+                    r="3"
+                ></circle>
+
+                <path
+                    d="M5 20C5.5 15.5 8 13.5 12 13.5C16 13.5 18.5 15.5 19 20"
+                ></path>
+
             </svg>
 
         </span>
 
+
         <span class="user-name">
-            admin
+            Official
         </span>
 
     </div>
+
 
 
     <button
@@ -62,25 +220,40 @@
     >
 
         <svg viewBox="0 0 24 24">
-            <path d="M20 11A8 8 0 1 0 18 16"></path>
-            <path d="M20 5V11H14"></path>
+
+            <path
+                d="M20 11A8 8 0 1 0 18 16"
+            ></path>
+
+            <path
+                d="M20 5V11H14"
+            ></path>
+
         </svg>
 
     </button>
+
 
 
     <button
         id="menuButton"
         class="top-icon-btn"
         type="button"
-        aria-label="Open Menu"
+        aria-label="Open menu"
     >
 
         <svg viewBox="0 0 24 24">
+
             <path d="M10 6H20"></path>
+
             <path d="M10 12H20"></path>
+
             <path d="M10 18H20"></path>
-            <path d="M4 8L7 12L4 16"></path>
+
+            <path
+                d="M4 8L7 12L4 16"
+            ></path>
+
         </svg>
 
     </button>
@@ -88,14 +261,16 @@
 </div>
 
 
+
 <!-- =====================================================
      SIDE OVERLAY
 ===================================================== -->
 
 <div
-    id="overlay"
+    id="sideOverlay"
     class="side-overlay"
 ></div>
+
 
 
 <!-- =====================================================
@@ -112,7 +287,7 @@
         <div class="side-logo-box">
 
             <img
-                src="https://YOUR-CLOUD-LOGO.png"
+                src="https://i.imgur.com/YOUR-LOGO.png"
                 alt="Brand Logo"
                 class="side-logo"
             >
@@ -120,14 +295,14 @@
         </div>
 
 
-        <div class="side-brand-text">
+        <div>
 
             <div class="brand-name">
                 Your Brand
             </div>
 
             <div class="brand-subtitle">
-                Promotion Panel
+                Official Promotion
             </div>
 
         </div>
@@ -135,9 +310,11 @@
     </div>
 
 
+
     <div class="side-menu-scroll">
 
         <nav class="side-nav">
+
 
             <a
                 href="#home"
@@ -147,18 +324,27 @@
                 <span class="side-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <path d="M3 11L12 4L21 11"></path>
-                        <path d="M5 10V20H19V10"></path>
-                        <path d="M9 20V14H15V20"></path>
+
+                        <path
+                            d="M3 11L12 4L21 11"
+                        ></path>
+
+                        <path
+                            d="M5 10V20H19V10"
+                        ></path>
+
+                        <path
+                            d="M9 20V14H15V20"
+                        ></path>
+
                     </svg>
 
                 </span>
 
-                <span>
-                    Home
-                </span>
+                Home
 
             </a>
+
 
 
             <a
@@ -169,17 +355,44 @@
                 <span class="side-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <path d="M4 13L14 4L20 10L11 19H4V13Z"></path>
-                        <path d="M13 7L17 11"></path>
+
+                        <path
+                            d="M4 13L14 4L20 10L11 19H4V13Z"
+                        ></path>
+
                     </svg>
 
                 </span>
 
-                <span>
-                    Promotion
-                </span>
+                Promotion
 
             </a>
+
+
+
+            <a
+                href="#stats"
+                class="side-link"
+            >
+
+                <span class="side-icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="M5 20V12"></path>
+
+                        <path d="M12 20V5"></path>
+
+                        <path d="M19 20V9"></path>
+
+                    </svg>
+
+                </span>
+
+                Statistics
+
+            </a>
+
 
 
             <a
@@ -190,16 +403,19 @@
                 <span class="side-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 3L14.3 8.2L20 9L15.8 12.8L17 18.5L12 15.7L7 18.5L8.2 12.8L4 9L9.7 8.2L12 3Z"></path>
+
+                        <path
+                            d="M12 3L14.5 8L20 9L16 13L17 19L12 16L7 19L8 13L4 9L9.5 8L12 3Z"
+                        ></path>
+
                     </svg>
 
                 </span>
 
-                <span>
-                    Why Us
-                </span>
+                Why Us
 
             </a>
+
 
 
             <a
@@ -210,18 +426,25 @@
                 <span class="side-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"></circle>
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="9"
+                        ></circle>
+
                         <path d="M12 10V17"></path>
+
                         <path d="M12 7H12.01"></path>
+
                     </svg>
 
                 </span>
 
-                <span>
-                    About
-                </span>
+                About
 
             </a>
+
 
 
             <a
@@ -232,19 +455,19 @@
                 <span class="side-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <path d="M8 15C9 16.5 10.3 17 12 17C13.7 17 15 16.5 16 15"></path>
-                        <path d="M8 10V12"></path>
-                        <path d="M16 10V12"></path>
+
+                        <path
+                            d="M4 5H20V17H8L4 20V5Z"
+                        ></path>
+
                     </svg>
 
                 </span>
 
-                <span>
-                    Support
-                </span>
+                Support
 
             </a>
+
 
 
             <a
@@ -255,43 +478,64 @@
                 <span class="side-icon">
 
                     <svg viewBox="0 0 24 24">
-                        <rect x="4" y="5" width="16" height="14" rx="2"></rect>
-                        <path d="M8 12H16"></path>
-                        <path d="M12 8V16"></path>
+
+                        <rect
+                            x="4"
+                            y="6"
+                            width="16"
+                            height="12"
+                            rx="4"
+                        ></rect>
+
+                        <path d="M8 12H12"></path>
+
+                        <path d="M10 10V14"></path>
+
+                        <circle
+                            cx="16"
+                            cy="11"
+                            r=".6"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="13"
+                            r=".6"
+                        ></circle>
+
                     </svg>
 
                 </span>
 
-                <span>
-                    Games
-                </span>
+                Games
 
             </a>
+
 
         </nav>
 
     </div>
 
 
+
     <div class="side-bottom">
 
-        <div class="side-bottom-status">
+        <div class="side-status">
 
-            <span class="status-dot"></span>
+            <span class="online-dot"></span>
 
-            <span>
-                Online
-            </span>
+            Online
 
         </div>
 
         <span>
-            v2.1
+            v3.0
         </span>
 
     </div>
 
 </aside>
+
 
 
 <!-- =====================================================
@@ -304,23 +548,55 @@
 >
 
 
-    <!-- HERO -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-    <header class="hero">
+    <section class="hero reveal">
 
-        <p class="hero-label">
-            OFFICIAL PROMOTION
-        </p>
+        <div class="hero-badge">
+
+            <span class="hero-badge-dot"></span>
+
+            OFFICIAL PLATFORM
+
+        </div>
+
 
         <h1>
-            Exclusive Promotions
+
+            Discover Our
+
+            <span>
+                Exclusive Promotions
+            </span>
+
         </h1>
 
+
         <p class="hero-description">
-            Choose your preferred company below.
+
+            Explore our selected partners,
+            latest campaigns and premium entertainment.
+
         </p>
 
-    </header>
+
+        <a
+            href="#promotion"
+            class="hero-cta"
+        >
+
+            Explore Now
+
+            <span>
+                ↓
+            </span>
+
+        </a>
+
+    </section>
+
 
 
     <!-- =====================================================
@@ -333,35 +609,37 @@
     >
 
 
-        <!-- CARD 1 -->
+        <!-- ===============================
+             CARD 1
+        ================================ -->
 
-        <article class="card">
+        <article
+            class="company-card reveal tilt-card"
+        >
 
-            <div class="card-glow"></div>
+            <span class="card-top-line"></span>
 
-            <div class="image-box">
+            <div class="company-image">
 
-                <div class="image-inner">
-
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-1.jpg"
-                        alt="Company One"
-                    >
-
-                </div>
+                <img
+                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-1.png"
+                    alt="Company One"
+                >
 
             </div>
 
 
-            <div class="card-content">
+            <div class="company-content">
 
-                <span class="card-kicker">
+                <span class="partner-badge">
                     OFFICIAL PARTNER
                 </span>
+
 
                 <h2>
                     Company One
                 </h2>
+
 
                 <p>
                     Latest promotion and exclusive offer.
@@ -370,7 +648,7 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-1.com"
-                    class="referral-button referral"
+                    class="visit-button referral"
                     data-company="Company One"
                 >
 
@@ -378,7 +656,7 @@
                         Visit Now
                     </span>
 
-                    <span class="referral-arrow">
+                    <span class="button-arrow">
                         →
                     </span>
 
@@ -389,35 +667,38 @@
         </article>
 
 
-        <!-- CARD 2 -->
 
-        <article class="card">
+        <!-- ===============================
+             CARD 2
+        ================================ -->
 
-            <div class="card-glow"></div>
+        <article
+            class="company-card reveal tilt-card"
+        >
 
-            <div class="image-box">
+            <span class="card-top-line"></span>
 
-                <div class="image-inner">
+            <div class="company-image">
 
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-2.jpg"
-                        alt="Company Two"
-                    >
-
-                </div>
+                <img
+                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-2.png"
+                    alt="Company Two"
+                >
 
             </div>
 
 
-            <div class="card-content">
+            <div class="company-content">
 
-                <span class="card-kicker">
+                <span class="partner-badge">
                     OFFICIAL PARTNER
                 </span>
+
 
                 <h2>
                     Company Two
                 </h2>
+
 
                 <p>
                     Discover our latest promotion.
@@ -426,7 +707,7 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-2.com"
-                    class="referral-button referral"
+                    class="visit-button referral"
                     data-company="Company Two"
                 >
 
@@ -434,7 +715,7 @@
                         Visit Now
                     </span>
 
-                    <span class="referral-arrow">
+                    <span class="button-arrow">
                         →
                     </span>
 
@@ -445,44 +726,47 @@
         </article>
 
 
-        <!-- CARD 3 -->
 
-        <article class="card">
+        <!-- ===============================
+             CARD 3
+        ================================ -->
 
-            <div class="card-glow"></div>
+        <article
+            class="company-card reveal tilt-card"
+        >
 
-            <div class="image-box">
+            <span class="card-top-line"></span>
 
-                <div class="image-inner">
+            <div class="company-image">
 
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-3.jpg"
-                        alt="Company Three"
-                    >
-
-                </div>
+                <img
+                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-3.png"
+                    alt="Company Three"
+                >
 
             </div>
 
 
-            <div class="card-content">
+            <div class="company-content">
 
-                <span class="card-kicker">
+                <span class="partner-badge">
                     OFFICIAL PARTNER
                 </span>
+
 
                 <h2>
                     Company Three
                 </h2>
 
+
                 <p>
-                    Special offer available now.
+                    Special promotion available now.
                 </p>
 
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-3.com"
-                    class="referral-button referral"
+                    class="visit-button referral"
                     data-company="Company Three"
                 >
 
@@ -490,7 +774,7 @@
                         Visit Now
                     </span>
 
-                    <span class="referral-arrow">
+                    <span class="button-arrow">
                         →
                     </span>
 
@@ -501,44 +785,47 @@
         </article>
 
 
-        <!-- CARD 4 -->
 
-        <article class="card">
+        <!-- ===============================
+             CARD 4
+        ================================ -->
 
-            <div class="card-glow"></div>
+        <article
+            class="company-card reveal tilt-card"
+        >
 
-            <div class="image-box">
+            <span class="card-top-line"></span>
 
-                <div class="image-inner">
+            <div class="company-image">
 
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-4.jpg"
-                        alt="Company Four"
-                    >
-
-                </div>
+                <img
+                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-4.png"
+                    alt="Company Four"
+                >
 
             </div>
 
 
-            <div class="card-content">
+            <div class="company-content">
 
-                <span class="card-kicker">
+                <span class="partner-badge">
                     OFFICIAL PARTNER
                 </span>
+
 
                 <h2>
                     Company Four
                 </h2>
 
+
                 <p>
-                    Check out our latest offer.
+                    Check out our latest promotion.
                 </p>
 
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-4.com"
-                    class="referral-button referral"
+                    class="visit-button referral"
                     data-company="Company Four"
                 >
 
@@ -546,7 +833,7 @@
                         Visit Now
                     </span>
 
-                    <span class="referral-arrow">
+                    <span class="button-arrow">
                         →
                     </span>
 
@@ -557,35 +844,38 @@
         </article>
 
 
-        <!-- CARD 5 -->
 
-        <article class="card">
+        <!-- ===============================
+             CARD 5
+        ================================ -->
 
-            <div class="card-glow"></div>
+        <article
+            class="company-card reveal tilt-card"
+        >
 
-            <div class="image-box">
+            <span class="card-top-line"></span>
 
-                <div class="image-inner">
+            <div class="company-image">
 
-                    <img
-                        src="https://YOUR-CLOUD-IMAGE-5.jpg"
-                        alt="Company Five"
-                    >
-
-                </div>
+                <img
+                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-5.png"
+                    alt="Company Five"
+                >
 
             </div>
 
 
-            <div class="card-content">
+            <div class="company-content">
 
-                <span class="card-kicker">
+                <span class="partner-badge">
                     OFFICIAL PARTNER
                 </span>
+
 
                 <h2>
                     Company Five
                 </h2>
+
 
                 <p>
                     Explore our latest promotion.
@@ -594,7 +884,7 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-5.com"
-                    class="referral-button referral"
+                    class="visit-button referral"
                     data-company="Company Five"
                 >
 
@@ -602,7 +892,7 @@
                         Visit Now
                     </span>
 
-                    <span class="referral-arrow">
+                    <span class="button-arrow">
                         →
                     </span>
 
@@ -616,150 +906,215 @@
     </section>
 
 
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section
+        id="stats"
+        class="stats-section reveal"
+    >
+
+        <div class="section-heading">
+
+            <span>
+                PLATFORM
+            </span>
+
+            <h2>
+                Trusted Experience
+            </h2>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <strong
+                    class="counter"
+                    data-target="50000"
+                >
+                    0
+                </strong>
+
+                <span>
+                    Members
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <strong
+                    class="counter"
+                    data-target="24"
+                >
+                    0
+                </strong>
+
+                <span>
+                    Hours Support
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <strong
+                    class="counter"
+                    data-target="100"
+                >
+                    0
+                </strong>
+
+                <span>
+                    Promotions
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <strong
+                    class="counter"
+                    data-target="99"
+                >
+                    0
+                </strong>
+
+                <span>
+                    Service %
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
     <!-- =====================================================
          WHY US
     ====================================================== -->
 
     <section
         id="why-us"
-        class="why-section"
+        class="premium-section reveal"
     >
 
-        <div class="why-wrapper">
+        <div class="section-heading gold-heading">
+
+            <span>
+                ◆ WHY CHOOSE US
+            </span>
+
+            <h2>
+                Premium Experience
+            </h2>
+
+        </div>
 
 
-            <div class="why-heading">
+        <div class="why-grid">
 
-                <div class="why-title">
 
-                    <span class="why-diamond">
-                        ◆
-                    </span>
+            <div class="why-card">
 
-                    <span>
-                        WHY US
-                    </span>
+                <span class="why-check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <h3>
+                        Exclusive Rewards
+                    </h3>
+
+                    <p>
+                        Premium campaigns and member benefits.
+                    </p>
 
                 </div>
-
-
-                <div class="why-gold-line"></div>
 
             </div>
 
 
-            <div class="why-grid">
+            <div class="why-card">
 
+                <span class="why-check">
+                    ✓
+                </span>
 
-                <div class="why-card">
+                <div>
 
-                    <div class="why-icon">
+                    <h3>
+                        Fast Service
+                    </h3>
 
-                        <svg viewBox="0 0 24 24">
-                            <path d="M5 12L10 17L19 7"></path>
-                        </svg>
-
-                    </div>
-
-
-                    <div class="why-card-content">
-
-                        <h3>
-                            Exclusive Rewards
-                        </h3>
-
-                        <p>
-                            Premium rewards and promotions.
-                        </p>
-
-                    </div>
+                    <p>
+                        Quick and convenient processing.
+                    </p>
 
                 </div>
-
-
-                <div class="why-card">
-
-                    <div class="why-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M5 12L10 17L19 7"></path>
-                        </svg>
-
-                    </div>
-
-
-                    <div class="why-card-content">
-
-                        <h3>
-                            Fast Processing
-                        </h3>
-
-                        <p>
-                            Quick and convenient service.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="why-card">
-
-                    <div class="why-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M5 12L10 17L19 7"></path>
-                        </svg>
-
-                    </div>
-
-
-                    <div class="why-card-content">
-
-                        <h3>
-                            VIP Privileges
-                        </h3>
-
-                        <p>
-                            Exclusive benefits for members.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="why-card">
-
-                    <div class="why-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M5 12L10 17L19 7"></path>
-                        </svg>
-
-                    </div>
-
-
-                    <div class="why-card-content">
-
-                        <h3>
-                            24/7 Assistance
-                        </h3>
-
-                        <p>
-                            Professional support anytime.
-                        </p>
-
-                    </div>
-
-                </div>
-
 
             </div>
+
+
+            <div class="why-card">
+
+                <span class="why-check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <h3>
+                        VIP Privileges
+                    </h3>
+
+                    <p>
+                        Exclusive benefits for selected members.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <span class="why-check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <h3>
+                        24/7 Assistance
+                    </h3>
+
+                    <p>
+                        Professional customer support anytime.
+                    </p>
+
+                </div>
+
+            </div>
+
 
         </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -768,68 +1123,61 @@
 
     <section
         id="about"
-        class="info-section"
+        class="premium-section about-section reveal"
     >
 
-        <div class="info-card about-premium-card">
+        <div class="about-heading">
+
+            <span></span>
+
+            <strong>
+                WORLD-CLASS ONLINE ENTERTAINMENT
+            </strong>
+
+            <span></span>
+
+        </div>
 
 
-            <div class="about-title-row">
+        <p>
 
-                <span class="about-line"></span>
+            Your Brand delivers a premium online
+            entertainment experience with exciting
+            content, exclusive promotions and
+            professional customer support available
+            around the clock.
 
-                <span class="about-premium-title">
-                    WORLD-CLASS ONLINE ENTERTAINMENT
-                </span>
+        </p>
 
-                <span class="about-line"></span>
+
+        <div class="platform-status">
+
+            <div>
+
+                <span class="online-dot"></span>
+
+                Platform Online
 
             </div>
 
 
-            <p class="about-premium-description">
-
-                Your Brand delivers a premium online entertainment
-                experience with exciting content, exclusive promotions,
-                secure services and professional customer support
-                available around the clock.
-
-            </p>
+            <span class="status-divider"></span>
 
 
-            <div class="about-status-row">
+            <div>
 
-                <div class="about-status-item">
+                <span class="age-circle">
+                    18+
+                </span>
 
-                    <span class="about-online-dot"></span>
-
-                    <span>
-                        Platform Online
-                    </span>
-
-                </div>
-
-
-                <span class="about-status-divider"></span>
-
-
-                <div class="about-status-item">
-
-                    <span class="age-badge">
-                        18+
-                    </span>
-
-                    <span>
-                        Responsible Entertainment
-                    </span>
-
-                </div>
+                Responsible Entertainment
 
             </div>
 
         </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -838,165 +1186,212 @@
 
     <section
         id="contact"
-        class="info-section"
+        class="premium-section contact-section reveal"
     >
 
-        <div class="info-card contact-info-card">
+        <div class="section-heading">
 
-            <span class="info-label">
+            <span>
                 SUPPORT
             </span>
-
 
             <h2>
                 Contact Us
             </h2>
 
-
-            <p>
-                Need assistance? Choose your preferred support channel.
-            </p>
+        </div>
 
 
-            <div class="contact-buttons">
+        <p>
+
+            Need assistance?
+            Choose your preferred support channel.
+
+        </p>
 
 
-                <button
-                    type="button"
-                    class="contact-main-btn"
-                    data-contact-popup="whatsappPopup"
-                >
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 11.5A8 8 0 0 1 8.3 18.6L4 20L5.4 15.9A8 8 0 1 1 20 11.5Z"></path>
-                    </svg>
-
-                    <span>
-                        WhatsApp
-                    </span>
-
-                </button>
+        <div class="contact-buttons">
 
 
-                <button
-                    type="button"
-                    class="contact-main-btn"
-                    data-contact-popup="telegramPopup"
-                >
+            <button
+                type="button"
+                class="contact-main-button"
+                data-popup="whatsappPopup"
+            >
 
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 4L3 11L10 14L14 20L21 4Z"></path>
-                    </svg>
+                WhatsApp
 
-                    <span>
-                        Telegram
-                    </span>
-
-                </button>
+            </button>
 
 
-            </div>
+            <button
+                type="button"
+                class="contact-main-button"
+                data-popup="telegramPopup"
+            >
+
+                Telegram
+
+            </button>
+
 
         </div>
 
     </section>
 
 
+
     <!-- =====================================================
-         GAMES
+         GAME LOGOS
     ====================================================== -->
 
     <section
         id="official-games"
-        class="game-showcase-section"
+        class="premium-section game-section reveal"
     >
 
-        <div class="game-showcase-card">
+        <div class="section-heading gold-heading">
 
-
-            <div class="game-showcase-title">
-
-                <span class="game-title-line"></span>
-
-                <span class="game-title-text">
-                    OFFICIAL GAMES
-                </span>
-
-                <span class="game-title-line"></span>
-
-            </div>
-
+            <span>
+                OFFICIAL GAMES
+            </span>
 
             <h2>
                 Explore Our Games
             </h2>
 
-
-            <p class="game-showcase-description">
-                Discover our latest entertainment and updates.
-            </p>
+        </div>
 
 
-            <div class="game-marquee">
+        <p class="game-description">
 
-                <div class="game-marquee-track">
+            Discover our latest entertainment and providers.
 
-
-                    <!-- GROUP 1 -->
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-1.png" alt="Game 1">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-2.png" alt="Game 2">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-3.png" alt="Game 3">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-4.png" alt="Game 4">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-5.png" alt="Game 5">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-6.png" alt="Game 6">
-                    </div>
+        </p>
 
 
-                    <!-- GROUP 2 -->
+        <div class="game-marquee">
 
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-1.png" alt="">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-2.png" alt="">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-3.png" alt="">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-4.png" alt="">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-5.png" alt="">
-                    </div>
-
-                    <div class="game-icon-card">
-                        <img src="https://YOUR-GAME-ICON-6.png" alt="">
-                    </div>
+            <div class="game-track">
 
 
+                <!-- GROUP 1 -->
+
+                <div class="game-logo">
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-1.png"
+                        alt="Game Provider 1"
+                    >
                 </div>
+
+
+                <div class="game-logo">
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-2.png"
+                        alt="Game Provider 2"
+                    >
+                </div>
+
+
+                <div class="game-logo">
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-3.png"
+                        alt="Game Provider 3"
+                    >
+                </div>
+
+
+                <div class="game-logo">
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-4.png"
+                        alt="Game Provider 4"
+                    >
+                </div>
+
+
+                <div class="game-logo">
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-5.png"
+                        alt="Game Provider 5"
+                    >
+                </div>
+
+
+                <div class="game-logo">
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-6.png"
+                        alt="Game Provider 6"
+                    >
+                </div>
+
+
+                <!-- GROUP 2 -->
+
+                <div
+                    class="game-logo"
+                    aria-hidden="true"
+                >
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-1.png"
+                        alt=""
+                    >
+                </div>
+
+
+                <div
+                    class="game-logo"
+                    aria-hidden="true"
+                >
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-2.png"
+                        alt=""
+                    >
+                </div>
+
+
+                <div
+                    class="game-logo"
+                    aria-hidden="true"
+                >
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-3.png"
+                        alt=""
+                    >
+                </div>
+
+
+                <div
+                    class="game-logo"
+                    aria-hidden="true"
+                >
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-4.png"
+                        alt=""
+                    >
+                </div>
+
+
+                <div
+                    class="game-logo"
+                    aria-hidden="true"
+                >
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-5.png"
+                        alt=""
+                    >
+                </div>
+
+
+                <div
+                    class="game-logo"
+                    aria-hidden="true"
+                >
+                    <img
+                        src="https://i.imgur.com/YOUR-GAME-6.png"
+                        alt=""
+                    >
+                </div>
+
 
             </div>
 
@@ -1005,7 +1400,22 @@
     </section>
 
 
-    <footer class="page-footer">
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+
+            <img
+                src="https://i.imgur.com/YOUR-LOGO.png"
+                alt="Brand Logo"
+            >
+
+        </div>
+
 
         <p>
             © 2026 Your Brand. All Rights Reserved.
@@ -1013,7 +1423,9 @@
 
     </footer>
 
+
 </main>
+
 
 
 <!-- =====================================================
@@ -1023,21 +1435,20 @@
 <div
     id="whatsappPopup"
     class="contact-popup"
-    aria-hidden="true"
 >
 
-    <div class="contact-popup-backdrop"></div>
+    <div class="popup-backdrop"></div>
 
 
-    <div class="contact-popup-dialog">
+    <div class="popup-dialog">
 
-        <div class="contact-popup-header">
+        <div class="popup-header">
 
             <div>
 
-                <span class="popup-small-title">
+                <small>
                     WHATSAPP SUPPORT
-                </span>
+                </small>
 
                 <h3>
                     Choose WhatsApp
@@ -1047,95 +1458,102 @@
 
 
             <button
-                class="contact-popup-close"
                 type="button"
-                aria-label="Close"
+                class="popup-close"
             >
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M6 6L18 18"></path>
-                    <path d="M18 6L6 18"></path>
-                </svg>
-
+                ×
             </button>
 
         </div>
 
 
-        <p class="contact-popup-description">
-            Select one of our WhatsApp support accounts.
+        <p class="popup-description">
+            Select one of our available support accounts.
         </p>
 
 
-        <div class="contact-account-list">
+        <div class="popup-list">
 
 
             <a
                 href="https://wa.me/60123456789"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact-account-item"
+                class="support-item track-contact"
+                data-channel="WhatsApp 01"
             >
 
-                <div class="account-icon whatsapp-account-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 11.5A8 8 0 0 1 8.3 18.6L4 20L5.4 15.9A8 8 0 1 1 20 11.5Z"></path>
-                    </svg>
-
-                </div>
+                <span class="support-icon whatsapp-icon">
+                    W
+                </span>
 
 
-                <div class="account-info">
+                <span class="support-info">
 
                     <strong>
                         WhatsApp 01
                     </strong>
 
-                    <span>
+                    <small>
                         +60 12-345 6789
-                    </span>
+                    </small>
 
-                </div>
+                </span>
 
 
-                <span class="account-arrow">
+                <span class="support-online">
+
+                    <i></i>
+
+                    Online
+
+                </span>
+
+
+                <span class="support-arrow">
                     ›
                 </span>
 
             </a>
 
 
+
             <a
                 href="https://wa.me/60198765432"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact-account-item"
+                class="support-item track-contact"
+                data-channel="WhatsApp 02"
             >
 
-                <div class="account-icon whatsapp-account-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 11.5A8 8 0 0 1 8.3 18.6L4 20L5.4 15.9A8 8 0 1 1 20 11.5Z"></path>
-                    </svg>
-
-                </div>
+                <span class="support-icon whatsapp-icon">
+                    W
+                </span>
 
 
-                <div class="account-info">
+                <span class="support-info">
 
                     <strong>
                         WhatsApp 02
                     </strong>
 
-                    <span>
+                    <small>
                         +60 19-876 5432
-                    </span>
+                    </small>
 
-                </div>
+                </span>
 
 
-                <span class="account-arrow">
+                <span class="support-online">
+
+                    <i></i>
+
+                    Online
+
+                </span>
+
+
+                <span class="support-arrow">
                     ›
                 </span>
 
@@ -1147,6 +1565,7 @@
     </div>
 
 </div>
+
 
 
 <!-- =====================================================
@@ -1156,21 +1575,20 @@
 <div
     id="telegramPopup"
     class="contact-popup"
-    aria-hidden="true"
 >
 
-    <div class="contact-popup-backdrop"></div>
+    <div class="popup-backdrop"></div>
 
 
-    <div class="contact-popup-dialog">
+    <div class="popup-dialog">
 
-        <div class="contact-popup-header">
+        <div class="popup-header">
 
             <div>
 
-                <span class="popup-small-title">
+                <small>
                     TELEGRAM SUPPORT
-                </span>
+                </small>
 
                 <h3>
                     Choose Telegram
@@ -1180,95 +1598,102 @@
 
 
             <button
-                class="contact-popup-close"
                 type="button"
-                aria-label="Close"
+                class="popup-close"
             >
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M6 6L18 18"></path>
-                    <path d="M18 6L6 18"></path>
-                </svg>
-
+                ×
             </button>
 
         </div>
 
 
-        <p class="contact-popup-description">
-            Select one of our Telegram support accounts.
+        <p class="popup-description">
+            Select one of our available support accounts.
         </p>
 
 
-        <div class="contact-account-list">
+        <div class="popup-list">
 
 
             <a
                 href="https://t.me/YOUR_TELEGRAM_1"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact-account-item"
+                class="support-item track-contact"
+                data-channel="Telegram 01"
             >
 
-                <div class="account-icon telegram-account-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 4L3 11L10 14L14 20L21 4Z"></path>
-                    </svg>
-
-                </div>
+                <span class="support-icon telegram-icon">
+                    T
+                </span>
 
 
-                <div class="account-info">
+                <span class="support-info">
 
                     <strong>
                         Telegram 01
                     </strong>
 
-                    <span>
+                    <small>
                         @yourtelegram1
-                    </span>
+                    </small>
 
-                </div>
+                </span>
 
 
-                <span class="account-arrow">
+                <span class="support-online">
+
+                    <i></i>
+
+                    Online
+
+                </span>
+
+
+                <span class="support-arrow">
                     ›
                 </span>
 
             </a>
 
 
+
             <a
                 href="https://t.me/YOUR_TELEGRAM_2"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact-account-item"
+                class="support-item track-contact"
+                data-channel="Telegram 02"
             >
 
-                <div class="account-icon telegram-account-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 4L3 11L10 14L14 20L21 4Z"></path>
-                    </svg>
-
-                </div>
+                <span class="support-icon telegram-icon">
+                    T
+                </span>
 
 
-                <div class="account-info">
+                <span class="support-info">
 
                     <strong>
                         Telegram 02
                     </strong>
 
-                    <span>
+                    <small>
                         @yourtelegram2
-                    </span>
+                    </small>
 
-                </div>
+                </span>
 
 
-                <span class="account-arrow">
+                <span class="support-online">
+
+                    <i></i>
+
+                    Online
+
+                </span>
+
+
+                <span class="support-arrow">
                     ›
                 </span>
 
@@ -1282,26 +1707,20 @@
 </div>
 
 
+
 <!-- =====================================================
-     LOADING
+     BACK TO TOP
 ===================================================== -->
 
-<div
-    id="loading"
-    class="loading-overlay"
+<button
+    id="backToTop"
+    class="back-to-top"
+    type="button"
+    aria-label="Back to top"
 >
+    ↑
+</button>
 
-    <div class="loading-box">
-
-        <div class="spinner"></div>
-
-        <p>
-            Loading...
-        </p>
-
-    </div>
-
-</div>
 
 
 <script src="script.js"></script>
