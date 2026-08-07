@@ -13,7 +13,7 @@ const REDIRECT_DELAY = 500;
    DOM ELEMENTS
 ========================================= */
 
-const referralButton = document.getElementById("referralButton");
+const referralButton = document.querySelectorAll(".referral-button");
 const loading = document.getElementById("loading");
 
 
