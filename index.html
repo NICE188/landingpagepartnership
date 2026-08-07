@@ -17,24 +17,64 @@
 <body>
 
 
-<!-- ======================
-     SIDE MENU
-====================== -->
+<!-- =====================
+ SIDE MENU BUTTON
+===================== -->
+
+
+<button id="menuButton">
+
+<svg 
+width="22"
+height="22"
+viewBox="0 0 24 24"
+fill="none">
+
+<path 
+d="M4 6H20"
+stroke="white"
+stroke-width="2"/>
+
+<path 
+d="M4 12H20"
+stroke="white"
+stroke-width="2"/>
+
+<path 
+d="M4 18H20"
+stroke="white"
+stroke-width="2"/>
+
+</svg>
+
+
+</button>
+
+
+
+
+
+<!-- =====================
+ SIDE MENU
+===================== -->
 
 
 <div id="overlay"></div>
 
 
+
 <aside id="sideMenu">
 
 
-<div class="profile-box">
+<div class="brand">
 
 
 <img
-src="YOUR-CLOUD-AVATAR"
-class="avatar"
-alt="Profile"
+
+src="YOUR-CLOUD-LOGO"
+
+alt="Logo"
+
 >
 
 
@@ -52,40 +92,35 @@ Official Promotion
 
 
 
+
+
 <nav>
 
 
-<a href="#" class="active">
+<a href="#">
 
-<span>🏠</span>
-Home
+🏠 Home
 
 </a>
-
 
 
 <a href="#promotion">
 
-<span>🔥</span>
-Promotion
+🔥 Promotion
 
 </a>
-
 
 
 <a href="#about">
 
-<span>ℹ️</span>
-About Us
+ℹ About
 
 </a>
 
 
-
 <a href="#contact">
 
-<span>📞</span>
-Contact
+☎ Contact
 
 </a>
 
@@ -95,14 +130,14 @@ Contact
 
 
 
-<div class="menu-footer">
 
-<p>
-© 2026 Your Brand
-</p>
+<footer>
 
-</div>
 
+© 2026
+
+
+</footer>
 
 
 </aside>
@@ -112,19 +147,10 @@ Contact
 
 
 
-<button id="menuButton">
 
-☰
-
-</button>
-
-
-
-
-
-<!-- ======================
-     MAIN CONTENT
-====================== -->
+<!-- =====================
+ MAIN
+===================== -->
 
 
 <div class="container">
@@ -135,12 +161,16 @@ Contact
 
 
 <h1>
+
 Exclusive Promotions
+
 </h1>
 
 
 <p>
+
 Choose your favourite offer
+
 </p>
 
 
@@ -151,25 +181,28 @@ Choose your favourite offer
 
 
 
-<section
-id="promotion"
-class="cards">
 
-
+<section id="promotion" class="cards">
 
 
 
 <!-- CARD 1 -->
+
 
 <div class="card">
 
 
 <div class="image-box">
 
+
 <img
+
 src="YOUR-CLOUD-IMAGE-1"
+
 alt="Company One"
+
 >
+
 
 </div>
 
@@ -180,9 +213,11 @@ Company One
 </h2>
 
 
+
 <p>
 Latest promotion offer.
 </p>
+
 
 
 
@@ -195,13 +230,13 @@ class="button referral"
 data-company="Company One"
 
 >
+
 Visit Now
+
 </a>
 
 
-
 </div>
-
 
 
 
@@ -215,10 +250,15 @@ Visit Now
 
 <div class="image-box">
 
+
 <img
+
 src="YOUR-CLOUD-IMAGE-2"
+
 alt="Company Two"
+
 >
+
 
 </div>
 
@@ -229,9 +269,11 @@ Company Two
 </h2>
 
 
+
 <p>
 Exclusive promotion.
 </p>
+
 
 
 
@@ -244,9 +286,10 @@ class="button referral"
 data-company="Company Two"
 
 >
-Visit Now
-</a>
 
+Visit Now
+
+</a>
 
 
 </div>
@@ -264,10 +307,15 @@ Visit Now
 
 <div class="image-box">
 
+
 <img
+
 src="YOUR-CLOUD-IMAGE-3"
+
 alt="Company Three"
+
 >
+
 
 </div>
 
@@ -278,9 +326,11 @@ Company Three
 </h2>
 
 
+
 <p>
 Special offer available.
 </p>
+
 
 
 
@@ -293,12 +343,14 @@ class="button referral"
 data-company="Company Three"
 
 >
+
 Visit Now
+
 </a>
 
 
-
 </div>
+
 
 
 
@@ -313,10 +365,15 @@ Visit Now
 
 <div class="image-box">
 
+
 <img
+
 src="YOUR-CLOUD-IMAGE-4"
+
 alt="Company Four"
+
 >
+
 
 </div>
 
@@ -327,9 +384,11 @@ Company Four
 </h2>
 
 
+
 <p>
 New promotion.
 </p>
+
 
 
 
@@ -342,12 +401,14 @@ class="button referral"
 data-company="Company Four"
 
 >
+
 Visit Now
+
 </a>
 
 
-
 </div>
+
 
 
 
@@ -363,10 +424,15 @@ Visit Now
 
 <div class="image-box">
 
+
 <img
+
 src="YOUR-CLOUD-IMAGE-5"
+
 alt="Company Five"
+
 >
+
 
 </div>
 
@@ -377,9 +443,11 @@ Company Five
 </h2>
 
 
+
 <p>
 Latest offer.
 </p>
+
 
 
 
@@ -392,12 +460,15 @@ class="button referral"
 data-company="Company Five"
 
 >
+
 Visit Now
+
 </a>
 
 
-
 </div>
+
+
 
 
 
@@ -407,27 +478,27 @@ Visit Now
 
 
 
+
+
+<!-- LOADING -->
+
+
 <div id="loading">
 
 
 <div class="spinner"></div>
 
+
 <p>
+
 Loading...
+
 </p>
 
 
 </div>
 
 
-
-
-
-<footer>
-
-© 2026 All Rights Reserved.
-
-</footer>
 
 
 
@@ -442,5 +513,6 @@ Loading...
 
 
 </body>
+
 
 </html>
