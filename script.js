@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           SIDE MENU
+           ELEMENTS
         ================================================= */
 
         const menuButton =
@@ -12,20 +12,24 @@ document.addEventListener(
                 "menuButton"
             );
 
+
         const sideMenu =
             document.getElementById(
                 "sideMenu"
             );
+
 
         const overlay =
             document.getElementById(
                 "overlay"
             );
 
+
         const refreshBtn =
             document.getElementById(
                 "refreshBtn"
             );
+
 
         const sideLinks =
             document.querySelectorAll(
@@ -33,15 +37,28 @@ document.addEventListener(
             );
 
 
+        const loading =
+            document.getElementById(
+                "loading"
+            );
+
+
+
+        /* =================================================
+           SIDE MENU
+        ================================================= */
+
         function openMenu() {
 
             sideMenu?.classList.add(
                 "active"
             );
 
+
             overlay?.classList.add(
                 "active"
             );
+
 
             document.body.classList.add(
                 "menu-open"
@@ -50,21 +67,25 @@ document.addEventListener(
         }
 
 
+
         function closeMenu() {
 
             sideMenu?.classList.remove(
                 "active"
             );
 
+
             overlay?.classList.remove(
                 "active"
             );
+
 
             document.body.classList.remove(
                 "menu-open"
             );
 
         }
+
 
 
         function toggleMenu() {
@@ -84,6 +105,7 @@ document.addEventListener(
             }
 
         }
+
 
 
         menuButton?.addEventListener(
@@ -108,12 +130,18 @@ document.addEventListener(
         );
 
 
+
+        /* =================================================
+           SIDE ACTIVE
+        ================================================= */
+
         sideLinks.forEach(
             function (link) {
 
                 link.addEventListener(
                     "click",
                     function () {
+
 
                         sideLinks.forEach(
                             function (item) {
@@ -132,7 +160,8 @@ document.addEventListener(
 
 
                         if (
-                            window.innerWidth <= 999
+                            window.innerWidth <=
+                            999
                         ) {
 
                             setTimeout(
@@ -151,7 +180,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT POPUP
+           CONTACT POPUPS
         ================================================= */
 
         const popupButtons =
@@ -164,6 +193,7 @@ document.addEventListener(
             document.querySelectorAll(
                 ".contact-popup"
             );
+
 
 
         function openPopup(
@@ -187,6 +217,7 @@ document.addEventListener(
                     item.classList.remove(
                         "active"
                     );
+
 
                     item.setAttribute(
                         "aria-hidden",
@@ -213,6 +244,7 @@ document.addEventListener(
             );
 
         }
+
 
 
         function closePopup(
@@ -242,6 +274,7 @@ document.addEventListener(
         }
 
 
+
         popupButtons.forEach(
             function (button) {
 
@@ -261,8 +294,10 @@ document.addEventListener(
         );
 
 
+
         contactPopups.forEach(
             function (popup) {
+
 
                 const closeButton =
                     popup.querySelector(
@@ -313,7 +348,8 @@ document.addEventListener(
             function (event) {
 
                 if (
-                    event.key !== "Escape"
+                    event.key !==
+                    "Escape"
                 ) {
                     return;
                 }
@@ -332,6 +368,7 @@ document.addEventListener(
                     );
 
                     return;
+
                 }
 
 
@@ -343,7 +380,7 @@ document.addEventListener(
 
 
         /* =================================================
-           TRACKING
+           URL TRACKING
         ================================================= */
 
         const currentParams =
@@ -353,6 +390,7 @@ document.addEventListener(
 
 
         const trackingParameters = [
+
             "utm_source",
             "utm_medium",
             "utm_campaign",
@@ -362,8 +400,14 @@ document.addEventListener(
             "clickid",
             "fbclid",
             "gclid"
+
         ];
 
+
+
+        /* =================================================
+           REFERRAL LINKS
+        ================================================= */
 
         const referralButtons =
             document.querySelectorAll(
@@ -371,14 +415,10 @@ document.addEventListener(
             );
 
 
-        const loading =
-            document.getElementById(
-                "loading"
-            );
-
 
         referralButtons.forEach(
             function (button) {
+
 
                 const originalUrl =
                     button.getAttribute(
@@ -398,7 +438,9 @@ document.addEventListener(
                 }
 
 
+
                 try {
+
 
                     const referralUrl =
                         new URL(
@@ -410,16 +452,25 @@ document.addEventListener(
                     trackingParameters.forEach(
                         function (key) {
 
+
                             if (
                                 currentParams.has(
                                     key
                                 )
                             ) {
 
-                                referralUrl.searchParams.set(
-                                    key,
-                                    currentParams.get(key)
-                                );
+
+                                referralUrl
+                                    .searchParams
+                                    .set(
+
+                                        key,
+
+                                        currentParams.get(
+                                            key
+                                        )
+
+                                    );
 
                             }
 
@@ -433,45 +484,57 @@ document.addEventListener(
 
                 } catch (error) {
 
+
                     console.warn(
                         "Invalid referral URL:",
                         originalUrl
                     );
 
+
                 }
+
 
 
                 button.addEventListener(
                     "click",
                     function () {
 
+
                         try {
 
-                            const clickData = {
+
+                            const data = {
+
 
                                 company:
                                     button.dataset.company ||
                                     "Unknown",
 
+
                                 destination:
                                     button.href,
 
-                                sourcePage:
+
+                                source:
                                     window.location.href,
+
 
                                 utmSource:
                                     currentParams.get(
                                         "utm_source"
                                     ) || "",
 
+
                                 utmCampaign:
                                     currentParams.get(
                                         "utm_campaign"
                                     ) || "",
 
+
                                 time:
                                     new Date()
                                         .toISOString()
+
 
                             };
 
@@ -481,7 +544,28 @@ document.addEventListener(
                                 "last_referral_click",
 
                                 JSON.stringify(
-                                    clickData
+                                    data
+                                )
+
+                            );
+
+
+                            const count =
+                                Number(
+
+                                    localStorage.getItem(
+                                        "referral_click_count"
+                                    ) || 0
+
+                                );
+
+
+                            localStorage.setItem(
+
+                                "referral_click_count",
+
+                                String(
+                                    count + 1
                                 )
 
                             );
@@ -489,11 +573,14 @@ document.addEventListener(
 
                         } catch (error) {
 
+
                             console.warn(
-                                "Tracking unavailable"
+                                "Tracking unavailable."
                             );
 
+
                         }
+
 
 
                         loading?.classList.add(
@@ -512,8 +599,10 @@ document.addEventListener(
                             1500
                         );
 
+
                     }
                 );
+
 
             }
         );
@@ -533,11 +622,14 @@ document.addEventListener(
         contactAccounts.forEach(
             function (account) {
 
+
                 account.addEventListener(
                     "click",
                     function () {
 
+
                         try {
+
 
                             localStorage.setItem(
 
@@ -558,6 +650,14 @@ document.addEventListener(
                                     destination:
                                         account.href,
 
+                                    source:
+                                        window.location.href,
+
+                                    utmSource:
+                                        currentParams.get(
+                                            "utm_source"
+                                        ) || "",
+
                                     time:
                                         new Date()
                                             .toISOString()
@@ -566,20 +666,30 @@ document.addEventListener(
 
                             );
 
+
                         } catch (error) {
 
+
                             console.warn(
-                                "Contact tracking unavailable"
+                                "Contact tracking unavailable."
                             );
 
+
                         }
+
 
                     }
                 );
 
+
             }
         );
 
+
+
+        /* =================================================
+           BACK BUTTON FIX
+        ================================================= */
 
         window.addEventListener(
             "pageshow",
