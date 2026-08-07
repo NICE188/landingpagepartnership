@@ -3,13 +3,16 @@ document.addEventListener(
 ()=>{
 
 
-const menu =
+// SIDE MENU
+
+
+const button =
 document.getElementById(
 "menuButton"
 );
 
 
-const side =
+const menu =
 document.getElementById(
 "sideMenu"
 );
@@ -22,90 +25,90 @@ document.getElementById(
 
 
 
-function openMenu(){
+button.onclick=()=>{
 
-side.classList.add(
+
+menu.classList.add(
 "active"
 );
+
 
 overlay.classList.add(
 "active"
 );
 
-}
+
+};
 
 
 
-function closeMenu(){
+overlay.onclick=()=>{
 
-side.classList.remove(
+
+menu.classList.remove(
 "active"
 );
+
 
 overlay.classList.remove(
 "active"
 );
 
-}
 
-
-
-
-menu.onclick=openMenu;
-
-
-overlay.onclick=closeMenu;
+};
 
 
 
 
 
 
-// Referral Tracking
+
+// REFERRAL TRACKING
 
 
-const buttons =
+const links =
 document.querySelectorAll(
 ".referral"
 );
 
 
 
-buttons.forEach(
-btn=>{
+links.forEach(link=>{
 
 
 let url =
 new URL(
-btn.href
+link.href
 );
 
 
 
 let params =
 new URLSearchParams(
-location.search
+window.location.search
 );
 
 
 
 [
 "utm_source",
+"utm_medium",
 "utm_campaign",
 "subid",
 "clickid"
 
-]
-.forEach(
-key=>{
+].forEach(key=>{
 
 
 if(params.has(key)){
 
 
 url.searchParams.set(
+
 key,
+
 params.get(key)
+
 );
 
 
@@ -116,29 +119,38 @@ params.get(key)
 
 
 
-btn.href=url;
+link.href=url;
 
 
 
-btn.onclick=()=>{
+link.onclick=()=>{
 
 
 localStorage.setItem(
 
-"last_click",
+"click",
 
 JSON.stringify({
 
 company:
-btn.dataset.company,
+link.dataset.company,
 
 
 time:
 new Date()
+.toISOString()
+
 
 })
 
+);
 
+
+
+document
+.getElementById("loading")
+.classList.add(
+"active"
 );
 
 
