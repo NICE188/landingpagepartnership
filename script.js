@@ -4,11 +4,15 @@ function(){
 
 
 const buttons =
-document.querySelectorAll(".referral");
+document.querySelectorAll(
+".referral"
+);
 
 
 const loading =
-document.getElementById("loading");
+document.getElementById(
+"loading"
+);
 
 
 
@@ -24,10 +28,6 @@ button.href
 
 
 
-/*
-读取来源参数
-*/
-
 let params =
 new URLSearchParams(
 window.location.search
@@ -40,20 +40,23 @@ window.location.search
 "utm_medium",
 "utm_campaign",
 "utm_content",
-"subid"
-]
+"subid",
+"clickid"
 
-.forEach(
-function(item){
+].forEach(
+function(key){
 
 
 if(
-params.has(item)
+params.has(key)
 ){
 
 url.searchParams.set(
-item,
-params.get(item)
+
+key,
+
+params.get(key)
+
 );
 
 }
@@ -72,18 +75,17 @@ url.toString();
 
 
 
-
 button.addEventListener(
 "click",
 function(){
 
 
 
-let data={
+let clickData={
 
 
 company:
-button.dataset.name,
+button.dataset.company,
 
 
 time:
@@ -91,7 +93,7 @@ new Date()
 .toISOString(),
 
 
-page:
+source:
 window.location.href
 
 
@@ -103,7 +105,7 @@ localStorage.setItem(
 
 "last_click",
 
-JSON.stringify(data)
+JSON.stringify(clickData)
 
 );
 
@@ -129,8 +131,9 @@ loading.classList.add(
 
 }
 
-);
 
+
+);
 
 
 });
