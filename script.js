@@ -3,24 +3,15 @@ document.addEventListener(
 ()=>{
 
 
-/* SIDE MENU */
-
-
-const menuButton =
+const menu =
 document.getElementById(
 "menuButton"
 );
 
 
-const sideMenu =
+const side =
 document.getElementById(
 "sideMenu"
-);
-
-
-const closeMenu =
-document.getElementById(
-"closeMenu"
 );
 
 
@@ -31,9 +22,9 @@ document.getElementById(
 
 
 
-menuButton.onclick=()=>{
+function openMenu(){
 
-sideMenu.classList.add(
+side.classList.add(
 "active"
 );
 
@@ -41,13 +32,13 @@ overlay.classList.add(
 "active"
 );
 
-};
+}
 
 
 
-closeMenu.onclick=()=>{
+function closeMenu(){
 
-sideMenu.classList.remove(
+side.classList.remove(
 "active"
 );
 
@@ -55,27 +46,22 @@ overlay.classList.remove(
 "active"
 );
 
-};
+}
 
 
 
-overlay.onclick=()=>{
 
-sideMenu.classList.remove(
-"active"
-);
+menu.onclick=openMenu;
 
-overlay.classList.remove(
-"active"
-);
 
-};
+overlay.onclick=closeMenu;
 
 
 
 
 
-/* REFERRAL TRACKING */
+
+// Referral Tracking
 
 
 const buttons =
@@ -86,58 +72,55 @@ document.querySelectorAll(
 
 
 buttons.forEach(
-button=>{
+btn=>{
 
 
 let url =
 new URL(
-button.href
+btn.href
 );
 
 
 
 let params =
 new URLSearchParams(
-window.location.search
+location.search
 );
 
 
 
 [
 "utm_source",
-"utm_medium",
 "utm_campaign",
 "subid",
 "clickid"
 
-].forEach(
+]
+.forEach(
 key=>{
 
 
 if(params.has(key)){
+
 
 url.searchParams.set(
 key,
 params.get(key)
 );
 
-}
-
 
 }
 
-);
+
+});
 
 
 
-button.href =
-url.toString();
+btn.href=url;
 
 
 
-
-
-button.onclick=()=>{
+btn.onclick=()=>{
 
 
 localStorage.setItem(
@@ -147,29 +130,20 @@ localStorage.setItem(
 JSON.stringify({
 
 company:
-button.dataset.company,
+btn.dataset.company,
 
 
 time:
 new Date()
-.toISOString()
-
 
 })
 
+
 );
 
-
-
-document
-.getElementById("loading")
-.classList.add(
-"active"
-);
 
 
 };
-
 
 
 });
