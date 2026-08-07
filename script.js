@@ -125,6 +125,7 @@ document.addEventListener(
                             }
                         );
 
+
                         link.classList.add(
                             "active"
                         );
@@ -342,7 +343,7 @@ document.addEventListener(
 
 
         /* =================================================
-           URL TRACKING
+           TRACKING
         ================================================= */
 
         const currentParams =
@@ -352,7 +353,6 @@ document.addEventListener(
 
 
         const trackingParameters = [
-
             "utm_source",
             "utm_medium",
             "utm_campaign",
@@ -362,14 +362,8 @@ document.addEventListener(
             "clickid",
             "fbclid",
             "gclid"
-
         ];
 
-
-
-        /* =================================================
-           REFERRAL
-        ================================================= */
 
         const referralButtons =
             document.querySelectorAll(
@@ -422,17 +416,10 @@ document.addEventListener(
                                 )
                             ) {
 
-                                referralUrl
-                                    .searchParams
-                                    .set(
-
-                                        key,
-
-                                        currentParams.get(
-                                            key
-                                        )
-
-                                    );
+                                referralUrl.searchParams.set(
+                                    key,
+                                    currentParams.get(key)
+                                );
 
                             }
 
@@ -477,11 +464,6 @@ document.addEventListener(
                                         "utm_source"
                                     ) || "",
 
-                                utmMedium:
-                                    currentParams.get(
-                                        "utm_medium"
-                                    ) || "",
-
                                 utmCampaign:
                                     currentParams.get(
                                         "utm_campaign"
@@ -505,31 +487,10 @@ document.addEventListener(
                             );
 
 
-                            const currentCount =
-                                Number(
-
-                                    localStorage.getItem(
-                                        "referral_click_count"
-                                    ) || 0
-
-                                );
-
-
-                            localStorage.setItem(
-
-                                "referral_click_count",
-
-                                String(
-                                    currentCount + 1
-                                )
-
-                            );
-
-
                         } catch (error) {
 
                             console.warn(
-                                "Referral tracking unavailable"
+                                "Tracking unavailable"
                             );
 
                         }
@@ -548,7 +509,7 @@ document.addEventListener(
                                 );
 
                             },
-                            1600
+                            1500
                         );
 
                     }
@@ -560,7 +521,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT TRACKING
+           CONTACT CLICK TRACKING
         ================================================= */
 
         const contactAccounts =
@@ -597,14 +558,6 @@ document.addEventListener(
                                     destination:
                                         account.href,
 
-                                    sourcePage:
-                                        window.location.href,
-
-                                    utmSource:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || "",
-
                                     time:
                                         new Date()
                                             .toISOString()
@@ -612,7 +565,6 @@ document.addEventListener(
                                 })
 
                             );
-
 
                         } catch (error) {
 
@@ -628,11 +580,6 @@ document.addEventListener(
             }
         );
 
-
-
-        /* =================================================
-           BACK BUTTON FIX
-        ================================================= */
 
         window.addEventListener(
             "pageshow",
