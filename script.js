@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           ELEMENTS
+           BASIC ELEMENTS
         ================================================= */
 
         const menuButton =
@@ -53,13 +53,16 @@ document.addEventListener(
                 "active"
             );
 
+
             overlay?.classList.add(
                 "active"
             );
 
+
             document.body.classList.add(
                 "menu-open"
             );
+
         }
 
 
@@ -69,13 +72,16 @@ document.addEventListener(
                 "active"
             );
 
+
             overlay?.classList.remove(
                 "active"
             );
 
+
             document.body.classList.remove(
                 "menu-open"
             );
+
         }
 
 
@@ -92,7 +98,9 @@ document.addEventListener(
             } else {
 
                 openMenu();
+
             }
+
         }
 
 
@@ -113,12 +121,13 @@ document.addEventListener(
             function () {
 
                 window.location.reload();
+
             }
         );
 
 
         /* =================================================
-           SIDE MENU ACTIVE
+           ACTIVE MENU
         ================================================= */
 
         sideLinks.forEach(
@@ -128,12 +137,14 @@ document.addEventListener(
                     "click",
                     function () {
 
+
                         sideLinks.forEach(
                             function (item) {
 
                                 item.classList.remove(
                                     "active"
                                 );
+
                             }
                         );
 
@@ -151,9 +162,12 @@ document.addEventListener(
                                 closeMenu,
                                 100
                             );
+
                         }
+
                     }
                 );
+
             }
         );
 
@@ -196,10 +210,12 @@ document.addEventListener(
                         "active"
                     );
 
+
                     item.setAttribute(
                         "aria-hidden",
                         "true"
                     );
+
                 }
             );
 
@@ -218,6 +234,7 @@ document.addEventListener(
             document.body.classList.add(
                 "contact-popup-open"
             );
+
         }
 
 
@@ -244,6 +261,7 @@ document.addEventListener(
             document.body.classList.remove(
                 "contact-popup-open"
             );
+
         }
 
 
@@ -258,8 +276,10 @@ document.addEventListener(
                             button.dataset
                                 .contactPopup
                         );
+
                     }
                 );
+
             }
         );
 
@@ -286,6 +306,7 @@ document.addEventListener(
                         closeContactPopup(
                             popup
                         );
+
                     }
                 );
 
@@ -297,8 +318,10 @@ document.addEventListener(
                         closeContactPopup(
                             popup
                         );
+
                     }
                 );
+
             }
         );
 
@@ -312,9 +335,12 @@ document.addEventListener(
             function (event) {
 
                 if (
-                    event.key !== "Escape"
+                    event.key !==
+                    "Escape"
                 ) {
+
                     return;
+
                 }
 
 
@@ -331,10 +357,12 @@ document.addEventListener(
                     );
 
                     return;
+
                 }
 
 
                 closeMenu();
+
             }
         );
 
@@ -377,6 +405,7 @@ document.addEventListener(
         referralButtons.forEach(
             function (button) {
 
+
                 const originalUrl =
                     button.getAttribute(
                         "href"
@@ -389,11 +418,14 @@ document.addEventListener(
                         "YOUR-REFERRAL"
                     )
                 ) {
+
                     return;
+
                 }
 
 
                 try {
+
 
                     const referralUrl =
                         new URL(
@@ -405,21 +437,28 @@ document.addEventListener(
                     trackingParameters.forEach(
                         function (key) {
 
+
                             if (
                                 currentParams.has(
                                     key
                                 )
                             ) {
 
+
                                 referralUrl
                                     .searchParams
                                     .set(
+
                                         key,
+
                                         currentParams.get(
                                             key
                                         )
+
                                     );
+
                             }
+
                         }
                     );
 
@@ -427,12 +466,16 @@ document.addEventListener(
                     button.href =
                         referralUrl.toString();
 
+
                 } catch (error) {
+
 
                     console.warn(
                         "Invalid referral URL:",
                         originalUrl
                     );
+
+
                 }
 
 
@@ -440,68 +483,84 @@ document.addEventListener(
                     "click",
                     function () {
 
+
                         try {
+
+
+                            const trackingData = {
+
+                                company:
+                                    button.dataset.company ||
+                                    "Unknown",
+
+                                destination:
+                                    button.href,
+
+                                sourcePage:
+                                    window.location.href,
+
+                                utmSource:
+                                    currentParams.get(
+                                        "utm_source"
+                                    ) || "",
+
+                                utmMedium:
+                                    currentParams.get(
+                                        "utm_medium"
+                                    ) || "",
+
+                                utmCampaign:
+                                    currentParams.get(
+                                        "utm_campaign"
+                                    ) || "",
+
+                                time:
+                                    new Date()
+                                        .toISOString()
+
+                            };
+
 
                             localStorage.setItem(
 
                                 "last_referral_click",
 
-                                JSON.stringify({
-
-                                    company:
-                                        button.dataset.company ||
-                                        "Unknown",
-
-                                    destination:
-                                        button.href,
-
-                                    sourcePage:
-                                        window.location.href,
-
-                                    utmSource:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || "",
-
-                                    utmMedium:
-                                        currentParams.get(
-                                            "utm_medium"
-                                        ) || "",
-
-                                    utmCampaign:
-                                        currentParams.get(
-                                            "utm_campaign"
-                                        ) || "",
-
-                                    time:
-                                        new Date()
-                                            .toISOString()
-
-                                })
+                                JSON.stringify(
+                                    trackingData
+                                )
 
                             );
 
 
                             const clickCount =
                                 Number(
+
                                     localStorage.getItem(
                                         "referral_click_count"
                                     ) || 0
+
                                 );
 
 
                             localStorage.setItem(
+
                                 "referral_click_count",
+
                                 String(
                                     clickCount + 1
                                 )
+
                             );
 
+
                         } catch (error) {
+
 
                             console.warn(
                                 "Tracking unavailable."
                             );
+
+
                         }
 
 
@@ -516,73 +575,22 @@ document.addEventListener(
                                 loading?.classList.remove(
                                     "active"
                                 );
+
                             },
-                            1200
+                            1100
                         );
+
+
                     }
                 );
+
+
             }
         );
 
 
         /* =================================================
-           CONTACT TRACKING
-        ================================================= */
-
-        const contactAccounts =
-            document.querySelectorAll(
-                ".contact-account-item"
-            );
-
-
-        contactAccounts.forEach(
-            function (account) {
-
-                account.addEventListener(
-                    "click",
-                    function () {
-
-                        try {
-
-                            localStorage.setItem(
-
-                                "last_contact_click",
-
-                                JSON.stringify({
-
-                                    destination:
-                                        account.href,
-
-                                    sourcePage:
-                                        window.location.href,
-
-                                    utmSource:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || "",
-
-                                    time:
-                                        new Date()
-                                            .toISOString()
-
-                                })
-
-                            );
-
-                        } catch (error) {
-
-                            console.warn(
-                                "Contact tracking unavailable."
-                            );
-                        }
-                    }
-                );
-            }
-        );
-
-
-        /* =================================================
-           BACK BUTTON FIX
+           PAGE SHOW FIX
         ================================================= */
 
         window.addEventListener(
@@ -592,6 +600,7 @@ document.addEventListener(
                 loading?.classList.remove(
                     "active"
                 );
+
             }
         );
 
