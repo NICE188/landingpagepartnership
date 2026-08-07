@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           SIDE MENU
+           BASIC ELEMENTS
         ================================================= */
 
         const menuButton =
@@ -44,15 +44,21 @@ document.addEventListener(
 
 
 
+        /* =================================================
+           SIDE MENU
+        ================================================= */
+
         function openMenu() {
 
             sideMenu?.classList.add(
                 "active"
             );
 
+
             overlay?.classList.add(
                 "active"
             );
+
 
             document.body.classList.add(
                 "menu-open"
@@ -68,9 +74,11 @@ document.addEventListener(
                 "active"
             );
 
+
             overlay?.classList.remove(
                 "active"
             );
+
 
             document.body.classList.remove(
                 "menu-open"
@@ -124,7 +132,7 @@ document.addEventListener(
 
 
         /* =================================================
-           SIDE ACTIVE
+           SIDE MENU ACTIVE
         ================================================= */
 
         sideLinks.forEach(
@@ -171,7 +179,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT POPUP
+           CONTACT POPUPS
         ================================================= */
 
         const popupButtons =
@@ -187,7 +195,7 @@ document.addEventListener(
 
 
 
-        function openPopup(
+        function openContactPopup(
             popupId
         ) {
 
@@ -198,8 +206,27 @@ document.addEventListener(
 
 
             if (!popup) {
+
                 return;
+
             }
+
+
+            contactPopups.forEach(
+                function (item) {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+
+                    item.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+            );
 
 
             popup.classList.add(
@@ -221,12 +248,14 @@ document.addEventListener(
 
 
 
-        function closePopup(
+        function closeContactPopup(
             popup
         ) {
 
             if (!popup) {
+
                 return;
+
             }
 
 
@@ -256,7 +285,7 @@ document.addEventListener(
                     "click",
                     function () {
 
-                        openPopup(
+                        openContactPopup(
                             button.dataset
                                 .contactPopup
                         );
@@ -289,7 +318,7 @@ document.addEventListener(
                     "click",
                     function () {
 
-                        closePopup(
+                        closeContactPopup(
                             popup
                         );
 
@@ -301,7 +330,7 @@ document.addEventListener(
                     "click",
                     function () {
 
-                        closePopup(
+                        closeContactPopup(
                             popup
                         );
 
@@ -309,6 +338,146 @@ document.addEventListener(
                 );
 
             }
+        );
+
+
+
+        /* =================================================
+           CUSTOM VIDEO POPUP
+        ================================================= */
+
+        const openVideoBtn =
+            document.getElementById(
+                "openVideoBtn"
+            );
+
+
+        const videoPopup =
+            document.getElementById(
+                "videoPopup"
+            );
+
+
+        const videoPopupBackdrop =
+            document.getElementById(
+                "videoPopupBackdrop"
+            );
+
+
+        const closeVideoBtn =
+            document.getElementById(
+                "closeVideoBtn"
+            );
+
+
+        const promoVideo =
+            document.getElementById(
+                "promoVideo"
+            );
+
+
+
+        function openVideoPopup() {
+
+            if (!videoPopup) {
+
+                return;
+
+            }
+
+
+            videoPopup.classList.add(
+                "active"
+            );
+
+
+            videoPopup.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "video-popup-open"
+            );
+
+
+            if (promoVideo) {
+
+
+                promoVideo.currentTime =
+                    0;
+
+
+                promoVideo
+                    .play()
+                    .catch(
+                        function () {
+
+                            /*
+                              Some browsers may block
+                              automatic playback.
+                            */
+
+                        }
+                    );
+
+            }
+
+        }
+
+
+
+        function closeVideoPopup() {
+
+            if (!videoPopup) {
+
+                return;
+
+            }
+
+
+            videoPopup.classList.remove(
+                "active"
+            );
+
+
+            videoPopup.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "video-popup-open"
+            );
+
+
+            if (promoVideo) {
+
+                promoVideo.pause();
+
+            }
+
+        }
+
+
+
+        openVideoBtn?.addEventListener(
+            "click",
+            openVideoPopup
+        );
+
+
+        closeVideoBtn?.addEventListener(
+            "click",
+            closeVideoPopup
+        );
+
+
+        videoPopupBackdrop?.addEventListener(
+            "click",
+            closeVideoPopup
         );
 
 
@@ -323,7 +492,8 @@ document.addEventListener(
 
 
                 if (
-                    event.key !== "Escape"
+                    event.key !==
+                    "Escape"
                 ) {
 
                     return;
@@ -331,22 +501,47 @@ document.addEventListener(
                 }
 
 
-                const activePopup =
+                /*
+                  VIDEO POPUP FIRST
+                */
+
+                if (
+                    videoPopup?.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeVideoPopup();
+
+                    return;
+
+                }
+
+
+                /*
+                  CONTACT POPUP
+                */
+
+                const activeContactPopup =
                     document.querySelector(
                         ".contact-popup.active"
                     );
 
 
-                if (activePopup) {
+                if (activeContactPopup) {
 
-                    closePopup(
-                        activePopup
+                    closeContactPopup(
+                        activeContactPopup
                     );
 
                     return;
 
                 }
 
+
+                /*
+                  SIDE MENU
+                */
 
                 closeMenu();
 
@@ -356,7 +551,7 @@ document.addEventListener(
 
 
         /* =================================================
-           URL TRACKING
+           URL PARAMETERS
         ================================================= */
 
         const currentParams =
@@ -368,13 +563,21 @@ document.addEventListener(
         const trackingParameters = [
 
             "utm_source",
+
             "utm_medium",
+
             "utm_campaign",
+
             "utm_term",
+
             "utm_content",
+
             "subid",
+
             "clickid",
+
             "fbclid",
+
             "gclid"
 
         ];
@@ -479,43 +682,90 @@ document.addEventListener(
                         try {
 
 
+                            const referralData = {
+
+
+                                company:
+                                    button.dataset.company ||
+                                    "Unknown",
+
+
+                                destination:
+                                    button.href,
+
+
+                                sourcePage:
+                                    window.location.href,
+
+
+                                utmSource:
+                                    currentParams.get(
+                                        "utm_source"
+                                    ) || "",
+
+
+                                utmMedium:
+                                    currentParams.get(
+                                        "utm_medium"
+                                    ) || "",
+
+
+                                utmCampaign:
+                                    currentParams.get(
+                                        "utm_campaign"
+                                    ) || "",
+
+
+                                time:
+                                    new Date()
+                                        .toISOString()
+
+
+                            };
+
+
                             localStorage.setItem(
 
                                 "last_referral_click",
 
-                                JSON.stringify({
+                                JSON.stringify(
+                                    referralData
+                                )
 
-                                    company:
-                                        button.dataset.company ||
-                                        "Unknown",
+                            );
 
-                                    destination:
-                                        button.href,
 
-                                    source:
-                                        window.location.href,
+                            const clickCount =
+                                Number(
 
-                                    utmSource:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || "",
+                                    localStorage.getItem(
+                                        "referral_click_count"
+                                    ) || 0
 
-                                    time:
-                                        new Date()
-                                            .toISOString()
+                                );
 
-                                })
+
+                            localStorage.setItem(
+
+                                "referral_click_count",
+
+                                String(
+                                    clickCount + 1
+                                )
 
                             );
 
 
                         } catch (error) {
 
+
                             console.warn(
-                                "Tracking unavailable."
+                                "Referral tracking unavailable."
                             );
 
+
                         }
+
 
 
                         loading?.classList.add(
@@ -566,42 +816,61 @@ document.addEventListener(
                         try {
 
 
+                            const contactData = {
+
+
+                                type:
+                                    account.dataset
+                                        .contactType ||
+                                    "",
+
+
+                                name:
+                                    account.dataset
+                                        .contactName ||
+                                    "",
+
+
+                                destination:
+                                    account.href,
+
+
+                                sourcePage:
+                                    window.location.href,
+
+
+                                utmSource:
+                                    currentParams.get(
+                                        "utm_source"
+                                    ) || "",
+
+
+                                time:
+                                    new Date()
+                                        .toISOString()
+
+
+                            };
+
+
                             localStorage.setItem(
 
                                 "last_contact_click",
 
-                                JSON.stringify({
-
-                                    type:
-                                        account.dataset
-                                            .contactType ||
-                                        "",
-
-                                    name:
-                                        account.dataset
-                                            .contactName ||
-                                        "",
-
-                                    destination:
-                                        account.href,
-
-                                    source:
-                                        window.location.href,
-
-                                    time:
-                                        new Date()
-                                            .toISOString()
-
-                                })
+                                JSON.stringify(
+                                    contactData
+                                )
 
                             );
 
 
                         } catch (error) {
 
+
                             console.warn(
                                 "Contact tracking unavailable."
                             );
+
 
                         }
 
@@ -616,58 +885,55 @@ document.addEventListener(
 
 
         /* =================================================
-           VIDEO
+           VIDEO TRACKING
         ================================================= */
 
-        const promoVideo =
-            document.getElementById(
-                "promoVideo"
-            );
+        promoVideo?.addEventListener(
+            "play",
+            function () {
 
 
-        if (promoVideo) {
+                try {
 
 
-            promoVideo.addEventListener(
-                "play",
-                function () {
+                    localStorage.setItem(
+
+                        "last_video_play",
+
+                        JSON.stringify({
+
+                            sourcePage:
+                                window.location.href,
 
 
-                    try {
+                            utmSource:
+                                currentParams.get(
+                                    "utm_source"
+                                ) || "",
 
 
-                        localStorage.setItem(
+                            time:
+                                new Date()
+                                    .toISOString()
 
-                            "last_video_play",
+                        })
 
-                            JSON.stringify({
-
-                                time:
-                                    new Date()
-                                        .toISOString(),
-
-                                source:
-                                    window.location.href
-
-                            })
-
-                        );
+                    );
 
 
-                    } catch (error) {
+                } catch (error) {
 
-                        console.warn(
-                            "Video tracking unavailable."
-                        );
 
-                    }
+                    console.warn(
+                        "Video tracking unavailable."
+                    );
 
 
                 }
-            );
 
 
-        }
+            }
+        );
 
 
 
@@ -679,9 +945,11 @@ document.addEventListener(
             "pageshow",
             function () {
 
+
                 loading?.classList.remove(
                     "active"
                 );
+
 
             }
         );
