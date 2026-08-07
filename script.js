@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           ELEMENTS
+           SIDE MENU
         ================================================= */
 
         const menuButton =
@@ -44,21 +44,15 @@ document.addEventListener(
 
 
 
-        /* =================================================
-           SIDE MENU
-        ================================================= */
-
         function openMenu() {
 
             sideMenu?.classList.add(
                 "active"
             );
 
-
             overlay?.classList.add(
                 "active"
             );
-
 
             document.body.classList.add(
                 "menu-open"
@@ -74,11 +68,9 @@ document.addEventListener(
                 "active"
             );
 
-
             overlay?.classList.remove(
                 "active"
             );
-
 
             document.body.classList.remove(
                 "menu-open"
@@ -160,8 +152,7 @@ document.addEventListener(
 
 
                         if (
-                            window.innerWidth <=
-                            999
+                            window.innerWidth <= 999
                         ) {
 
                             setTimeout(
@@ -180,7 +171,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT POPUPS
+           CONTACT POPUP
         ================================================= */
 
         const popupButtons =
@@ -209,23 +200,6 @@ document.addEventListener(
             if (!popup) {
                 return;
             }
-
-
-            contactPopups.forEach(
-                function (item) {
-
-                    item.classList.remove(
-                        "active"
-                    );
-
-
-                    item.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
-
-                }
-            );
 
 
             popup.classList.add(
@@ -347,11 +321,13 @@ document.addEventListener(
             "keydown",
             function (event) {
 
+
                 if (
-                    event.key !==
-                    "Escape"
+                    event.key !== "Escape"
                 ) {
+
                     return;
+
                 }
 
 
@@ -503,84 +479,43 @@ document.addEventListener(
                         try {
 
 
-                            const data = {
-
-
-                                company:
-                                    button.dataset.company ||
-                                    "Unknown",
-
-
-                                destination:
-                                    button.href,
-
-
-                                source:
-                                    window.location.href,
-
-
-                                utmSource:
-                                    currentParams.get(
-                                        "utm_source"
-                                    ) || "",
-
-
-                                utmCampaign:
-                                    currentParams.get(
-                                        "utm_campaign"
-                                    ) || "",
-
-
-                                time:
-                                    new Date()
-                                        .toISOString()
-
-
-                            };
-
-
                             localStorage.setItem(
 
                                 "last_referral_click",
 
-                                JSON.stringify(
-                                    data
-                                )
+                                JSON.stringify({
 
-                            );
+                                    company:
+                                        button.dataset.company ||
+                                        "Unknown",
 
+                                    destination:
+                                        button.href,
 
-                            const count =
-                                Number(
+                                    source:
+                                        window.location.href,
 
-                                    localStorage.getItem(
-                                        "referral_click_count"
-                                    ) || 0
+                                    utmSource:
+                                        currentParams.get(
+                                            "utm_source"
+                                        ) || "",
 
-                                );
+                                    time:
+                                        new Date()
+                                            .toISOString()
 
-
-                            localStorage.setItem(
-
-                                "referral_click_count",
-
-                                String(
-                                    count + 1
-                                )
+                                })
 
                             );
 
 
                         } catch (error) {
 
-
                             console.warn(
                                 "Tracking unavailable."
                             );
 
-
                         }
-
 
 
                         loading?.classList.add(
@@ -610,7 +545,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT CLICK TRACKING
+           CONTACT TRACKING
         ================================================= */
 
         const contactAccounts =
@@ -653,11 +588,6 @@ document.addEventListener(
                                     source:
                                         window.location.href,
 
-                                    utmSource:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || "",
-
                                     time:
                                         new Date()
                                             .toISOString()
@@ -669,11 +599,9 @@ document.addEventListener(
 
                         } catch (error) {
 
-
                             console.warn(
                                 "Contact tracking unavailable."
                             );
-
 
                         }
 
@@ -684,6 +612,62 @@ document.addEventListener(
 
             }
         );
+
+
+
+        /* =================================================
+           VIDEO
+        ================================================= */
+
+        const promoVideo =
+            document.getElementById(
+                "promoVideo"
+            );
+
+
+        if (promoVideo) {
+
+
+            promoVideo.addEventListener(
+                "play",
+                function () {
+
+
+                    try {
+
+
+                        localStorage.setItem(
+
+                            "last_video_play",
+
+                            JSON.stringify({
+
+                                time:
+                                    new Date()
+                                        .toISOString(),
+
+                                source:
+                                    window.location.href
+
+                            })
+
+                        );
+
+
+                    } catch (error) {
+
+                        console.warn(
+                            "Video tracking unavailable."
+                        );
+
+                    }
+
+
+                }
+            );
+
+
+        }
 
 
 
