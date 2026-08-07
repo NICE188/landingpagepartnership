@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           BASIC ELEMENTS
+           BASIC
         ================================================= */
 
         const menuButton =
@@ -132,7 +132,7 @@ document.addEventListener(
 
 
         /* =================================================
-           SIDE MENU ACTIVE
+           MENU ACTIVE
         ================================================= */
 
         sideLinks.forEach(
@@ -141,7 +141,6 @@ document.addEventListener(
                 link.addEventListener(
                     "click",
                     function () {
-
 
                         sideLinks.forEach(
                             function (item) {
@@ -210,23 +209,6 @@ document.addEventListener(
                 return;
 
             }
-
-
-            contactPopups.forEach(
-                function (item) {
-
-                    item.classList.remove(
-                        "active"
-                    );
-
-
-                    item.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
-
-                }
-            );
 
 
             popup.classList.add(
@@ -343,7 +325,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CUSTOM VIDEO POPUP
+           VIDEO POPUP
         ================================================= */
 
         const openVideoBtn =
@@ -404,9 +386,7 @@ document.addEventListener(
 
             if (promoVideo) {
 
-
-                promoVideo.currentTime =
-                    0;
+                promoVideo.currentTime = 0;
 
 
                 promoVideo
@@ -415,7 +395,7 @@ document.addEventListener(
                         function () {
 
                             /*
-                              Some browsers may block
+                              Browser may block
                               automatic playback.
                             */
 
@@ -483,7 +463,7 @@ document.addEventListener(
 
 
         /* =================================================
-           ESC CLOSE
+           ESC
         ================================================= */
 
         document.addEventListener(
@@ -492,18 +472,13 @@ document.addEventListener(
 
 
                 if (
-                    event.key !==
-                    "Escape"
+                    event.key !== "Escape"
                 ) {
 
                     return;
 
                 }
 
-
-                /*
-                  VIDEO POPUP FIRST
-                */
 
                 if (
                     videoPopup?.classList.contains(
@@ -517,10 +492,6 @@ document.addEventListener(
 
                 }
 
-
-                /*
-                  CONTACT POPUP
-                */
 
                 const activeContactPopup =
                     document.querySelector(
@@ -539,10 +510,6 @@ document.addEventListener(
                 }
 
 
-                /*
-                  SIDE MENU
-                */
-
                 closeMenu();
 
             }
@@ -551,7 +518,7 @@ document.addEventListener(
 
 
         /* =================================================
-           URL PARAMETERS
+           URL TRACKING
         ================================================= */
 
         const currentParams =
@@ -563,21 +530,13 @@ document.addEventListener(
         const trackingParameters = [
 
             "utm_source",
-
             "utm_medium",
-
             "utm_campaign",
-
             "utm_term",
-
             "utm_content",
-
             "subid",
-
             "clickid",
-
             "fbclid",
-
             "gclid"
 
         ];
@@ -682,90 +641,43 @@ document.addEventListener(
                         try {
 
 
-                            const referralData = {
-
-
-                                company:
-                                    button.dataset.company ||
-                                    "Unknown",
-
-
-                                destination:
-                                    button.href,
-
-
-                                sourcePage:
-                                    window.location.href,
-
-
-                                utmSource:
-                                    currentParams.get(
-                                        "utm_source"
-                                    ) || "",
-
-
-                                utmMedium:
-                                    currentParams.get(
-                                        "utm_medium"
-                                    ) || "",
-
-
-                                utmCampaign:
-                                    currentParams.get(
-                                        "utm_campaign"
-                                    ) || "",
-
-
-                                time:
-                                    new Date()
-                                        .toISOString()
-
-
-                            };
-
-
                             localStorage.setItem(
 
                                 "last_referral_click",
 
-                                JSON.stringify(
-                                    referralData
-                                )
+                                JSON.stringify({
 
-                            );
+                                    company:
+                                        button.dataset.company ||
+                                        "Unknown",
 
+                                    destination:
+                                        button.href,
 
-                            const clickCount =
-                                Number(
+                                    sourcePage:
+                                        window.location.href,
 
-                                    localStorage.getItem(
-                                        "referral_click_count"
-                                    ) || 0
+                                    utmSource:
+                                        currentParams.get(
+                                            "utm_source"
+                                        ) || "",
 
-                                );
+                                    time:
+                                        new Date()
+                                            .toISOString()
 
-
-                            localStorage.setItem(
-
-                                "referral_click_count",
-
-                                String(
-                                    clickCount + 1
-                                )
+                                })
 
                             );
 
 
                         } catch (error) {
 
-
                             console.warn(
-                                "Referral tracking unavailable."
+                                "Tracking unavailable."
                             );
 
-
                         }
-
 
 
                         loading?.classList.add(
@@ -784,10 +696,8 @@ document.addEventListener(
                             1500
                         );
 
-
                     }
                 );
-
 
             }
         );
@@ -816,68 +726,47 @@ document.addEventListener(
                         try {
 
 
-                            const contactData = {
-
-
-                                type:
-                                    account.dataset
-                                        .contactType ||
-                                    "",
-
-
-                                name:
-                                    account.dataset
-                                        .contactName ||
-                                    "",
-
-
-                                destination:
-                                    account.href,
-
-
-                                sourcePage:
-                                    window.location.href,
-
-
-                                utmSource:
-                                    currentParams.get(
-                                        "utm_source"
-                                    ) || "",
-
-
-                                time:
-                                    new Date()
-                                        .toISOString()
-
-
-                            };
-
-
                             localStorage.setItem(
 
                                 "last_contact_click",
 
-                                JSON.stringify(
-                                    contactData
-                                )
+                                JSON.stringify({
+
+                                    type:
+                                        account.dataset
+                                            .contactType ||
+                                        "",
+
+                                    name:
+                                        account.dataset
+                                            .contactName ||
+                                        "",
+
+                                    destination:
+                                        account.href,
+
+                                    sourcePage:
+                                        window.location.href,
+
+                                    time:
+                                        new Date()
+                                            .toISOString()
+
+                                })
 
                             );
 
 
                         } catch (error) {
 
-
                             console.warn(
                                 "Contact tracking unavailable."
                             );
 
-
                         }
-
 
                     }
                 );
-
 
             }
         );
@@ -905,13 +794,6 @@ document.addEventListener(
                             sourcePage:
                                 window.location.href,
 
-
-                            utmSource:
-                                currentParams.get(
-                                    "utm_source"
-                                ) || "",
-
-
                             time:
                                 new Date()
                                     .toISOString()
@@ -923,14 +805,11 @@ document.addEventListener(
 
                 } catch (error) {
 
-
                     console.warn(
                         "Video tracking unavailable."
                     );
 
-
                 }
-
 
             }
         );
@@ -945,11 +824,9 @@ document.addEventListener(
             "pageshow",
             function () {
 
-
                 loading?.classList.remove(
                     "active"
                 );
-
 
             }
         );
