@@ -1,103 +1,132 @@
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    () => {
 
 
-        /* =================================================
-           BASIC
-        ================================================= */
+        /* =====================================================
+           OPENING LOADER
+        ====================================================== */
+
+        const openingLoader =
+            document.getElementById(
+                "openingLoader"
+            );
+
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                setTimeout(
+                    () => {
+
+                        openingLoader?.classList.add(
+                            "hide"
+                        );
+
+                    },
+                    650
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           SIDE MENU
+        ====================================================== */
 
         const menuButton =
             document.getElementById(
                 "menuButton"
             );
 
+
         const sideMenu =
             document.getElementById(
                 "sideMenu"
             );
 
-        const overlay =
+
+        const sideOverlay =
             document.getElementById(
-                "overlay"
+                "sideOverlay"
             );
+
 
         const refreshBtn =
             document.getElementById(
                 "refreshBtn"
             );
 
+
         const sideLinks =
             document.querySelectorAll(
                 ".side-link"
             );
 
-        const loading =
-            document.getElementById(
-                "loading"
-            );
 
 
-        /* =================================================
-           SIDE MENU
-        ================================================= */
-
-        function openMenu() {
+        function openMenu(){
 
             sideMenu?.classList.add(
                 "active"
             );
 
-            overlay?.classList.add(
+            sideOverlay?.classList.add(
                 "active"
             );
 
             document.body.classList.add(
                 "menu-open"
             );
+
         }
 
 
-        function closeMenu() {
+
+        function closeMenu(){
 
             sideMenu?.classList.remove(
                 "active"
             );
 
-            overlay?.classList.remove(
+            sideOverlay?.classList.remove(
                 "active"
             );
 
             document.body.classList.remove(
                 "menu-open"
             );
+
         }
 
-
-        function toggleMenu() {
-
-            if (
-                sideMenu?.classList.contains(
-                    "active"
-                )
-            ) {
-
-                closeMenu();
-
-            } else {
-
-                openMenu();
-            }
-        }
 
 
         menuButton?.addEventListener(
             "click",
-            toggleMenu
+            () => {
+
+                if(
+                    sideMenu?.classList.contains(
+                        "active"
+                    )
+                ){
+
+                    closeMenu();
+
+                }else{
+
+                    openMenu();
+
+                }
+
+            }
         );
 
 
-        overlay?.addEventListener(
+        sideOverlay?.addEventListener(
             "click",
             closeMenu
         );
@@ -105,30 +134,30 @@ document.addEventListener(
 
         refreshBtn?.addEventListener(
             "click",
-            function () {
+            () => {
 
                 window.location.reload();
+
             }
         );
 
 
-        /* =================================================
-           MENU ACTIVE
-        ================================================= */
 
         sideLinks.forEach(
-            function (link) {
+            link => {
 
                 link.addEventListener(
                     "click",
-                    function () {
+                    () => {
+
 
                         sideLinks.forEach(
-                            function (item) {
+                            item => {
 
                                 item.classList.remove(
                                     "active"
                                 );
+
                             }
                         );
 
@@ -138,178 +167,131 @@ document.addEventListener(
                         );
 
 
-                        if (
-                            window.innerWidth <= 999
-                        ) {
+                        setTimeout(
+                            closeMenu,
+                            100
+                        );
 
-                            setTimeout(
-                                closeMenu,
-                                100
-                            );
-                        }
                     }
                 );
+
             }
         );
 
 
-        /* =================================================
-           CONTACT POPUP
-        ================================================= */
+
+        /* =====================================================
+           POPUPS
+        ====================================================== */
 
         const popupButtons =
             document.querySelectorAll(
-                "[data-contact-popup]"
+                "[data-popup]"
             );
 
 
-        const contactPopups =
+        const popups =
             document.querySelectorAll(
                 ".contact-popup"
             );
 
 
-        function openContactPopup(
-            popupId
-        ) {
 
-            const popup =
-                document.getElementById(
-                    popupId
-                );
+        function closeAllPopups(){
 
+            popups.forEach(
+                popup => {
 
-            if (!popup) {
-                return;
-            }
-
-
-            contactPopups.forEach(
-                function (item) {
-
-                    item.classList.remove(
+                    popup.classList.remove(
                         "active"
                     );
 
-
-                    item.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
                 }
             );
 
 
-            popup.classList.add(
-                "active"
-            );
-
-
-            popup.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.classList.add(
-                "contact-popup-open"
-            );
-        }
-
-
-        function closeContactPopup(
-            popup
-        ) {
-
-            if (!popup) {
-                return;
-            }
-
-
-            popup.classList.remove(
-                "active"
-            );
-
-
-            popup.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
             document.body.classList.remove(
-                "contact-popup-open"
+                "popup-open"
             );
+
         }
+
 
 
         popupButtons.forEach(
-            function (button) {
+            button => {
 
                 button.addEventListener(
                     "click",
-                    function () {
+                    () => {
 
-                        openContactPopup(
-                            button.dataset
-                                .contactPopup
+                        const popup =
+                            document.getElementById(
+                                button.dataset.popup
+                            );
+
+
+                        if(!popup){
+                            return;
+                        }
+
+
+                        closeAllPopups();
+
+
+                        popup.classList.add(
+                            "active"
                         );
+
+
+                        document.body.classList.add(
+                            "popup-open"
+                        );
+
                     }
                 );
+
             }
         );
 
 
-        contactPopups.forEach(
-            function (popup) {
 
-                const closeButton =
-                    popup.querySelector(
-                        ".contact-popup-close"
+        popups.forEach(
+            popup => {
+
+
+                popup
+                    .querySelector(
+                        ".popup-close"
+                    )
+                    ?.addEventListener(
+                        "click",
+                        closeAllPopups
                     );
 
 
-                const backdrop =
-                    popup.querySelector(
-                        ".contact-popup-backdrop"
+                popup
+                    .querySelector(
+                        ".popup-backdrop"
+                    )
+                    ?.addEventListener(
+                        "click",
+                        closeAllPopups
                     );
 
-
-                closeButton?.addEventListener(
-                    "click",
-                    function () {
-
-                        closeContactPopup(
-                            popup
-                        );
-                    }
-                );
-
-
-                backdrop?.addEventListener(
-                    "click",
-                    function () {
-
-                        closeContactPopup(
-                            popup
-                        );
-                    }
-                );
             }
         );
 
 
-        /* =================================================
-           ESC
-        ================================================= */
 
         document.addEventListener(
             "keydown",
-            function (event) {
+            event => {
 
-                if (
-                    event.key !== "Escape"
-                ) {
+                if(
+                    event.key !==
+                    "Escape"
+                ){
                     return;
                 }
 
@@ -320,185 +302,1073 @@ document.addEventListener(
                     );
 
 
-                if (activePopup) {
+                if(activePopup){
 
-                    closeContactPopup(
-                        activePopup
-                    );
+                    closeAllPopups();
 
-                    return;
+                }else{
+
+                    closeMenu();
+
                 }
 
-
-                closeMenu();
             }
         );
 
 
-        /* =================================================
-           TRACKING
-        ================================================= */
 
-        const currentParams =
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+
+        const reveals =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if(
+                                entry.isIntersecting
+                            ){
+
+                                entry.target
+                                    .classList
+                                    .add(
+                                        "visible"
+                                    );
+
+
+                                revealObserver.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold:.12
+                }
+
+            );
+
+
+        reveals.forEach(
+            element => {
+
+                revealObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           COUNTER
+        ====================================================== */
+
+        const counters =
+            document.querySelectorAll(
+                ".counter"
+            );
+
+
+        let counterStarted =
+            false;
+
+
+        function startCounters(){
+
+            if(counterStarted){
+                return;
+            }
+
+
+            counterStarted =
+                true;
+
+
+            counters.forEach(
+                counter => {
+
+
+                    const target =
+                        Number(
+                            counter.dataset.target
+                        );
+
+
+                    const duration =
+                        1500;
+
+
+                    const startTime =
+                        performance.now();
+
+
+
+                    function updateCounter(
+                        now
+                    ){
+
+                        const progress =
+                            Math.min(
+                                (
+                                    now -
+                                    startTime
+                                ) /
+                                duration,
+                                1
+                            );
+
+
+                        const eased =
+                            1 -
+                            Math.pow(
+                                1 - progress,
+                                3
+                            );
+
+
+                        const value =
+                            Math.floor(
+                                target *
+                                eased
+                            );
+
+
+                        counter.textContent =
+                            value.toLocaleString();
+
+
+                        if(
+                            progress < 1
+                        ){
+
+                            requestAnimationFrame(
+                                updateCounter
+                            );
+
+                        }
+
+                    }
+
+
+                    requestAnimationFrame(
+                        updateCounter
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        const statsSection =
+            document.getElementById(
+                "stats"
+            );
+
+
+        if(statsSection){
+
+            const statObserver =
+                new IntersectionObserver(
+
+                    entries => {
+
+                        if(
+                            entries[0]
+                                .isIntersecting
+                        ){
+
+                            startCounters();
+
+                            statObserver.disconnect();
+
+                        }
+
+                    },
+
+                    {
+                        threshold:.3
+                    }
+
+                );
+
+
+            statObserver.observe(
+                statsSection
+            );
+
+        }
+
+
+
+        /* =====================================================
+           CARD 3D TILT
+        ====================================================== */
+
+        const tiltCards =
+            document.querySelectorAll(
+                ".tilt-card"
+            );
+
+
+        const canTilt =
+            window.matchMedia(
+                "(pointer:fine)"
+            ).matches;
+
+
+
+        if(canTilt){
+
+            tiltCards.forEach(
+                card => {
+
+
+                    card.addEventListener(
+                        "mousemove",
+                        event => {
+
+
+                            const rect =
+                                card.getBoundingClientRect();
+
+
+                            const x =
+                                event.clientX -
+                                rect.left;
+
+
+                            const y =
+                                event.clientY -
+                                rect.top;
+
+
+                            const centerX =
+                                rect.width / 2;
+
+
+                            const centerY =
+                                rect.height / 2;
+
+
+                            const rotateX =
+                                (
+                                    centerY - y
+                                ) /
+                                28;
+
+
+                            const rotateY =
+                                (
+                                    x - centerX
+                                ) /
+                                28;
+
+
+                            card.style.transform =
+
+                                `perspective(900px)
+                                 rotateX(${rotateX}deg)
+                                 rotateY(${rotateY}deg)
+                                 translateY(-5px)`;
+
+                        }
+                    );
+
+
+
+                    card.addEventListener(
+                        "mouseleave",
+                        () => {
+
+                            card.style.transform =
+                                "";
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           MOUSE GLOW
+        ====================================================== */
+
+        const mouseGlow =
+            document.getElementById(
+                "mouseGlow"
+            );
+
+
+        if(
+            mouseGlow &&
+            canTilt
+        ){
+
+            document.addEventListener(
+                "mousemove",
+                event => {
+
+                    mouseGlow.style.left =
+                        `${event.clientX}px`;
+
+
+                    mouseGlow.style.top =
+                        `${event.clientY}px`;
+
+
+                    mouseGlow.style.opacity =
+                        "1";
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           PARTICLES
+        ====================================================== */
+
+        const canvas =
+            document.getElementById(
+                "particleCanvas"
+            );
+
+
+        if(canvas){
+
+            const ctx =
+                canvas.getContext(
+                    "2d"
+                );
+
+
+            let width = 0;
+
+            let height = 0;
+
+            let particles = [];
+
+
+
+            function resizeCanvas(){
+
+                const dpr =
+                    Math.min(
+                        window.devicePixelRatio ||
+                        1,
+                        2
+                    );
+
+
+                width =
+                    window.innerWidth;
+
+
+                height =
+                    window.innerHeight;
+
+
+                canvas.width =
+                    width * dpr;
+
+
+                canvas.height =
+                    height * dpr;
+
+
+                canvas.style.width =
+                    `${width}px`;
+
+
+                canvas.style.height =
+                    `${height}px`;
+
+
+                ctx.setTransform(
+                    dpr,
+                    0,
+                    0,
+                    dpr,
+                    0,
+                    0
+                );
+
+            }
+
+
+
+            function createParticles(){
+
+                const count =
+                    Math.min(
+                        45,
+                        Math.max(
+                            18,
+                            Math.floor(
+                                width / 35
+                            )
+                        )
+                    );
+
+
+                particles =
+                    Array.from(
+                        {
+                            length:count
+                        },
+                        () => ({
+
+                            x:
+                                Math.random() *
+                                width,
+
+                            y:
+                                Math.random() *
+                                height,
+
+                            r:
+                                Math.random() *
+                                1.3 +
+                                .3,
+
+                            speed:
+                                Math.random() *
+                                .18 +
+                                .05,
+
+                            alpha:
+                                Math.random() *
+                                .30 +
+                                .08
+
+                        })
+                    );
+
+            }
+
+
+
+            function animateParticles(){
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+
+                particles.forEach(
+                    particle => {
+
+
+                        particle.y -=
+                            particle.speed;
+
+
+                        if(
+                            particle.y <
+                            -5
+                        ){
+
+                            particle.y =
+                                height + 5;
+
+
+                            particle.x =
+                                Math.random() *
+                                width;
+
+                        }
+
+
+                        ctx.beginPath();
+
+
+                        ctx.arc(
+                            particle.x,
+                            particle.y,
+                            particle.r,
+                            0,
+                            Math.PI * 2
+                        );
+
+
+                        ctx.fillStyle =
+                            `rgba(
+                                190,
+                                226,
+                                241,
+                                ${particle.alpha}
+                            )`;
+
+
+                        ctx.fill();
+
+                    }
+                );
+
+
+                requestAnimationFrame(
+                    animateParticles
+                );
+
+            }
+
+
+
+            resizeCanvas();
+
+            createParticles();
+
+            animateParticles();
+
+
+
+            window.addEventListener(
+                "resize",
+                () => {
+
+                    resizeCanvas();
+
+                    createParticles();
+
+                }
+            );
+
+        }
+
+
+
+        /* =====================================================
+           BACK TO TOP
+        ====================================================== */
+
+        const backToTop =
+            document.getElementById(
+                "backToTop"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+
+                if(
+                    window.scrollY >
+                    450
+                ){
+
+                    backToTop
+                        ?.classList
+                        .add(
+                            "show"
+                        );
+
+                }else{
+
+                    backToTop
+                        ?.classList
+                        .remove(
+                            "show"
+                        );
+
+                }
+
+            }
+        );
+
+
+        backToTop?.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+
+                    top:0,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            }
+        );
+
+
+
+        /* =====================================================
+           SOURCE / UTM TRACKING
+        ====================================================== */
+
+        const params =
             new URLSearchParams(
                 window.location.search
             );
 
 
-        const trackingParameters = [
+        const trackingKeys = [
+
             "utm_source",
             "utm_medium",
             "utm_campaign",
-            "utm_term",
             "utm_content",
-            "subid",
-            "clickid",
+            "utm_term",
+
             "fbclid",
-            "gclid"
+            "gclid",
+
+            "ttclid",
+
+            "clickid",
+            "subid"
+
         ];
 
 
-        const referralButtons =
+
+        const trafficData = {
+
+            page:
+                window.location.href,
+
+            referrer:
+                document.referrer,
+
+            timestamp:
+                new Date()
+                    .toISOString()
+
+        };
+
+
+
+        trackingKeys.forEach(
+            key => {
+
+                if(
+                    params.has(key)
+                ){
+
+                    trafficData[key] =
+                        params.get(key);
+
+                }
+
+            }
+        );
+
+
+
+        try{
+
+            localStorage.setItem(
+
+                "landing_traffic",
+
+                JSON.stringify(
+                    trafficData
+                )
+
+            );
+
+        }catch(error){
+
+            console.warn(
+                "Local tracking unavailable"
+            );
+
+        }
+
+
+
+        /* =====================================================
+           PASS UTM TO REFERRAL LINKS
+        ====================================================== */
+
+        const referralLinks =
             document.querySelectorAll(
                 ".referral"
             );
 
 
-        referralButtons.forEach(
-            function (button) {
+        referralLinks.forEach(
+            link => {
 
-                const originalUrl =
-                    button.getAttribute(
+
+                const rawUrl =
+                    link.getAttribute(
                         "href"
                     );
 
 
-                if (
-                    !originalUrl ||
-                    originalUrl.includes(
+                if(
+                    !rawUrl ||
+                    rawUrl.includes(
                         "YOUR-REFERRAL"
                     )
-                ) {
+                ){
 
                     return;
+
                 }
 
 
-                try {
+                try{
 
-                    const referralUrl =
+                    const destination =
                         new URL(
-                            originalUrl,
+                            rawUrl,
                             window.location.href
                         );
 
 
-                    trackingParameters.forEach(
-                        function (key) {
+                    trackingKeys.forEach(
+                        key => {
 
-                            if (
-                                currentParams.has(
-                                    key
-                                )
-                            ) {
+                            if(
+                                params.has(key)
+                            ){
 
-                                referralUrl.searchParams.set(
-                                    key,
-                                    currentParams.get(key)
-                                );
+                                destination
+                                    .searchParams
+                                    .set(
+
+                                        key,
+
+                                        params.get(
+                                            key
+                                        )
+
+                                    );
+
                             }
+
                         }
                     );
 
 
-                    button.href =
-                        referralUrl.toString();
+                    link.href =
+                        destination.toString();
 
-                } catch (error) {
+
+                }catch(error){
 
                     console.warn(
-                        "Invalid referral URL:",
-                        originalUrl
+                        "Referral URL error",
+                        rawUrl
                     );
+
                 }
 
 
-                button.addEventListener(
+
+                link.addEventListener(
                     "click",
-                    function () {
+                    () => {
 
-                        try {
 
-                            localStorage.setItem(
+                        const eventData = {
 
-                                "last_referral_click",
+                            type:
+                                "referral_click",
 
-                                JSON.stringify({
+                            company:
+                                link.dataset.company ||
+                                "Unknown",
+
+                            destination:
+                                link.href,
+
+                            source:
+                                params.get(
+                                    "utm_source"
+                                ) ||
+                                "direct",
+
+                            campaign:
+                                params.get(
+                                    "utm_campaign"
+                                ) ||
+                                "",
+
+                            timestamp:
+                                new Date()
+                                    .toISOString()
+
+                        };
+
+
+                        saveClickEvent(
+                            eventData
+                        );
+
+
+                        /*
+                          GA4 event
+                        */
+
+                        if(
+                            typeof window.gtag ===
+                            "function"
+                        ){
+
+                            window.gtag(
+
+                                "event",
+
+                                "referral_click",
+
+                                {
 
                                     company:
-                                        button.dataset.company ||
-                                        "Unknown",
+                                        eventData.company,
 
                                     destination:
-                                        button.href,
+                                        eventData.destination
 
-                                    sourcePage:
-                                        window.location.href,
-
-                                    utmSource:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || "",
-
-                                    utmCampaign:
-                                        currentParams.get(
-                                            "utm_campaign"
-                                        ) || "",
-
-                                    time:
-                                        new Date()
-                                            .toISOString()
-
-                                })
+                                }
 
                             );
 
-                        } catch (error) {
-
-                            console.warn(
-                                "Tracking unavailable."
-                            );
                         }
 
 
-                        loading?.classList.add(
-                            "active"
-                        );
+                        /*
+                          Meta Pixel event
+                          如果以后安装 fbq
+                        */
+
+                        if(
+                            typeof window.fbq ===
+                            "function"
+                        ){
+
+                            window.fbq(
+
+                                "trackCustom",
+
+                                "ReferralClick",
+
+                                {
+
+                                    company:
+                                        eventData.company
+
+                                }
+
+                            );
+
+                        }
 
 
-                        setTimeout(
-                            function () {
+                        /*
+                          TikTok Pixel event
+                          如果以后安装 ttq
+                        */
 
-                                loading?.classList.remove(
-                                    "active"
-                                );
+                        if(
+                            window.ttq &&
+                            typeof window.ttq.track ===
+                            "function"
+                        ){
 
-                            },
-                            1100
-                        );
+                            window.ttq.track(
+
+                                "ClickButton",
+
+                                {
+
+                                    content_name:
+                                        eventData.company
+
+                                }
+
+                            );
+
+                        }
+
                     }
                 );
+
             }
         );
 
 
+
+        /* =====================================================
+           CONTACT CLICK TRACKING
+        ====================================================== */
+
+        document
+            .querySelectorAll(
+                ".track-contact"
+            )
+            .forEach(
+                link => {
+
+
+                    link.addEventListener(
+                        "click",
+                        () => {
+
+
+                            saveClickEvent({
+
+                                type:
+                                    "contact_click",
+
+                                channel:
+                                    link.dataset.channel ||
+                                    "Unknown",
+
+                                destination:
+                                    link.href,
+
+                                source:
+                                    params.get(
+                                        "utm_source"
+                                    ) ||
+                                    "direct",
+
+                                timestamp:
+                                    new Date()
+                                        .toISOString()
+
+                            });
+
+
+                            if(
+                                typeof window.gtag ===
+                                "function"
+                            ){
+
+                                window.gtag(
+
+                                    "event",
+
+                                    "contact_click",
+
+                                    {
+
+                                        channel:
+                                            link.dataset.channel
+
+                                    }
+
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* =====================================================
+           LOCAL EVENT LOG
+        ====================================================== */
+
+        function saveClickEvent(
+            eventData
+        ){
+
+            try{
+
+                const current =
+                    JSON.parse(
+
+                        localStorage.getItem(
+                            "landing_click_events"
+                        ) ||
+
+                        "[]"
+
+                    );
+
+
+                current.push(
+                    eventData
+                );
+
+
+                /*
+                  防止 localStorage 无限增大
+                */
+
+                const limited =
+                    current.slice(
+                        -100
+                    );
+
+
+                localStorage.setItem(
+
+                    "landing_click_events",
+
+                    JSON.stringify(
+                        limited
+                    )
+
+                );
+
+
+            }catch(error){
+
+                console.warn(
+                    "Unable to save event"
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           PAGE RESTORE
+        ====================================================== */
+
         window.addEventListener(
             "pageshow",
-            function () {
+            () => {
 
-                loading?.classList.remove(
-                    "active"
-                );
+                document.body
+                    .classList
+                    .remove(
+                        "menu-open",
+                        "popup-open"
+                    );
+
             }
         );
 
