@@ -37,12 +37,6 @@ document.addEventListener(
             );
 
 
-        const referralButtons =
-            document.querySelectorAll(
-                ".referral"
-            );
-
-
         const loading =
             document.getElementById(
                 "loading"
@@ -56,23 +50,14 @@ document.addEventListener(
 
         function openMenu() {
 
-            if (!sideMenu) {
-                return;
-            }
-
-
-            sideMenu.classList.add(
+            sideMenu?.classList.add(
                 "active"
             );
 
 
-            if (overlay) {
-
-                overlay.classList.add(
-                    "active"
-                );
-
-            }
+            overlay?.classList.add(
+                "active"
+            );
 
 
             document.body.classList.add(
@@ -85,23 +70,14 @@ document.addEventListener(
 
         function closeMenu() {
 
-            if (!sideMenu) {
-                return;
-            }
-
-
-            sideMenu.classList.remove(
+            sideMenu?.classList.remove(
                 "active"
             );
 
 
-            if (overlay) {
-
-                overlay.classList.remove(
-                    "active"
-                );
-
-            }
+            overlay?.classList.remove(
+                "active"
+            );
 
 
             document.body.classList.remove(
@@ -114,13 +90,8 @@ document.addEventListener(
 
         function toggleMenu() {
 
-            if (!sideMenu) {
-                return;
-            }
-
-
             if (
-                sideMenu.classList.contains(
+                sideMenu?.classList.contains(
                     "active"
                 )
             ) {
@@ -137,44 +108,23 @@ document.addEventListener(
 
 
 
-        if (menuButton) {
-
-            menuButton.addEventListener(
-                "click",
-                toggleMenu
-            );
-
-        }
+        menuButton?.addEventListener(
+            "click",
+            toggleMenu
+        );
 
 
-
-        if (overlay) {
-
-            overlay.addEventListener(
-                "click",
-                closeMenu
-            );
-
-        }
+        overlay?.addEventListener(
+            "click",
+            closeMenu
+        );
 
 
+        refreshBtn?.addEventListener(
+            "click",
+            function () {
 
-        /*
-         ESC CLOSE
-        */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key ===
-                    "Escape"
-                ) {
-
-                    closeMenu();
-
-                }
+                window.location.reload();
 
             }
         );
@@ -182,17 +132,15 @@ document.addEventListener(
 
 
         /* =================================================
-           MENU ACTIVE STATE
+           SIDE MENU ACTIVE
         ================================================= */
 
         sideLinks.forEach(
             function (link) {
 
-
                 link.addEventListener(
                     "click",
                     function () {
-
 
                         sideLinks.forEach(
                             function (item) {
@@ -210,37 +158,13 @@ document.addEventListener(
                         );
 
 
-                        const href =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        /*
-                          href="#" 不进行跳转
-                        */
-
                         if (
-                            href === "#"
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        /*
-                          手机点击菜单后关闭
-                        */
-
-                        if (
-                            window.innerWidth <=
-                            999
+                            window.innerWidth <= 999
                         ) {
 
                             setTimeout(
                                 closeMenu,
-                                120
+                                100
                             );
 
                         }
@@ -254,38 +178,220 @@ document.addEventListener(
 
 
         /* =================================================
-           REFRESH BUTTON
+           CONTACT POPUPS
         ================================================= */
 
-        if (refreshBtn) {
+        const popupButtons =
+            document.querySelectorAll(
+                "[data-contact-popup]"
+            );
 
-            refreshBtn.addEventListener(
-                "click",
-                function () {
 
-                    refreshBtn.classList.add(
-                        "refreshing"
+        const contactPopups =
+            document.querySelectorAll(
+                ".contact-popup"
+            );
+
+
+
+        function openPopup(
+            popupId
+        ) {
+
+            const popup =
+                document.getElementById(
+                    popupId
+                );
+
+
+            if (!popup) {
+                return;
+            }
+
+
+            /*
+             CLOSE OTHER POPUP
+            */
+
+            contactPopups.forEach(
+                function (item) {
+
+                    item.classList.remove(
+                        "active"
                     );
 
 
-                    setTimeout(
-                        function () {
-
-                            window.location.reload();
-
-                        },
-                        150
+                    item.setAttribute(
+                        "aria-hidden",
+                        "true"
                     );
 
                 }
+            );
+
+
+            popup.classList.add(
+                "active"
+            );
+
+
+            popup.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "contact-popup-open"
             );
 
         }
 
 
 
+        function closePopup(
+            popup
+        ) {
+
+            if (!popup) {
+                return;
+            }
+
+
+            popup.classList.remove(
+                "active"
+            );
+
+
+            popup.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            if (
+                !document.querySelector(
+                    ".contact-popup.active"
+                )
+            ) {
+
+                document.body.classList.remove(
+                    "contact-popup-open"
+                );
+
+            }
+
+        }
+
+
+
+        popupButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const popupId =
+                            button.dataset
+                                .contactPopup;
+
+
+                        openPopup(
+                            popupId
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        contactPopups.forEach(
+            function (popup) {
+
+                const closeButton =
+                    popup.querySelector(
+                        ".contact-popup-close"
+                    );
+
+
+                const backdrop =
+                    popup.querySelector(
+                        ".contact-popup-backdrop"
+                    );
+
+
+                closeButton?.addEventListener(
+                    "click",
+                    function () {
+
+                        closePopup(
+                            popup
+                        );
+
+                    }
+                );
+
+
+                backdrop?.addEventListener(
+                    "click",
+                    function () {
+
+                        closePopup(
+                            popup
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
         /* =================================================
-           URL PARAMETERS
+           ESC CLOSE
+        ================================================= */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key !== "Escape"
+                ) {
+                    return;
+                }
+
+
+                const activePopup =
+                    document.querySelector(
+                        ".contact-popup.active"
+                    );
+
+
+                if (activePopup) {
+
+                    closePopup(
+                        activePopup
+                    );
+
+                    return;
+                }
+
+
+                closeMenu();
+
+            }
+        );
+
+
+
+        /* =================================================
+           URL TRACKING PARAMETERS
         ================================================= */
 
         const currentParams =
@@ -297,21 +403,13 @@ document.addEventListener(
         const trackingParameters = [
 
             "utm_source",
-
             "utm_medium",
-
             "utm_campaign",
-
             "utm_term",
-
             "utm_content",
-
             "subid",
-
             "clickid",
-
             "fbclid",
-
             "gclid"
 
         ];
@@ -322,9 +420,15 @@ document.addEventListener(
            REFERRAL LINKS
         ================================================= */
 
+        const referralButtons =
+            document.querySelectorAll(
+                ".referral"
+            );
+
+
+
         referralButtons.forEach(
             function (button) {
-
 
                 const originalUrl =
                     button.getAttribute(
@@ -344,13 +448,7 @@ document.addEventListener(
                 }
 
 
-
-                /*
-                 ADD TRACKING PARAMETERS
-                */
-
                 try {
-
 
                     const referralUrl =
                         new URL(
@@ -360,24 +458,22 @@ document.addEventListener(
 
 
                     trackingParameters.forEach(
-                        function (parameter) {
-
+                        function (key) {
 
                             if (
                                 currentParams.has(
-                                    parameter
+                                    key
                                 )
                             ) {
-
 
                                 referralUrl
                                     .searchParams
                                     .set(
 
-                                        parameter,
+                                        key,
 
                                         currentParams.get(
-                                            parameter
+                                            key
                                         )
 
                                     );
@@ -388,112 +484,56 @@ document.addEventListener(
                     );
 
 
-                    button.setAttribute(
-                        "href",
-                        referralUrl.toString()
-                    );
-
+                    button.href =
+                        referralUrl.toString();
 
                 } catch (error) {
-
 
                     console.warn(
                         "Invalid referral URL:",
                         originalUrl
                     );
 
-
                 }
 
 
 
-                /* =================================================
-                   CLICK EVENT
-                ================================================= */
-
                 button.addEventListener(
                     "click",
-                    function (event) {
-
-
-                        const destination =
-                            button.href;
-
-
-                        /*
-                         如果还没换 Referral Link
-                        */
-
-                        if (
-                            !destination ||
-                            destination.includes(
-                                "YOUR-REFERRAL"
-                            )
-                        ) {
-
-                            event.preventDefault();
-
-                            console.warn(
-                                "Please replace your referral link."
-                            );
-
-                            return;
-
-                        }
-
-
-
-                        /*
-                         LOCAL TRACKING
-                        */
+                    function () {
 
                         try {
 
-
                             const clickData = {
-
 
                                 company:
                                     button.dataset.company ||
                                     "Unknown",
 
-
                                 destination:
-                                    destination,
-
+                                    button.href,
 
                                 sourcePage:
                                     window.location.href,
-
 
                                 utmSource:
                                     currentParams.get(
                                         "utm_source"
                                     ) || "",
 
-
                                 utmMedium:
                                     currentParams.get(
                                         "utm_medium"
                                     ) || "",
-
 
                                 utmCampaign:
                                     currentParams.get(
                                         "utm_campaign"
                                     ) || "",
 
-
-                                clickId:
-                                    currentParams.get(
-                                        "clickid"
-                                    ) || "",
-
-
                                 time:
                                     new Date()
-                                    .toISOString()
-
+                                        .toISOString()
 
                             };
 
@@ -509,12 +549,7 @@ document.addEventListener(
                             );
 
 
-
-                            /*
-                             Click counter
-                            */
-
-                            const currentClicks =
+                            const currentCount =
                                 Number(
 
                                     localStorage.getItem(
@@ -529,93 +564,38 @@ document.addEventListener(
                                 "referral_click_count",
 
                                 String(
-                                    currentClicks + 1
+                                    currentCount + 1
                                 )
 
                             );
 
-
                         } catch (error) {
 
-
                             console.warn(
-                                "Local tracking unavailable."
-                            );
-
-
-                        }
-
-
-
-                        /* =================================================
-                           GOOGLE ANALYTICS OPTIONAL
-                        ================================================= */
-
-                        if (
-                            typeof window.gtag ===
-                            "function"
-                        ) {
-
-
-                            window.gtag(
-
-                                "event",
-
-                                "referral_click",
-
-                                {
-
-                                    company:
-                                        button.dataset.company ||
-                                        "Unknown",
-
-                                    utm_source:
-                                        currentParams.get(
-                                            "utm_source"
-                                        ) || ""
-
-                                }
-
+                                "Referral tracking unavailable"
                             );
 
                         }
 
 
-
-                        /* =================================================
-                           LOADING
-                        ================================================= */
-
-                        if (loading) {
+                        loading?.classList.add(
+                            "active"
+                        );
 
 
-                            loading.classList.add(
-                                "active"
-                            );
+                        setTimeout(
+                            function () {
 
+                                loading?.classList.remove(
+                                    "active"
+                                );
 
-                            /*
-                             避免返回网页后 Loading
-                             一直显示
-                            */
-
-                            setTimeout(
-                                function () {
-
-                                    loading.classList.remove(
-                                        "active"
-                                    );
-
-                                },
-                                1800
-                            );
-
-                        }
-
+                            },
+                            1600
+                        );
 
                     }
                 );
-
 
             }
         );
@@ -623,25 +603,100 @@ document.addEventListener(
 
 
         /* =================================================
-           RETURN FROM BACK BUTTON
+           CONTACT ACCOUNT TRACKING
+        ================================================= */
+
+        const contactAccounts =
+            document.querySelectorAll(
+                ".contact-account-item"
+            );
+
+
+
+        contactAccounts.forEach(
+            function (account) {
+
+                account.addEventListener(
+                    "click",
+                    function () {
+
+                        try {
+
+                            const contactData = {
+
+                                type:
+                                    account.dataset
+                                        .contactType ||
+                                    "",
+
+                                name:
+                                    account.dataset
+                                        .contactName ||
+                                    "",
+
+                                destination:
+                                    account.href,
+
+                                sourcePage:
+                                    window.location.href,
+
+                                utmSource:
+                                    currentParams.get(
+                                        "utm_source"
+                                    ) || "",
+
+                                utmCampaign:
+                                    currentParams.get(
+                                        "utm_campaign"
+                                    ) || "",
+
+                                time:
+                                    new Date()
+                                        .toISOString()
+
+                            };
+
+
+                            localStorage.setItem(
+
+                                "last_contact_click",
+
+                                JSON.stringify(
+                                    contactData
+                                )
+
+                            );
+
+                        } catch (error) {
+
+                            console.warn(
+                                "Contact tracking unavailable"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =================================================
+           BACK BUTTON FIX
         ================================================= */
 
         window.addEventListener(
             "pageshow",
             function () {
 
-
-                if (loading) {
-
-                    loading.classList.remove(
-                        "active"
-                    );
-
-                }
+                loading?.classList.remove(
+                    "active"
+                );
 
             }
         );
-
 
 
     }
