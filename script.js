@@ -4,7 +4,7 @@ document.addEventListener(
 
 
         /* =================================================
-           BASIC
+           ELEMENTS
         ================================================= */
 
         const menuButton =
@@ -132,7 +132,7 @@ document.addEventListener(
 
 
         /* =================================================
-           MENU ACTIVE
+           SIDE MENU ACTIVE
         ================================================= */
 
         sideLinks.forEach(
@@ -141,6 +141,7 @@ document.addEventListener(
                 link.addEventListener(
                     "click",
                     function () {
+
 
                         sideLinks.forEach(
                             function (item) {
@@ -178,7 +179,7 @@ document.addEventListener(
 
 
         /* =================================================
-           CONTACT POPUPS
+           CONTACT POPUP
         ================================================= */
 
         const popupButtons =
@@ -209,6 +210,23 @@ document.addEventListener(
                 return;
 
             }
+
+
+            contactPopups.forEach(
+                function (item) {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+
+                    item.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                }
+            );
 
 
             popup.classList.add(
@@ -325,144 +343,6 @@ document.addEventListener(
 
 
         /* =================================================
-           VIDEO POPUP
-        ================================================= */
-
-        const openVideoBtn =
-            document.getElementById(
-                "openVideoBtn"
-            );
-
-
-        const videoPopup =
-            document.getElementById(
-                "videoPopup"
-            );
-
-
-        const videoPopupBackdrop =
-            document.getElementById(
-                "videoPopupBackdrop"
-            );
-
-
-        const closeVideoBtn =
-            document.getElementById(
-                "closeVideoBtn"
-            );
-
-
-        const promoVideo =
-            document.getElementById(
-                "promoVideo"
-            );
-
-
-
-        function openVideoPopup() {
-
-            if (!videoPopup) {
-
-                return;
-
-            }
-
-
-            videoPopup.classList.add(
-                "active"
-            );
-
-
-            videoPopup.setAttribute(
-                "aria-hidden",
-                "false"
-            );
-
-
-            document.body.classList.add(
-                "video-popup-open"
-            );
-
-
-            if (promoVideo) {
-
-                promoVideo.currentTime = 0;
-
-
-                promoVideo
-                    .play()
-                    .catch(
-                        function () {
-
-                            /*
-                              Browser may block
-                              automatic playback.
-                            */
-
-                        }
-                    );
-
-            }
-
-        }
-
-
-
-        function closeVideoPopup() {
-
-            if (!videoPopup) {
-
-                return;
-
-            }
-
-
-            videoPopup.classList.remove(
-                "active"
-            );
-
-
-            videoPopup.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
-
-            document.body.classList.remove(
-                "video-popup-open"
-            );
-
-
-            if (promoVideo) {
-
-                promoVideo.pause();
-
-            }
-
-        }
-
-
-
-        openVideoBtn?.addEventListener(
-            "click",
-            openVideoPopup
-        );
-
-
-        closeVideoBtn?.addEventListener(
-            "click",
-            closeVideoPopup
-        );
-
-
-        videoPopupBackdrop?.addEventListener(
-            "click",
-            closeVideoPopup
-        );
-
-
-
-        /* =================================================
            ESC
         ================================================= */
 
@@ -474,19 +354,6 @@ document.addEventListener(
                 if (
                     event.key !== "Escape"
                 ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    videoPopup?.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    closeVideoPopup();
 
                     return;
 
@@ -553,7 +420,6 @@ document.addEventListener(
             );
 
 
-
         referralButtons.forEach(
             function (button) {
 
@@ -574,7 +440,6 @@ document.addEventListener(
                     return;
 
                 }
-
 
 
                 try {
@@ -628,7 +493,6 @@ document.addEventListener(
                         originalUrl
                     );
 
-
                 }
 
 
@@ -662,6 +526,16 @@ document.addEventListener(
                                             "utm_source"
                                         ) || "",
 
+                                    utmMedium:
+                                        currentParams.get(
+                                            "utm_medium"
+                                        ) || "",
+
+                                    utmCampaign:
+                                        currentParams.get(
+                                            "utm_campaign"
+                                        ) || "",
+
                                     time:
                                         new Date()
                                             .toISOString()
@@ -671,7 +545,29 @@ document.addEventListener(
                             );
 
 
+                            const clickCount =
+                                Number(
+
+                                    localStorage.getItem(
+                                        "referral_click_count"
+                                    ) || 0
+
+                                );
+
+
+                            localStorage.setItem(
+
+                                "referral_click_count",
+
+                                String(
+                                    clickCount + 1
+                                )
+
+                            );
+
+
                         } catch (error) {
+
 
                             console.warn(
                                 "Tracking unavailable."
@@ -693,8 +589,9 @@ document.addEventListener(
                                 );
 
                             },
-                            1500
+                            1200
                         );
+
 
                     }
                 );
@@ -732,21 +629,16 @@ document.addEventListener(
 
                                 JSON.stringify({
 
-                                    type:
-                                        account.dataset
-                                            .contactType ||
-                                        "",
-
-                                    name:
-                                        account.dataset
-                                            .contactName ||
-                                        "",
-
                                     destination:
                                         account.href,
 
                                     sourcePage:
                                         window.location.href,
+
+                                    utmSource:
+                                        currentParams.get(
+                                            "utm_source"
+                                        ) || "",
 
                                     time:
                                         new Date()
@@ -759,11 +651,13 @@ document.addEventListener(
 
                         } catch (error) {
 
+
                             console.warn(
                                 "Contact tracking unavailable."
                             );
 
                         }
+
 
                     }
                 );
@@ -774,50 +668,7 @@ document.addEventListener(
 
 
         /* =================================================
-           VIDEO TRACKING
-        ================================================= */
-
-        promoVideo?.addEventListener(
-            "play",
-            function () {
-
-
-                try {
-
-
-                    localStorage.setItem(
-
-                        "last_video_play",
-
-                        JSON.stringify({
-
-                            sourcePage:
-                                window.location.href,
-
-                            time:
-                                new Date()
-                                    .toISOString()
-
-                        })
-
-                    );
-
-
-                } catch (error) {
-
-                    console.warn(
-                        "Video tracking unavailable."
-                    );
-
-                }
-
-            }
-        );
-
-
-
-        /* =================================================
-           BACK BUTTON FIX
+           BACK BUTTON
         ================================================= */
 
         window.addEventListener(
