@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -13,36 +14,7 @@
 
     <meta
         name="description"
-        content="Discover our latest promotions, partners and entertainment."
-    >
-
-    <meta
-        name="keywords"
-        content="promotion, entertainment, official platform"
-    >
-
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:type" content="website">
-
-    <meta
-        property="og:title"
-        content="Your Brand | Official Promotion"
-    >
-
-    <meta
-        property="og:description"
-        content="Discover our latest promotions and entertainment."
-    >
-
-    <meta
-        property="og:image"
-        content="https://i.imgur.com/YOUR-SHARE-IMAGE.jpg"
-    >
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
+        content="Official promotion landing page."
     >
 
     <link
@@ -66,38 +38,6 @@
         href="style.css"
     >
 
-
-    <!-- =====================================================
-         OPTIONAL GOOGLE ANALYTICS 4
-
-         如果你以后有 GA4 ID，例如：
-         G-ABC123456
-
-         把下面代码取消注释，并换成自己的 ID
-    ====================================================== -->
-
-    <!--
-    <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-YOUR-ID">
-    </script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag(){
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-
-        gtag(
-            "config",
-            "G-YOUR-ID"
-        );
-    </script>
-    -->
-
 </head>
 
 
@@ -108,72 +48,9 @@
      WALLPAPER
 ===================================================== -->
 
-<div
-    class="page-wallpaper"
-    aria-hidden="true"
-></div>
+<div class="page-wallpaper"></div>
 
-
-<div
-    class="page-overlay"
-    aria-hidden="true"
-></div>
-
-
-
-<!-- =====================================================
-     PARTICLES
-===================================================== -->
-
-<canvas
-    id="particleCanvas"
-    class="particle-canvas"
-    aria-hidden="true"
-></canvas>
-
-
-
-<!-- =====================================================
-     MOUSE GLOW
-===================================================== -->
-
-<div
-    id="mouseGlow"
-    class="mouse-glow"
-    aria-hidden="true"
-></div>
-
-
-
-<!-- =====================================================
-     OPENING LOADER
-===================================================== -->
-
-<div
-    id="openingLoader"
-    class="opening-loader"
->
-
-    <div class="opening-logo">
-
-        <img
-            src="https://i.imgur.com/YOUR-LOGO.png"
-            alt="Brand Logo"
-        >
-
-    </div>
-
-
-    <div class="opening-title">
-        YOUR BRAND
-    </div>
-
-
-    <div class="opening-line">
-        <span></span>
-    </div>
-
-</div>
+<div class="page-overlay"></div>
 
 
 
@@ -181,80 +58,39 @@
      TOP BAR
 ===================================================== -->
 
-<div class="top-user-bar">
+<div class="top-bar">
 
-    <div class="user-box">
+    <div class="top-brand">
 
-        <span class="user-icon">
+        <span class="top-status"></span>
 
-            <svg viewBox="0 0 24 24">
-
-                <circle
-                    cx="12"
-                    cy="8"
-                    r="3"
-                ></circle>
-
-                <path
-                    d="M5 20C5.5 15.5 8 13.5 12 13.5C16 13.5 18.5 15.5 19 20"
-                ></path>
-
-            </svg>
-
-        </span>
-
-
-        <span class="user-name">
+        <span>
             Official
         </span>
 
     </div>
 
 
-
     <button
         id="refreshBtn"
-        class="top-icon-btn"
+        class="top-button"
         type="button"
         aria-label="Refresh"
     >
 
-        <svg viewBox="0 0 24 24">
-
-            <path
-                d="M20 11A8 8 0 1 0 18 16"
-            ></path>
-
-            <path
-                d="M20 5V11H14"
-            ></path>
-
-        </svg>
+        ↻
 
     </button>
 
 
-
     <button
         id="menuButton"
-        class="top-icon-btn"
+        class="top-button"
         type="button"
-        aria-label="Open menu"
+        aria-label="Menu"
     >
 
-        <svg viewBox="0 0 24 24">
-
-            <path d="M10 6H20"></path>
-
-            <path d="M10 12H20"></path>
-
-            <path d="M10 18H20"></path>
-
-            <path
-                d="M4 8L7 12L4 16"
-            ></path>
-
-        </svg>
+        ☷
 
     </button>
 
@@ -288,8 +124,7 @@
 
             <img
                 src="https://i.imgur.com/YOUR-LOGO.png"
-                alt="Brand Logo"
-                class="side-logo"
+                alt="Logo"
             >
 
         </div>
@@ -297,13 +132,13 @@
 
         <div>
 
-            <div class="brand-name">
+            <strong>
                 Your Brand
-            </div>
+            </strong>
 
-            <div class="brand-subtitle">
+            <span>
                 Official Promotion
-            </div>
+            </span>
 
         </div>
 
@@ -311,226 +146,89 @@
 
 
 
-    <div class="side-menu-scroll">
-
-        <nav class="side-nav">
-
-
-            <a
-                href="#home"
-                class="side-link active"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M3 11L12 4L21 11"
-                        ></path>
-
-                        <path
-                            d="M5 10V20H19V10"
-                        ></path>
-
-                        <path
-                            d="M9 20V14H15V20"
-                        ></path>
-
-                    </svg>
-
-                </span>
-
-                Home
-
-            </a>
-
-
-
-            <a
-                href="#promotion"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M4 13L14 4L20 10L11 19H4V13Z"
-                        ></path>
-
-                    </svg>
-
-                </span>
-
-                Promotion
-
-            </a>
-
-
-
-            <a
-                href="#stats"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path d="M5 20V12"></path>
-
-                        <path d="M12 20V5"></path>
-
-                        <path d="M19 20V9"></path>
-
-                    </svg>
-
-                </span>
-
-                Statistics
-
-            </a>
-
-
-
-            <a
-                href="#why-us"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M12 3L14.5 8L20 9L16 13L17 19L12 16L7 19L8 13L4 9L9.5 8L12 3Z"
-                        ></path>
-
-                    </svg>
-
-                </span>
-
-                Why Us
-
-            </a>
-
-
-
-            <a
-                href="#about"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="9"
-                        ></circle>
-
-                        <path d="M12 10V17"></path>
-
-                        <path d="M12 7H12.01"></path>
-
-                    </svg>
-
-                </span>
-
-                About
-
-            </a>
-
-
-
-            <a
-                href="#contact"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M4 5H20V17H8L4 20V5Z"
-                        ></path>
-
-                    </svg>
-
-                </span>
-
-                Support
-
-            </a>
-
-
-
-            <a
-                href="#official-games"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <rect
-                            x="4"
-                            y="6"
-                            width="16"
-                            height="12"
-                            rx="4"
-                        ></rect>
-
-                        <path d="M8 12H12"></path>
-
-                        <path d="M10 10V14"></path>
-
-                        <circle
-                            cx="16"
-                            cy="11"
-                            r=".6"
-                        ></circle>
-
-                        <circle
-                            cx="18"
-                            cy="13"
-                            r=".6"
-                        ></circle>
-
-                    </svg>
-
-                </span>
-
-                Games
-
-            </a>
-
-
-        </nav>
-
-    </div>
+    <nav class="side-nav">
+
+
+        <a
+            href="#home"
+            class="side-link active"
+        >
+            <span>⌂</span>
+            Home
+        </a>
+
+
+        <a
+            href="#promotion"
+            class="side-link"
+        >
+            <span>✦</span>
+            Promotion
+        </a>
+
+
+        <a
+            href="#traffic"
+            class="side-link"
+        >
+            <span>▥</span>
+            Traffic
+        </a>
+
+
+        <a
+            href="#why-us"
+            class="side-link"
+        >
+            <span>✓</span>
+            Why Us
+        </a>
+
+
+        <a
+            href="#about"
+            class="side-link"
+        >
+            <span>ⓘ</span>
+            About
+        </a>
+
+
+        <a
+            href="#contact"
+            class="side-link"
+        >
+            <span>✉</span>
+            Contact
+        </a>
+
+
+        <a
+            href="#games"
+            class="side-link"
+        >
+            <span>◇</span>
+            Games
+        </a>
+
+
+    </nav>
 
 
 
     <div class="side-bottom">
 
-        <div class="side-status">
-
-            <span class="online-dot"></span>
-
-            Online
-
-        </div>
-
         <span>
-            v3.0
+
+            <i></i>
+
+            Platform Online
+
         </span>
+
+        <small>
+            v4.0
+        </small>
 
     </div>
 
@@ -552,46 +250,29 @@
          HERO
     ====================================================== -->
 
-    <section class="hero reveal">
+    <section class="hero">
 
-        <div class="hero-badge">
-
-            <span class="hero-badge-dot"></span>
-
-            OFFICIAL PLATFORM
-
-        </div>
+        <span class="hero-tag">
+            OFFICIAL PROMOTION
+        </span>
 
 
         <h1>
-
-            Discover Our
-
-            <span>
-                Exclusive Promotions
-            </span>
-
+            Exclusive Promotions
         </h1>
 
 
-        <p class="hero-description">
-
-            Explore our selected partners,
-            latest campaigns and premium entertainment.
-
+        <p>
+            Choose your preferred company below.
         </p>
 
 
         <a
             href="#promotion"
-            class="hero-cta"
+            class="hero-button"
         >
 
-            Explore Now
-
-            <span>
-                ↓
-            </span>
+            Explore Now ↓
 
         </a>
 
@@ -605,24 +286,22 @@
 
     <section
         id="promotion"
-        class="cards"
+        class="company-grid"
     >
 
 
-        <!-- ===============================
-             CARD 1
-        ================================ -->
+        <!-- COMPANY 1 -->
 
-        <article
-            class="company-card reveal tilt-card"
-        >
+        <article class="company-card">
 
-            <span class="card-top-line"></span>
+
+            <span class="card-line"></span>
+
 
             <div class="company-image">
 
                 <img
-                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-1.png"
+                    src="https://i.imgur.com/YOUR-COMPANY-1.png"
                     alt="Company One"
                 >
 
@@ -631,7 +310,7 @@
 
             <div class="company-content">
 
-                <span class="partner-badge">
+                <span class="company-small">
                     OFFICIAL PARTNER
                 </span>
 
@@ -648,15 +327,13 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-1.com"
-                    class="visit-button referral"
+                    class="visit-button referral-link"
                     data-company="Company One"
                 >
 
-                    <span>
-                        Visit Now
-                    </span>
+                    Visit Now
 
-                    <span class="button-arrow">
+                    <span>
                         →
                     </span>
 
@@ -668,20 +345,18 @@
 
 
 
-        <!-- ===============================
-             CARD 2
-        ================================ -->
+        <!-- COMPANY 2 -->
 
-        <article
-            class="company-card reveal tilt-card"
-        >
+        <article class="company-card">
 
-            <span class="card-top-line"></span>
+
+            <span class="card-line"></span>
+
 
             <div class="company-image">
 
                 <img
-                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-2.png"
+                    src="https://i.imgur.com/YOUR-COMPANY-2.png"
                     alt="Company Two"
                 >
 
@@ -690,7 +365,7 @@
 
             <div class="company-content">
 
-                <span class="partner-badge">
+                <span class="company-small">
                     OFFICIAL PARTNER
                 </span>
 
@@ -707,15 +382,13 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-2.com"
-                    class="visit-button referral"
+                    class="visit-button referral-link"
                     data-company="Company Two"
                 >
 
-                    <span>
-                        Visit Now
-                    </span>
+                    Visit Now
 
-                    <span class="button-arrow">
+                    <span>
                         →
                     </span>
 
@@ -727,20 +400,18 @@
 
 
 
-        <!-- ===============================
-             CARD 3
-        ================================ -->
+        <!-- COMPANY 3 -->
 
-        <article
-            class="company-card reveal tilt-card"
-        >
+        <article class="company-card">
 
-            <span class="card-top-line"></span>
+
+            <span class="card-line"></span>
+
 
             <div class="company-image">
 
                 <img
-                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-3.png"
+                    src="https://i.imgur.com/YOUR-COMPANY-3.png"
                     alt="Company Three"
                 >
 
@@ -749,7 +420,7 @@
 
             <div class="company-content">
 
-                <span class="partner-badge">
+                <span class="company-small">
                     OFFICIAL PARTNER
                 </span>
 
@@ -766,15 +437,13 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-3.com"
-                    class="visit-button referral"
+                    class="visit-button referral-link"
                     data-company="Company Three"
                 >
 
-                    <span>
-                        Visit Now
-                    </span>
+                    Visit Now
 
-                    <span class="button-arrow">
+                    <span>
                         →
                     </span>
 
@@ -786,20 +455,18 @@
 
 
 
-        <!-- ===============================
-             CARD 4
-        ================================ -->
+        <!-- COMPANY 4 -->
 
-        <article
-            class="company-card reveal tilt-card"
-        >
+        <article class="company-card">
 
-            <span class="card-top-line"></span>
+
+            <span class="card-line"></span>
+
 
             <div class="company-image">
 
                 <img
-                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-4.png"
+                    src="https://i.imgur.com/YOUR-COMPANY-4.png"
                     alt="Company Four"
                 >
 
@@ -808,7 +475,7 @@
 
             <div class="company-content">
 
-                <span class="partner-badge">
+                <span class="company-small">
                     OFFICIAL PARTNER
                 </span>
 
@@ -819,21 +486,19 @@
 
 
                 <p>
-                    Check out our latest promotion.
+                    Check out our latest offer.
                 </p>
 
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-4.com"
-                    class="visit-button referral"
+                    class="visit-button referral-link"
                     data-company="Company Four"
                 >
 
-                    <span>
-                        Visit Now
-                    </span>
+                    Visit Now
 
-                    <span class="button-arrow">
+                    <span>
                         →
                     </span>
 
@@ -845,20 +510,18 @@
 
 
 
-        <!-- ===============================
-             CARD 5
-        ================================ -->
+        <!-- COMPANY 5 -->
 
-        <article
-            class="company-card reveal tilt-card"
-        >
+        <article class="company-card">
 
-            <span class="card-top-line"></span>
+
+            <span class="card-line"></span>
+
 
             <div class="company-image">
 
                 <img
-                    src="https://i.imgur.com/YOUR-COMPANY-IMAGE-5.png"
+                    src="https://i.imgur.com/YOUR-COMPANY-5.png"
                     alt="Company Five"
                 >
 
@@ -867,7 +530,7 @@
 
             <div class="company-content">
 
-                <span class="partner-badge">
+                <span class="company-small">
                     OFFICIAL PARTNER
                 </span>
 
@@ -884,15 +547,13 @@
 
                 <a
                     href="https://YOUR-REFERRAL-LINK-5.com"
-                    class="visit-button referral"
+                    class="visit-button referral-link"
                     data-company="Company Five"
                 >
 
-                    <span>
-                        Visit Now
-                    </span>
+                    Visit Now
 
-                    <span class="button-arrow">
+                    <span>
                         →
                     </span>
 
@@ -908,90 +569,559 @@
 
 
     <!-- =====================================================
-         STATISTICS
+         TRAFFIC ANALYTICS
     ====================================================== -->
 
     <section
-        id="stats"
-        class="stats-section reveal"
+        id="traffic"
+        class="premium-section traffic-section"
     >
 
-        <div class="section-heading">
+
+        <div class="section-title">
 
             <span>
-                PLATFORM
+                TRAFFIC ANALYTICS
             </span>
 
             <h2>
-                Trusted Experience
+                Where Our Visitors Come From
             </h2>
+
+            <p>
+                Live traffic source overview
+            </p>
 
         </div>
 
 
-        <div class="stats-grid">
+
+        <!-- SUMMARY -->
+
+        <div class="traffic-summary">
 
 
-            <div class="stat-card">
-
-                <strong
-                    class="counter"
-                    data-target="50000"
-                >
-                    0
-                </strong>
+            <div>
 
                 <span>
-                    Members
+                    Total Visitors
                 </span>
+
+                <strong id="totalVisitors">
+                    0
+                </strong>
 
             </div>
 
 
-            <div class="stat-card">
+            <i></i>
 
-                <strong
-                    class="counter"
-                    data-target="24"
-                >
-                    0
-                </strong>
+
+            <div>
 
                 <span>
-                    Hours Support
+                    Top Source
                 </span>
+
+                <strong id="topSource">
+                    -
+                </strong>
 
             </div>
 
 
-            <div class="stat-card">
+        </div>
 
-                <strong
-                    class="counter"
-                    data-target="100"
-                >
-                    0
-                </strong>
 
-                <span>
-                    Promotions
-                </span>
+
+        <!-- TRAFFIC LIST -->
+
+        <div class="traffic-list">
+
+
+            <!-- FACEBOOK -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            f
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Facebook
+                            </strong>
+
+                            <span>
+                                Social Media
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="facebook"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="facebook"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="facebook"
+                    ></div>
+
+                </div>
 
             </div>
 
 
-            <div class="stat-card">
 
-                <strong
-                    class="counter"
-                    data-target="99"
-                >
-                    0
-                </strong>
+            <!-- TIKTOK -->
 
-                <span>
-                    Service %
-                </span>
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            ♪
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                TikTok
+                            </strong>
+
+                            <span>
+                                Social Media
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="tiktok"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="tiktok"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="tiktok"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INSTAGRAM -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            ◎
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Instagram
+                            </strong>
+
+                            <span>
+                                Social Media
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="instagram"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="instagram"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="instagram"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TELEGRAM -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            ✈
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Telegram
+                            </strong>
+
+                            <span>
+                                Messaging
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="telegram"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="telegram"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="telegram"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- YOUTUBE -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            ▶
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                YouTube
+                            </strong>
+
+                            <span>
+                                Social Media
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="youtube"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="youtube"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="youtube"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- GOOGLE -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            G
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Google
+                            </strong>
+
+                            <span>
+                                Search
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="google"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="google"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="google"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DIRECT -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            ↗
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Direct
+                            </strong>
+
+                            <span>
+                                Direct Visit
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="direct"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="direct"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="direct"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OTHER -->
+
+            <div class="traffic-item">
+
+                <div class="traffic-head">
+
+
+                    <div class="traffic-name">
+
+                        <div class="traffic-icon">
+                            +
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Other
+                            </strong>
+
+                            <span>
+                                Other Sources
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="traffic-number">
+
+                        <strong
+                            data-count="other"
+                        >
+                            0
+                        </strong>
+
+                        <span
+                            data-percent="other"
+                        >
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="range-bar">
+
+                    <div
+                        class="range-fill"
+                        data-bar="other"
+                    ></div>
+
+                </div>
 
             </div>
 
@@ -1008,13 +1138,13 @@
 
     <section
         id="why-us"
-        class="premium-section reveal"
+        class="premium-section"
     >
 
-        <div class="section-heading gold-heading">
+        <div class="section-title">
 
-            <span>
-                ◆ WHY CHOOSE US
+            <span class="gold-text">
+                ◆ WHY US
             </span>
 
             <h2>
@@ -1029,18 +1159,18 @@
 
             <div class="why-card">
 
-                <span class="why-check">
+                <div class="why-icon">
                     ✓
-                </span>
+                </div>
 
                 <div>
 
-                    <h3>
+                    <strong>
                         Exclusive Rewards
-                    </h3>
+                    </strong>
 
                     <p>
-                        Premium campaigns and member benefits.
+                        Premium benefits and promotions.
                     </p>
 
                 </div>
@@ -1050,18 +1180,18 @@
 
             <div class="why-card">
 
-                <span class="why-check">
+                <div class="why-icon">
                     ✓
-                </span>
+                </div>
 
                 <div>
 
-                    <h3>
+                    <strong>
                         Fast Service
-                    </h3>
+                    </strong>
 
                     <p>
-                        Quick and convenient processing.
+                        Quick and convenient support.
                     </p>
 
                 </div>
@@ -1071,18 +1201,18 @@
 
             <div class="why-card">
 
-                <span class="why-check">
+                <div class="why-icon">
                     ✓
-                </span>
+                </div>
 
                 <div>
 
-                    <h3>
+                    <strong>
                         VIP Privileges
-                    </h3>
+                    </strong>
 
                     <p>
-                        Exclusive benefits for selected members.
+                        Exclusive member privileges.
                     </p>
 
                 </div>
@@ -1092,18 +1222,18 @@
 
             <div class="why-card">
 
-                <span class="why-check">
+                <div class="why-icon">
                     ✓
-                </span>
+                </div>
 
                 <div>
 
-                    <h3>
+                    <strong>
                         24/7 Assistance
-                    </h3>
+                    </strong>
 
                     <p>
-                        Professional customer support anytime.
+                        Professional support anytime.
                     </p>
 
                 </div>
@@ -1123,7 +1253,7 @@
 
     <section
         id="about"
-        class="premium-section about-section reveal"
+        class="premium-section about-section"
     >
 
         <div class="about-heading">
@@ -1141,16 +1271,15 @@
 
         <p>
 
-            Your Brand delivers a premium online
-            entertainment experience with exciting
-            content, exclusive promotions and
-            professional customer support available
-            around the clock.
+            Your Brand delivers a premium online entertainment
+            experience with exclusive promotions and professional
+            customer support available around the clock.
 
         </p>
 
 
-        <div class="platform-status">
+        <div class="about-status">
+
 
             <div>
 
@@ -1161,18 +1290,19 @@
             </div>
 
 
-            <span class="status-divider"></span>
+            <i></i>
 
 
             <div>
 
-                <span class="age-circle">
+                <span class="age-badge">
                     18+
                 </span>
 
                 Responsible Entertainment
 
             </div>
+
 
         </div>
 
@@ -1186,10 +1316,10 @@
 
     <section
         id="contact"
-        class="premium-section contact-section reveal"
+        class="premium-section contact-section"
     >
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <span>
                 SUPPORT
@@ -1199,15 +1329,11 @@
                 Contact Us
             </h2>
 
+            <p>
+                Need assistance? Choose your preferred support channel.
+            </p>
+
         </div>
-
-
-        <p>
-
-            Need assistance?
-            Choose your preferred support channel.
-
-        </p>
 
 
         <div class="contact-buttons">
@@ -1215,7 +1341,7 @@
 
             <button
                 type="button"
-                class="contact-main-button"
+                class="contact-button"
                 data-popup="whatsappPopup"
             >
 
@@ -1226,7 +1352,7 @@
 
             <button
                 type="button"
-                class="contact-main-button"
+                class="contact-button"
                 data-popup="telegramPopup"
             >
 
@@ -1246,13 +1372,13 @@
     ====================================================== -->
 
     <section
-        id="official-games"
-        class="premium-section game-section reveal"
+        id="games"
+        class="premium-section games-section"
     >
 
-        <div class="section-heading gold-heading">
+        <div class="section-title">
 
-            <span>
+            <span class="gold-text">
                 OFFICIAL GAMES
             </span>
 
@@ -1260,17 +1386,15 @@
                 Explore Our Games
             </h2>
 
+            <p>
+                Discover our entertainment providers.
+            </p>
+
         </div>
 
 
-        <p class="game-description">
-
-            Discover our latest entertainment and providers.
-
-        </p>
-
-
         <div class="game-marquee">
+
 
             <div class="game-track">
 
@@ -1278,118 +1402,54 @@
                 <!-- GROUP 1 -->
 
                 <div class="game-logo">
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-1.png"
-                        alt="Game Provider 1"
-                    >
+                    <img src="https://i.imgur.com/YOUR-GAME-1.png" alt="Game 1">
                 </div>
 
-
                 <div class="game-logo">
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-2.png"
-                        alt="Game Provider 2"
-                    >
+                    <img src="https://i.imgur.com/YOUR-GAME-2.png" alt="Game 2">
                 </div>
 
-
                 <div class="game-logo">
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-3.png"
-                        alt="Game Provider 3"
-                    >
+                    <img src="https://i.imgur.com/YOUR-GAME-3.png" alt="Game 3">
                 </div>
 
-
                 <div class="game-logo">
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-4.png"
-                        alt="Game Provider 4"
-                    >
+                    <img src="https://i.imgur.com/YOUR-GAME-4.png" alt="Game 4">
                 </div>
 
-
                 <div class="game-logo">
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-5.png"
-                        alt="Game Provider 5"
-                    >
+                    <img src="https://i.imgur.com/YOUR-GAME-5.png" alt="Game 5">
                 </div>
 
-
                 <div class="game-logo">
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-6.png"
-                        alt="Game Provider 6"
-                    >
+                    <img src="https://i.imgur.com/YOUR-GAME-6.png" alt="Game 6">
                 </div>
 
 
                 <!-- GROUP 2 -->
 
-                <div
-                    class="game-logo"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-1.png"
-                        alt=""
-                    >
+                <div class="game-logo">
+                    <img src="https://i.imgur.com/YOUR-GAME-1.png" alt="">
                 </div>
 
-
-                <div
-                    class="game-logo"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-2.png"
-                        alt=""
-                    >
+                <div class="game-logo">
+                    <img src="https://i.imgur.com/YOUR-GAME-2.png" alt="">
                 </div>
 
-
-                <div
-                    class="game-logo"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-3.png"
-                        alt=""
-                    >
+                <div class="game-logo">
+                    <img src="https://i.imgur.com/YOUR-GAME-3.png" alt="">
                 </div>
 
-
-                <div
-                    class="game-logo"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-4.png"
-                        alt=""
-                    >
+                <div class="game-logo">
+                    <img src="https://i.imgur.com/YOUR-GAME-4.png" alt="">
                 </div>
 
-
-                <div
-                    class="game-logo"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-5.png"
-                        alt=""
-                    >
+                <div class="game-logo">
+                    <img src="https://i.imgur.com/YOUR-GAME-5.png" alt="">
                 </div>
 
-
-                <div
-                    class="game-logo"
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.imgur.com/YOUR-GAME-6.png"
-                        alt=""
-                    >
+                <div class="game-logo">
+                    <img src="https://i.imgur.com/YOUR-GAME-6.png" alt="">
                 </div>
 
 
@@ -1407,18 +1467,8 @@
 
     <footer class="footer">
 
-        <div class="footer-logo">
-
-            <img
-                src="https://i.imgur.com/YOUR-LOGO.png"
-                alt="Brand Logo"
-            >
-
-        </div>
-
-
         <p>
-            Copyright © 2026 5G88. All Rights Reserved.
+            © 2026 Your Brand. All Rights Reserved.
         </p>
 
     </footer>
@@ -1440,7 +1490,8 @@
     <div class="popup-backdrop"></div>
 
 
-    <div class="popup-dialog">
+    <div class="popup-box">
+
 
         <div class="popup-header">
 
@@ -1467,100 +1518,49 @@
         </div>
 
 
-        <p class="popup-description">
-            Select one of our available support accounts.
-        </p>
+        <a
+            href="https://wa.me/60123456789"
+            target="_blank"
+            class="support-link track-contact"
+            data-channel="WhatsApp 01"
+        >
+
+            <span>
+                WhatsApp 01
+            </span>
+
+            <small>
+                +60 12-345 6789
+            </small>
+
+            <b>
+                ›
+            </b>
+
+        </a>
 
 
-        <div class="popup-list">
+        <a
+            href="https://wa.me/60198765432"
+            target="_blank"
+            class="support-link track-contact"
+            data-channel="WhatsApp 02"
+        >
 
+            <span>
+                WhatsApp 02
+            </span>
 
-            <a
-                href="https://wa.me/60123456789"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="support-item track-contact"
-                data-channel="WhatsApp 01"
-            >
+            <small>
+                +60 19-876 5432
+            </small>
 
-                <span class="support-icon whatsapp-icon">
-                    W
-                </span>
+            <b>
+                ›
+            </b>
 
+        </a>
 
-                <span class="support-info">
-
-                    <strong>
-                        WhatsApp 01
-                    </strong>
-
-                    <small>
-                        +60 12-345 6789
-                    </small>
-
-                </span>
-
-
-                <span class="support-online">
-
-                    <i></i>
-
-                    Online
-
-                </span>
-
-
-                <span class="support-arrow">
-                    ›
-                </span>
-
-            </a>
-
-
-
-            <a
-                href="https://wa.me/60198765432"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="support-item track-contact"
-                data-channel="WhatsApp 02"
-            >
-
-                <span class="support-icon whatsapp-icon">
-                    W
-                </span>
-
-
-                <span class="support-info">
-
-                    <strong>
-                        WhatsApp 02
-                    </strong>
-
-                    <small>
-                        +60 19-876 5432
-                    </small>
-
-                </span>
-
-
-                <span class="support-online">
-
-                    <i></i>
-
-                    Online
-
-                </span>
-
-
-                <span class="support-arrow">
-                    ›
-                </span>
-
-            </a>
-
-
-        </div>
 
     </div>
 
@@ -1580,7 +1580,8 @@
     <div class="popup-backdrop"></div>
 
 
-    <div class="popup-dialog">
+    <div class="popup-box">
+
 
         <div class="popup-header">
 
@@ -1607,100 +1608,49 @@
         </div>
 
 
-        <p class="popup-description">
-            Select one of our available support accounts.
-        </p>
+        <a
+            href="https://t.me/YOUR_TELEGRAM_1"
+            target="_blank"
+            class="support-link track-contact"
+            data-channel="Telegram 01"
+        >
+
+            <span>
+                Telegram 01
+            </span>
+
+            <small>
+                @yourtelegram1
+            </small>
+
+            <b>
+                ›
+            </b>
+
+        </a>
 
 
-        <div class="popup-list">
+        <a
+            href="https://t.me/YOUR_TELEGRAM_2"
+            target="_blank"
+            class="support-link track-contact"
+            data-channel="Telegram 02"
+        >
 
+            <span>
+                Telegram 02
+            </span>
 
-            <a
-                href="https://t.me/YOUR_TELEGRAM_1"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="support-item track-contact"
-                data-channel="Telegram 01"
-            >
+            <small>
+                @yourtelegram2
+            </small>
 
-                <span class="support-icon telegram-icon">
-                    T
-                </span>
+            <b>
+                ›
+            </b>
 
+        </a>
 
-                <span class="support-info">
-
-                    <strong>
-                        Telegram 01
-                    </strong>
-
-                    <small>
-                        @yourtelegram1
-                    </small>
-
-                </span>
-
-
-                <span class="support-online">
-
-                    <i></i>
-
-                    Online
-
-                </span>
-
-
-                <span class="support-arrow">
-                    ›
-                </span>
-
-            </a>
-
-
-
-            <a
-                href="https://t.me/YOUR_TELEGRAM_2"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="support-item track-contact"
-                data-channel="Telegram 02"
-            >
-
-                <span class="support-icon telegram-icon">
-                    T
-                </span>
-
-
-                <span class="support-info">
-
-                    <strong>
-                        Telegram 02
-                    </strong>
-
-                    <small>
-                        @yourtelegram2
-                    </small>
-
-                </span>
-
-
-                <span class="support-online">
-
-                    <i></i>
-
-                    Online
-
-                </span>
-
-
-                <span class="support-arrow">
-                    ›
-                </span>
-
-            </a>
-
-
-        </div>
 
     </div>
 
@@ -1708,22 +1658,11 @@
 
 
 
-<!-- =====================================================
-     BACK TO TOP
-===================================================== -->
+<script
+    type="module"
+    src="script.js"
+></script>
 
-<button
-    id="backToTop"
-    class="back-to-top"
-    type="button"
-    aria-label="Back to top"
->
-    ↑
-</button>
-
-
-
-<script src="script.js"></script>
 
 </body>
 
