@@ -1,5 +1,5 @@
 /* =========================================================
-   FIREBASE
+   FIREBASE IMPORTS
 ========================================================= */
 
 import {
@@ -18,11 +18,10 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 
 
-
 /* =========================================================
    FIREBASE CONFIG
 
-   !!! 换成你自己的 Firebase Config !!!
+   换成你自己的 Firebase Config
 ========================================================= */
 
 const firebaseConfig = {
@@ -51,7 +50,6 @@ const firebaseConfig = {
 };
 
 
-
 const app =
     initializeApp(
         firebaseConfig
@@ -62,160 +60,8 @@ const db =
     getDatabase(app);
 
 
-
 /* =========================================================
-   ELEMENTS
-========================================================= */
-
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
-
-
-const sideMenu =
-    document.getElementById(
-        "sideMenu"
-    );
-
-
-const sideOverlay =
-    document.getElementById(
-        "sideOverlay"
-    );
-
-
-const refreshBtn =
-    document.getElementById(
-        "refreshBtn"
-    );
-
-
-
-/* =========================================================
-   SIDE MENU
-========================================================= */
-
-function openMenu(){
-
-    sideMenu?.classList.add(
-        "active"
-    );
-
-    sideOverlay?.classList.add(
-        "active"
-    );
-
-    document.body.classList.add(
-        "menu-open"
-    );
-
-}
-
-
-function closeMenu(){
-
-    sideMenu?.classList.remove(
-        "active"
-    );
-
-    sideOverlay?.classList.remove(
-        "active"
-    );
-
-    document.body.classList.remove(
-        "menu-open"
-    );
-
-}
-
-
-menuButton?.addEventListener(
-    "click",
-    () => {
-
-        if(
-            sideMenu?.classList.contains(
-                "active"
-            )
-        ){
-
-            closeMenu();
-
-        }else{
-
-            openMenu();
-
-        }
-
-    }
-);
-
-
-sideOverlay?.addEventListener(
-    "click",
-    closeMenu
-);
-
-
-refreshBtn?.addEventListener(
-    "click",
-    () => {
-
-        window.location.reload();
-
-    }
-);
-
-
-
-document
-    .querySelectorAll(
-        ".side-link"
-    )
-    .forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-
-                    document
-                        .querySelectorAll(
-                            ".side-link"
-                        )
-                        .forEach(
-                            item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                    link.classList.add(
-                        "active"
-                    );
-
-
-                    setTimeout(
-                        closeMenu,
-                        100
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-
-/* =========================================================
-   CONTACT POPUP
+   CONTACT POPUPS
 ========================================================= */
 
 function closePopups(){
@@ -244,7 +90,6 @@ function closePopups(){
 }
 
 
-
 document
     .querySelectorAll(
         "[data-popup]"
@@ -255,7 +100,6 @@ document
             button.addEventListener(
                 "click",
                 () => {
-
 
                     const popup =
                         document.getElementById(
@@ -289,7 +133,6 @@ document
     );
 
 
-
 document
     .querySelectorAll(
         ".popup-close"
@@ -304,7 +147,6 @@ document
 
         }
     );
-
 
 
 document
@@ -323,7 +165,6 @@ document
     );
 
 
-
 document.addEventListener(
     "keydown",
     event => {
@@ -335,17 +176,14 @@ document.addEventListener(
 
             closePopups();
 
-            closeMenu();
-
         }
 
     }
 );
 
 
-
 /* =========================================================
-   SOURCE DETECTION
+   URL PARAMETERS
 ========================================================= */
 
 const params =
@@ -354,15 +192,16 @@ const params =
     );
 
 
+/* =========================================================
+   NORMALIZE SOURCE
+========================================================= */
 
 function normalizeSource(
     value
 ){
 
     if(!value){
-
         return null;
-
     }
 
 
@@ -372,103 +211,69 @@ function normalizeSource(
             .trim();
 
 
-
     if(
-        source.includes(
-            "facebook"
-        ) ||
+        source.includes("facebook") ||
         source === "fb"
     ){
-
         return "facebook";
-
     }
 
 
     if(
-        source.includes(
-            "tiktok"
-        ) ||
+        source.includes("tiktok") ||
         source === "tt"
     ){
-
         return "tiktok";
-
     }
 
 
     if(
-        source.includes(
-            "instagram"
-        ) ||
+        source.includes("instagram") ||
         source === "ig"
     ){
-
         return "instagram";
-
     }
 
 
     if(
-        source.includes(
-            "telegram"
-        ) ||
+        source.includes("telegram") ||
         source === "tg"
     ){
-
         return "telegram";
-
     }
 
 
     if(
-        source.includes(
-            "youtube"
-        ) ||
+        source.includes("youtube") ||
         source === "yt"
     ){
-
         return "youtube";
-
     }
 
 
     if(
-        source.includes(
-            "google"
-        )
+        source.includes("google")
     ){
-
         return "google";
-
     }
 
 
     if(
         source === "direct"
     ){
-
         return "direct";
-
     }
 
 
     return "other";
-
 }
 
 
-
 /* =========================================================
-   GET TRAFFIC SOURCE
+   DETECT SOURCE
 ========================================================= */
 
 function detectTrafficSource(){
-
-    /*
-       Priority 1:
-       utm_source
-    */
 
     const utmSource =
         normalizeSource(
@@ -479,26 +284,16 @@ function detectTrafficSource(){
 
 
     if(utmSource){
-
         return utmSource;
-
     }
 
-
-
-    /*
-       Priority 2:
-       Ads click IDs
-    */
 
     if(
         params.has(
             "fbclid"
         )
     ){
-
         return "facebook";
-
     }
 
 
@@ -507,9 +302,7 @@ function detectTrafficSource(){
             "ttclid"
         )
     ){
-
         return "tiktok";
-
     }
 
 
@@ -518,129 +311,83 @@ function detectTrafficSource(){
             "gclid"
         )
     ){
-
         return "google";
-
     }
 
-
-
-    /*
-       Priority 3:
-       document.referrer
-    */
 
     const referrer =
         document.referrer
             .toLowerCase();
 
 
-
     if(
-        referrer.includes(
-            "facebook.com"
-        ) ||
-        referrer.includes(
-            "fb.com"
-        )
+        referrer.includes("facebook.com") ||
+        referrer.includes("fb.com")
     ){
-
         return "facebook";
-
     }
 
 
     if(
-        referrer.includes(
-            "tiktok.com"
-        )
+        referrer.includes("tiktok.com")
     ){
-
         return "tiktok";
-
     }
 
 
     if(
-        referrer.includes(
-            "instagram.com"
-        )
+        referrer.includes("instagram.com")
     ){
-
         return "instagram";
-
     }
 
 
     if(
-        referrer.includes(
-            "t.me"
-        ) ||
-        referrer.includes(
-            "telegram"
-        )
+        referrer.includes("t.me") ||
+        referrer.includes("telegram")
     ){
-
         return "telegram";
-
     }
 
 
     if(
-        referrer.includes(
-            "youtube.com"
-        ) ||
-        referrer.includes(
-            "youtu.be"
-        )
+        referrer.includes("youtube.com") ||
+        referrer.includes("youtu.be")
     ){
-
         return "youtube";
-
     }
 
 
     if(
-        referrer.includes(
-            "google."
-        )
+        referrer.includes("google.")
     ){
-
         return "google";
-
     }
-
 
 
     if(
         !referrer
     ){
-
         return "direct";
-
     }
 
 
     return "other";
-
 }
-
 
 
 const trafficSource =
     detectTrafficSource();
 
 
-
 /* =========================================================
-   UNIQUE SESSION TRACKING
+   COUNT VISITOR
 
-   同一个 Tab / 浏览 Session
-   只统计一次
+   每一个 browser session 只统计一次
 ========================================================= */
 
 const sessionKey =
-    "landing_traffic_counted_v1";
+    "traffic_counted_v2";
 
 
 async function countVisitor(){
@@ -650,21 +397,12 @@ async function countVisitor(){
             sessionKey
         )
     ){
-
         return;
-
     }
-
 
 
     try{
 
-
-        /*
-           traffic/facebook
-           traffic/tiktok
-           etc.
-        */
 
         const sourceRef =
             ref(
@@ -688,11 +426,6 @@ async function countVisitor(){
 
         );
 
-
-
-        /*
-           Save visit log
-        */
 
         const visitsRef =
             ref(
@@ -746,7 +479,6 @@ async function countVisitor(){
         );
 
 
-
         sessionStorage.setItem(
             sessionKey,
             "1"
@@ -761,19 +493,16 @@ async function countVisitor(){
             error
         );
 
-
     }
 
 }
 
 
-
 countVisitor();
 
 
-
 /* =========================================================
-   REALTIME TRAFFIC DASHBOARD
+   REALTIME TRAFFIC
 ========================================================= */
 
 const trafficRef =
@@ -781,7 +510,6 @@ const trafficRef =
         db,
         "traffic"
     );
-
 
 
 onValue(
@@ -797,44 +525,28 @@ onValue(
         const traffic = {
 
             facebook:
-                Number(
-                    raw.facebook
-                ) || 0,
+                Number(raw.facebook) || 0,
 
             tiktok:
-                Number(
-                    raw.tiktok
-                ) || 0,
+                Number(raw.tiktok) || 0,
 
             instagram:
-                Number(
-                    raw.instagram
-                ) || 0,
+                Number(raw.instagram) || 0,
 
             telegram:
-                Number(
-                    raw.telegram
-                ) || 0,
+                Number(raw.telegram) || 0,
 
             youtube:
-                Number(
-                    raw.youtube
-                ) || 0,
+                Number(raw.youtube) || 0,
 
             google:
-                Number(
-                    raw.google
-                ) || 0,
+                Number(raw.google) || 0,
 
             direct:
-                Number(
-                    raw.direct
-                ) || 0,
+                Number(raw.direct) || 0,
 
             other:
-                Number(
-                    raw.other
-                ) || 0
+                Number(raw.other) || 0
 
         };
 
@@ -847,9 +559,8 @@ onValue(
 );
 
 
-
 /* =========================================================
-   RENDER RANGE BARS
+   RENDER TRAFFIC
 ========================================================= */
 
 function renderTraffic(
@@ -865,12 +576,12 @@ function renderTraffic(
     const total =
         entries.reduce(
             (
-                total,
+                sum,
                 [, count]
             ) => {
 
                 return (
-                    total +
+                    sum +
                     count
                 );
 
@@ -879,14 +590,12 @@ function renderTraffic(
         );
 
 
-
     let topSource =
         "-";
 
 
     let topCount =
         -1;
-
 
 
     entries.forEach(
@@ -906,29 +615,22 @@ function renderTraffic(
                 topCount =
                     count;
 
-
                 topSource =
                     source;
 
             }
 
 
-
             const percent =
 
                 total > 0
 
-                    ?
-
-                    (
+                    ? (
                         count /
                         total
                     ) * 100
 
-                    :
-
-                    0;
-
+                    : 0;
 
 
             const countEl =
@@ -949,15 +651,12 @@ function renderTraffic(
                 );
 
 
-
             if(countEl){
 
                 countEl.textContent =
-                    count
-                        .toLocaleString();
+                    count.toLocaleString();
 
             }
-
 
 
             if(percentEl){
@@ -966,7 +665,6 @@ function renderTraffic(
                     `${percent.toFixed(1)}%`;
 
             }
-
 
 
             if(barEl){
@@ -987,7 +685,6 @@ function renderTraffic(
     );
 
 
-
     const totalVisitors =
         document.getElementById(
             "totalVisitors"
@@ -997,22 +694,20 @@ function renderTraffic(
     if(totalVisitors){
 
         totalVisitors.textContent =
-            total
-                .toLocaleString();
+            total.toLocaleString();
 
     }
 
 
-
-    const topSourceEl =
+    const topSourceElement =
         document.getElementById(
             "topSource"
         );
 
 
-    if(topSourceEl){
+    if(topSourceElement){
 
-        topSourceEl.textContent =
+        topSourceElement.textContent =
             capitalize(
                 topSource
             );
@@ -1022,21 +717,19 @@ function renderTraffic(
 }
 
 
-
 function capitalize(
     value
 ){
 
     if(!value){
-
         return "-";
-
     }
 
 
     return (
 
-        value.charAt(0)
+        value
+            .charAt(0)
             .toUpperCase()
 
         +
@@ -1048,9 +741,8 @@ function capitalize(
 }
 
 
-
 /* =========================================================
-   PASS TRACKING TO REFERRAL LINKS
+   TRACKING PARAMETERS
 ========================================================= */
 
 const trackingKeys = [
@@ -1071,6 +763,9 @@ const trackingKeys = [
 ];
 
 
+/* =========================================================
+   REFERRAL LINKS
+========================================================= */
 
 document
     .querySelectorAll(
@@ -1092,11 +787,8 @@ document
                     "YOUR-REFERRAL"
                 )
             ){
-
                 return;
-
             }
-
 
 
             try{
@@ -1121,20 +813,16 @@ document
                             destination
                                 .searchParams
                                 .set(
-
                                     key,
-
                                     params.get(
                                         key
                                     )
-
                                 );
 
                         }
 
                     }
                 );
-
 
 
                 destination
@@ -1154,31 +842,24 @@ document
 
 
                 console.warn(
-                    "Invalid referral:",
+                    "Invalid referral URL:",
                     original
                 );
-
 
             }
 
 
-
             link.addEventListener(
                 "click",
-                async () => {
+                () => {
 
 
-                    const company =
-                        link.dataset
-                            .company ||
-                        "Unknown";
-
-
-                    await saveClick(
+                    saveClick(
 
                         "referral",
 
-                        company,
+                        link.dataset.company ||
+                        "Unknown",
 
                         link.href
 
@@ -1190,7 +871,6 @@ document
 
         }
     );
-
 
 
 /* =========================================================
@@ -1207,16 +887,15 @@ document
 
             link.addEventListener(
                 "click",
-                async () => {
+                () => {
 
 
-                    await saveClick(
+                    saveClick(
 
                         "contact",
 
-                        link.dataset
-                            .channel ||
-                            "Unknown",
+                        link.dataset.channel ||
+                        "Unknown",
 
                         link.href
 
@@ -1230,9 +909,8 @@ document
     );
 
 
-
 /* =========================================================
-   SAVE CLICK TO FIREBASE
+   SAVE CLICK EVENT
 ========================================================= */
 
 async function saveClick(
@@ -1288,7 +966,6 @@ async function saveClick(
             "Click tracking failed:",
             error
         );
-
 
     }
 
