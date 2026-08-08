@@ -1,157 +1,191 @@
-document.addEventListener(
-    "DOMContentLoaded",
+/* =========================================================
+   FIREBASE
+========================================================= */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+
+
+import {
+    getDatabase,
+    ref,
+    onValue,
+    runTransaction,
+    push,
+    set,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+
+
+
+/* =========================================================
+   FIREBASE CONFIG
+
+   !!! 换成你自己的 Firebase Config !!!
+========================================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "YOUR_API_KEY",
+
+    authDomain:
+        "YOUR_PROJECT.firebaseapp.com",
+
+    databaseURL:
+        "https://YOUR_PROJECT-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId:
+        "YOUR_PROJECT",
+
+    storageBucket:
+        "YOUR_PROJECT.appspot.com",
+
+    messagingSenderId:
+        "YOUR_SENDER_ID",
+
+    appId:
+        "YOUR_APP_ID"
+
+};
+
+
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const db =
+    getDatabase(app);
+
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+
+const sideMenu =
+    document.getElementById(
+        "sideMenu"
+    );
+
+
+const sideOverlay =
+    document.getElementById(
+        "sideOverlay"
+    );
+
+
+const refreshBtn =
+    document.getElementById(
+        "refreshBtn"
+    );
+
+
+
+/* =========================================================
+   SIDE MENU
+========================================================= */
+
+function openMenu(){
+
+    sideMenu?.classList.add(
+        "active"
+    );
+
+    sideOverlay?.classList.add(
+        "active"
+    );
+
+    document.body.classList.add(
+        "menu-open"
+    );
+
+}
+
+
+function closeMenu(){
+
+    sideMenu?.classList.remove(
+        "active"
+    );
+
+    sideOverlay?.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+}
+
+
+menuButton?.addEventListener(
+    "click",
     () => {
 
-
-        /* =====================================================
-           OPENING LOADER
-        ====================================================== */
-
-        const openingLoader =
-            document.getElementById(
-                "openingLoader"
-            );
-
-
-        window.addEventListener(
-            "load",
-            () => {
-
-                setTimeout(
-                    () => {
-
-                        openingLoader?.classList.add(
-                            "hide"
-                        );
-
-                    },
-                    650
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           SIDE MENU
-        ====================================================== */
-
-        const menuButton =
-            document.getElementById(
-                "menuButton"
-            );
-
-
-        const sideMenu =
-            document.getElementById(
-                "sideMenu"
-            );
-
-
-        const sideOverlay =
-            document.getElementById(
-                "sideOverlay"
-            );
-
-
-        const refreshBtn =
-            document.getElementById(
-                "refreshBtn"
-            );
-
-
-        const sideLinks =
-            document.querySelectorAll(
-                ".side-link"
-            );
-
-
-
-        function openMenu(){
-
-            sideMenu?.classList.add(
+        if(
+            sideMenu?.classList.contains(
                 "active"
-            );
+            )
+        ){
 
-            sideOverlay?.classList.add(
-                "active"
-            );
+            closeMenu();
 
-            document.body.classList.add(
-                "menu-open"
-            );
+        }else{
+
+            openMenu();
 
         }
 
+    }
+);
 
 
-        function closeMenu(){
-
-            sideMenu?.classList.remove(
-                "active"
-            );
-
-            sideOverlay?.classList.remove(
-                "active"
-            );
-
-            document.body.classList.remove(
-                "menu-open"
-            );
-
-        }
+sideOverlay?.addEventListener(
+    "click",
+    closeMenu
+);
 
 
+refreshBtn?.addEventListener(
+    "click",
+    () => {
 
-        menuButton?.addEventListener(
-            "click",
-            () => {
+        window.location.reload();
 
-                if(
-                    sideMenu?.classList.contains(
-                        "active"
-                    )
-                ){
-
-                    closeMenu();
-
-                }else{
-
-                    openMenu();
-
-                }
-
-            }
-        );
-
-
-        sideOverlay?.addEventListener(
-            "click",
-            closeMenu
-        );
-
-
-        refreshBtn?.addEventListener(
-            "click",
-            () => {
-
-                window.location.reload();
-
-            }
-        );
+    }
+);
 
 
 
-        sideLinks.forEach(
-            link => {
+document
+    .querySelectorAll(
+        ".side-link"
+    )
+    .forEach(
+        link => {
 
-                link.addEventListener(
-                    "click",
-                    () => {
+            link.addEventListener(
+                "click",
+                () => {
 
 
-                        sideLinks.forEach(
+                    document
+                        .querySelectorAll(
+                            ".side-link"
+                        )
+                        .forEach(
                             item => {
 
                                 item.classList.remove(
@@ -162,1216 +196,1100 @@ document.addEventListener(
                         );
 
 
-                        link.classList.add(
-                            "active"
-                        );
-
-
-                        setTimeout(
-                            closeMenu,
-                            100
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           POPUPS
-        ====================================================== */
-
-        const popupButtons =
-            document.querySelectorAll(
-                "[data-popup]"
-            );
-
-
-        const popups =
-            document.querySelectorAll(
-                ".contact-popup"
-            );
-
-
-
-        function closeAllPopups(){
-
-            popups.forEach(
-                popup => {
-
-                    popup.classList.remove(
+                    link.classList.add(
                         "active"
                     );
 
+
+                    setTimeout(
+                        closeMenu,
+                        100
+                    );
+
                 }
             );
 
-
-            document.body.classList.remove(
-                "popup-open"
-            );
-
         }
+    );
 
 
 
-        popupButtons.forEach(
-            button => {
+/* =========================================================
+   CONTACT POPUP
+========================================================= */
 
-                button.addEventListener(
-                    "click",
-                    () => {
+function closePopups(){
 
-                        const popup =
-                            document.getElementById(
-                                button.dataset.popup
-                            );
+    document
+        .querySelectorAll(
+            ".contact-popup"
+        )
+        .forEach(
+            popup => {
+
+                popup.classList.remove(
+                    "active"
+                );
+
+            }
+        );
 
 
-                        if(!popup){
-                            return;
-                        }
+    document.body
+        .classList
+        .remove(
+            "popup-open"
+        );
+
+}
 
 
-                        closeAllPopups();
+
+document
+    .querySelectorAll(
+        "[data-popup]"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                () => {
 
 
-                        popup.classList.add(
-                            "active"
+                    const popup =
+                        document.getElementById(
+                            button.dataset.popup
                         );
 
 
-                        document.body.classList.add(
+                    if(!popup){
+                        return;
+                    }
+
+
+                    closePopups();
+
+
+                    popup.classList.add(
+                        "active"
+                    );
+
+
+                    document.body
+                        .classList
+                        .add(
                             "popup-open"
                         );
 
-                    }
-                );
-
-            }
-        );
-
-
-
-        popups.forEach(
-            popup => {
-
-
-                popup
-                    .querySelector(
-                        ".popup-close"
-                    )
-                    ?.addEventListener(
-                        "click",
-                        closeAllPopups
-                    );
-
-
-                popup
-                    .querySelector(
-                        ".popup-backdrop"
-                    )
-                    ?.addEventListener(
-                        "click",
-                        closeAllPopups
-                    );
-
-            }
-        );
-
-
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if(
-                    event.key !==
-                    "Escape"
-                ){
-                    return;
-                }
-
-
-                const activePopup =
-                    document.querySelector(
-                        ".contact-popup.active"
-                    );
-
-
-                if(activePopup){
-
-                    closeAllPopups();
-
-                }else{
-
-                    closeMenu();
-
-                }
-
-            }
-        );
-
-
-
-        /* =====================================================
-           SCROLL REVEAL
-        ====================================================== */
-
-        const reveals =
-            document.querySelectorAll(
-                ".reveal"
-            );
-
-
-        const revealObserver =
-            new IntersectionObserver(
-
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if(
-                                entry.isIntersecting
-                            ){
-
-                                entry.target
-                                    .classList
-                                    .add(
-                                        "visible"
-                                    );
-
-
-                                revealObserver.unobserve(
-                                    entry.target
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-
-                {
-                    threshold:.12
-                }
-
-            );
-
-
-        reveals.forEach(
-            element => {
-
-                revealObserver.observe(
-                    element
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           COUNTER
-        ====================================================== */
-
-        const counters =
-            document.querySelectorAll(
-                ".counter"
-            );
-
-
-        let counterStarted =
-            false;
-
-
-        function startCounters(){
-
-            if(counterStarted){
-                return;
-            }
-
-
-            counterStarted =
-                true;
-
-
-            counters.forEach(
-                counter => {
-
-
-                    const target =
-                        Number(
-                            counter.dataset.target
-                        );
-
-
-                    const duration =
-                        1500;
-
-
-                    const startTime =
-                        performance.now();
-
-
-
-                    function updateCounter(
-                        now
-                    ){
-
-                        const progress =
-                            Math.min(
-                                (
-                                    now -
-                                    startTime
-                                ) /
-                                duration,
-                                1
-                            );
-
-
-                        const eased =
-                            1 -
-                            Math.pow(
-                                1 - progress,
-                                3
-                            );
-
-
-                        const value =
-                            Math.floor(
-                                target *
-                                eased
-                            );
-
-
-                        counter.textContent =
-                            value.toLocaleString();
-
-
-                        if(
-                            progress < 1
-                        ){
-
-                            requestAnimationFrame(
-                                updateCounter
-                            );
-
-                        }
-
-                    }
-
-
-                    requestAnimationFrame(
-                        updateCounter
-                    );
-
                 }
             );
 
         }
+    );
 
 
 
-        const statsSection =
-            document.getElementById(
-                "stats"
-            );
+document
+    .querySelectorAll(
+        ".popup-close"
+    )
+    .forEach(
+        button => {
 
-
-        if(statsSection){
-
-            const statObserver =
-                new IntersectionObserver(
-
-                    entries => {
-
-                        if(
-                            entries[0]
-                                .isIntersecting
-                        ){
-
-                            startCounters();
-
-                            statObserver.disconnect();
-
-                        }
-
-                    },
-
-                    {
-                        threshold:.3
-                    }
-
-                );
-
-
-            statObserver.observe(
-                statsSection
+            button.addEventListener(
+                "click",
+                closePopups
             );
 
         }
+    );
 
 
 
-        /* =====================================================
-           CARD 3D TILT
-        ====================================================== */
+document
+    .querySelectorAll(
+        ".popup-backdrop"
+    )
+    .forEach(
+        backdrop => {
 
-        const tiltCards =
-            document.querySelectorAll(
-                ".tilt-card"
-            );
-
-
-        const canTilt =
-            window.matchMedia(
-                "(pointer:fine)"
-            ).matches;
-
-
-
-        if(canTilt){
-
-            tiltCards.forEach(
-                card => {
-
-
-                    card.addEventListener(
-                        "mousemove",
-                        event => {
-
-
-                            const rect =
-                                card.getBoundingClientRect();
-
-
-                            const x =
-                                event.clientX -
-                                rect.left;
-
-
-                            const y =
-                                event.clientY -
-                                rect.top;
-
-
-                            const centerX =
-                                rect.width / 2;
-
-
-                            const centerY =
-                                rect.height / 2;
-
-
-                            const rotateX =
-                                (
-                                    centerY - y
-                                ) /
-                                28;
-
-
-                            const rotateY =
-                                (
-                                    x - centerX
-                                ) /
-                                28;
-
-
-                            card.style.transform =
-
-                                `perspective(900px)
-                                 rotateX(${rotateX}deg)
-                                 rotateY(${rotateY}deg)
-                                 translateY(-5px)`;
-
-                        }
-                    );
-
-
-
-                    card.addEventListener(
-                        "mouseleave",
-                        () => {
-
-                            card.style.transform =
-                                "";
-
-                        }
-                    );
-
-                }
+            backdrop.addEventListener(
+                "click",
+                closePopups
             );
 
         }
+    );
 
 
 
-        /* =====================================================
-           MOUSE GLOW
-        ====================================================== */
-
-        const mouseGlow =
-            document.getElementById(
-                "mouseGlow"
-            );
-
+document.addEventListener(
+    "keydown",
+    event => {
 
         if(
-            mouseGlow &&
-            canTilt
+            event.key ===
+            "Escape"
         ){
 
-            document.addEventListener(
-                "mousemove",
-                event => {
+            closePopups();
 
-                    mouseGlow.style.left =
-                        `${event.clientX}px`;
-
-
-                    mouseGlow.style.top =
-                        `${event.clientY}px`;
-
-
-                    mouseGlow.style.opacity =
-                        "1";
-
-                }
-            );
+            closeMenu();
 
         }
 
+    }
+);
 
 
-        /* =====================================================
-           PARTICLES
-        ====================================================== */
 
-        const canvas =
-            document.getElementById(
-                "particleCanvas"
-            );
+/* =========================================================
+   SOURCE DETECTION
+========================================================= */
 
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
 
-        if(canvas){
 
-            const ctx =
-                canvas.getContext(
-                    "2d"
-                );
 
+function normalizeSource(
+    value
+){
 
-            let width = 0;
+    if(!value){
 
-            let height = 0;
+        return null;
 
-            let particles = [];
+    }
 
 
+    const source =
+        value
+            .toLowerCase()
+            .trim();
 
-            function resizeCanvas(){
 
-                const dpr =
-                    Math.min(
-                        window.devicePixelRatio ||
-                        1,
-                        2
-                    );
 
+    if(
+        source.includes(
+            "facebook"
+        ) ||
+        source === "fb"
+    ){
 
-                width =
-                    window.innerWidth;
+        return "facebook";
 
+    }
 
-                height =
-                    window.innerHeight;
 
+    if(
+        source.includes(
+            "tiktok"
+        ) ||
+        source === "tt"
+    ){
 
-                canvas.width =
-                    width * dpr;
+        return "tiktok";
 
+    }
 
-                canvas.height =
-                    height * dpr;
 
+    if(
+        source.includes(
+            "instagram"
+        ) ||
+        source === "ig"
+    ){
 
-                canvas.style.width =
-                    `${width}px`;
+        return "instagram";
 
+    }
 
-                canvas.style.height =
-                    `${height}px`;
 
+    if(
+        source.includes(
+            "telegram"
+        ) ||
+        source === "tg"
+    ){
 
-                ctx.setTransform(
-                    dpr,
-                    0,
-                    0,
-                    dpr,
-                    0,
-                    0
-                );
+        return "telegram";
 
-            }
+    }
 
 
+    if(
+        source.includes(
+            "youtube"
+        ) ||
+        source === "yt"
+    ){
 
-            function createParticles(){
+        return "youtube";
 
-                const count =
-                    Math.min(
-                        45,
-                        Math.max(
-                            18,
-                            Math.floor(
-                                width / 35
-                            )
-                        )
-                    );
+    }
 
 
-                particles =
-                    Array.from(
-                        {
-                            length:count
-                        },
-                        () => ({
+    if(
+        source.includes(
+            "google"
+        )
+    ){
 
-                            x:
-                                Math.random() *
-                                width,
+        return "google";
 
-                            y:
-                                Math.random() *
-                                height,
+    }
 
-                            r:
-                                Math.random() *
-                                1.3 +
-                                .3,
 
-                            speed:
-                                Math.random() *
-                                .18 +
-                                .05,
+    if(
+        source === "direct"
+    ){
 
-                            alpha:
-                                Math.random() *
-                                .30 +
-                                .08
+        return "direct";
 
-                        })
-                    );
+    }
 
-            }
 
+    return "other";
 
+}
 
-            function animateParticles(){
 
-                ctx.clearRect(
-                    0,
-                    0,
-                    width,
-                    height
-                );
 
+/* =========================================================
+   GET TRAFFIC SOURCE
+========================================================= */
 
-                particles.forEach(
-                    particle => {
+function detectTrafficSource(){
 
+    /*
+       Priority 1:
+       utm_source
+    */
 
-                        particle.y -=
-                            particle.speed;
-
-
-                        if(
-                            particle.y <
-                            -5
-                        ){
-
-                            particle.y =
-                                height + 5;
-
-
-                            particle.x =
-                                Math.random() *
-                                width;
-
-                        }
-
-
-                        ctx.beginPath();
-
-
-                        ctx.arc(
-                            particle.x,
-                            particle.y,
-                            particle.r,
-                            0,
-                            Math.PI * 2
-                        );
-
-
-                        ctx.fillStyle =
-                            `rgba(
-                                190,
-                                226,
-                                241,
-                                ${particle.alpha}
-                            )`;
-
-
-                        ctx.fill();
-
-                    }
-                );
-
-
-                requestAnimationFrame(
-                    animateParticles
-                );
-
-            }
-
-
-
-            resizeCanvas();
-
-            createParticles();
-
-            animateParticles();
-
-
-
-            window.addEventListener(
-                "resize",
-                () => {
-
-                    resizeCanvas();
-
-                    createParticles();
-
-                }
-            );
-
-        }
-
-
-
-        /* =====================================================
-           BACK TO TOP
-        ====================================================== */
-
-        const backToTop =
-            document.getElementById(
-                "backToTop"
-            );
-
-
-        window.addEventListener(
-            "scroll",
-            () => {
-
-
-                if(
-                    window.scrollY >
-                    450
-                ){
-
-                    backToTop
-                        ?.classList
-                        .add(
-                            "show"
-                        );
-
-                }else{
-
-                    backToTop
-                        ?.classList
-                        .remove(
-                            "show"
-                        );
-
-                }
-
-            }
-        );
-
-
-        backToTop?.addEventListener(
-            "click",
-            () => {
-
-                window.scrollTo({
-
-                    top:0,
-
-                    behavior:
-                        "smooth"
-
-                });
-
-            }
-        );
-
-
-
-        /* =====================================================
-           SOURCE / UTM TRACKING
-        ====================================================== */
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-
-        const trackingKeys = [
-
-            "utm_source",
-            "utm_medium",
-            "utm_campaign",
-            "utm_content",
-            "utm_term",
-
-            "fbclid",
-            "gclid",
-
-            "ttclid",
-
-            "clickid",
-            "subid"
-
-        ];
-
-
-
-        const trafficData = {
-
-            page:
-                window.location.href,
-
-            referrer:
-                document.referrer,
-
-            timestamp:
-                new Date()
-                    .toISOString()
-
-        };
-
-
-
-        trackingKeys.forEach(
-            key => {
-
-                if(
-                    params.has(key)
-                ){
-
-                    trafficData[key] =
-                        params.get(key);
-
-                }
-
-            }
-        );
-
-
-
-        try{
-
-            localStorage.setItem(
-
-                "landing_traffic",
-
-                JSON.stringify(
-                    trafficData
-                )
-
-            );
-
-        }catch(error){
-
-            console.warn(
-                "Local tracking unavailable"
-            );
-
-        }
-
-
-
-        /* =====================================================
-           PASS UTM TO REFERRAL LINKS
-        ====================================================== */
-
-        const referralLinks =
-            document.querySelectorAll(
-                ".referral"
-            );
-
-
-        referralLinks.forEach(
-            link => {
-
-
-                const rawUrl =
-                    link.getAttribute(
-                        "href"
-                    );
-
-
-                if(
-                    !rawUrl ||
-                    rawUrl.includes(
-                        "YOUR-REFERRAL"
-                    )
-                ){
-
-                    return;
-
-                }
-
-
-                try{
-
-                    const destination =
-                        new URL(
-                            rawUrl,
-                            window.location.href
-                        );
-
-
-                    trackingKeys.forEach(
-                        key => {
-
-                            if(
-                                params.has(key)
-                            ){
-
-                                destination
-                                    .searchParams
-                                    .set(
-
-                                        key,
-
-                                        params.get(
-                                            key
-                                        )
-
-                                    );
-
-                            }
-
-                        }
-                    );
-
-
-                    link.href =
-                        destination.toString();
-
-
-                }catch(error){
-
-                    console.warn(
-                        "Referral URL error",
-                        rawUrl
-                    );
-
-                }
-
-
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-
-                        const eventData = {
-
-                            type:
-                                "referral_click",
-
-                            company:
-                                link.dataset.company ||
-                                "Unknown",
-
-                            destination:
-                                link.href,
-
-                            source:
-                                params.get(
-                                    "utm_source"
-                                ) ||
-                                "direct",
-
-                            campaign:
-                                params.get(
-                                    "utm_campaign"
-                                ) ||
-                                "",
-
-                            timestamp:
-                                new Date()
-                                    .toISOString()
-
-                        };
-
-
-                        saveClickEvent(
-                            eventData
-                        );
-
-
-                        /*
-                          GA4 event
-                        */
-
-                        if(
-                            typeof window.gtag ===
-                            "function"
-                        ){
-
-                            window.gtag(
-
-                                "event",
-
-                                "referral_click",
-
-                                {
-
-                                    company:
-                                        eventData.company,
-
-                                    destination:
-                                        eventData.destination
-
-                                }
-
-                            );
-
-                        }
-
-
-                        /*
-                          Meta Pixel event
-                          如果以后安装 fbq
-                        */
-
-                        if(
-                            typeof window.fbq ===
-                            "function"
-                        ){
-
-                            window.fbq(
-
-                                "trackCustom",
-
-                                "ReferralClick",
-
-                                {
-
-                                    company:
-                                        eventData.company
-
-                                }
-
-                            );
-
-                        }
-
-
-                        /*
-                          TikTok Pixel event
-                          如果以后安装 ttq
-                        */
-
-                        if(
-                            window.ttq &&
-                            typeof window.ttq.track ===
-                            "function"
-                        ){
-
-                            window.ttq.track(
-
-                                "ClickButton",
-
-                                {
-
-                                    content_name:
-                                        eventData.company
-
-                                }
-
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =====================================================
-           CONTACT CLICK TRACKING
-        ====================================================== */
-
-        document
-            .querySelectorAll(
-                ".track-contact"
+    const utmSource =
+        normalizeSource(
+            params.get(
+                "utm_source"
             )
-            .forEach(
-                link => {
+        );
 
 
-                    link.addEventListener(
-                        "click",
-                        () => {
+    if(utmSource){
+
+        return utmSource;
+
+    }
 
 
-                            saveClickEvent({
 
-                                type:
-                                    "contact_click",
+    /*
+       Priority 2:
+       Ads click IDs
+    */
 
-                                channel:
-                                    link.dataset.channel ||
-                                    "Unknown",
+    if(
+        params.has(
+            "fbclid"
+        )
+    ){
 
-                                destination:
-                                    link.href,
+        return "facebook";
 
-                                source:
-                                    params.get(
-                                        "utm_source"
-                                    ) ||
-                                    "direct",
-
-                                timestamp:
-                                    new Date()
-                                        .toISOString()
-
-                            });
+    }
 
 
-                            if(
-                                typeof window.gtag ===
-                                "function"
-                            ){
+    if(
+        params.has(
+            "ttclid"
+        )
+    ){
 
-                                window.gtag(
+        return "tiktok";
 
-                                    "event",
+    }
 
-                                    "contact_click",
 
-                                    {
+    if(
+        params.has(
+            "gclid"
+        )
+    ){
 
-                                        channel:
-                                            link.dataset.channel
+        return "google";
 
-                                    }
+    }
 
-                                );
 
-                            }
 
-                        }
-                    );
+    /*
+       Priority 3:
+       document.referrer
+    */
 
-                }
+    const referrer =
+        document.referrer
+            .toLowerCase();
+
+
+
+    if(
+        referrer.includes(
+            "facebook.com"
+        ) ||
+        referrer.includes(
+            "fb.com"
+        )
+    ){
+
+        return "facebook";
+
+    }
+
+
+    if(
+        referrer.includes(
+            "tiktok.com"
+        )
+    ){
+
+        return "tiktok";
+
+    }
+
+
+    if(
+        referrer.includes(
+            "instagram.com"
+        )
+    ){
+
+        return "instagram";
+
+    }
+
+
+    if(
+        referrer.includes(
+            "t.me"
+        ) ||
+        referrer.includes(
+            "telegram"
+        )
+    ){
+
+        return "telegram";
+
+    }
+
+
+    if(
+        referrer.includes(
+            "youtube.com"
+        ) ||
+        referrer.includes(
+            "youtu.be"
+        )
+    ){
+
+        return "youtube";
+
+    }
+
+
+    if(
+        referrer.includes(
+            "google."
+        )
+    ){
+
+        return "google";
+
+    }
+
+
+
+    if(
+        !referrer
+    ){
+
+        return "direct";
+
+    }
+
+
+    return "other";
+
+}
+
+
+
+const trafficSource =
+    detectTrafficSource();
+
+
+
+/* =========================================================
+   UNIQUE SESSION TRACKING
+
+   同一个 Tab / 浏览 Session
+   只统计一次
+========================================================= */
+
+const sessionKey =
+    "landing_traffic_counted_v1";
+
+
+async function countVisitor(){
+
+    if(
+        sessionStorage.getItem(
+            sessionKey
+        )
+    ){
+
+        return;
+
+    }
+
+
+
+    try{
+
+
+        /*
+           traffic/facebook
+           traffic/tiktok
+           etc.
+        */
+
+        const sourceRef =
+            ref(
+                db,
+                `traffic/${trafficSource}`
             );
 
 
+        await runTransaction(
 
-        /* =====================================================
-           LOCAL EVENT LOG
-        ====================================================== */
+            sourceRef,
 
-        function saveClickEvent(
-            eventData
-        ){
+            current => {
 
-            try{
-
-                const current =
-                    JSON.parse(
-
-                        localStorage.getItem(
-                            "landing_click_events"
-                        ) ||
-
-                        "[]"
-
-                    );
-
-
-                current.push(
-                    eventData
-                );
-
-
-                /*
-                  防止 localStorage 无限增大
-                */
-
-                const limited =
-                    current.slice(
-                        -100
-                    );
-
-
-                localStorage.setItem(
-
-                    "landing_click_events",
-
-                    JSON.stringify(
-                        limited
-                    )
-
-                );
-
-
-            }catch(error){
-
-                console.warn(
-                    "Unable to save event"
-                );
+                return (
+                    Number(current) ||
+                    0
+                ) + 1;
 
             }
 
-        }
+        );
 
 
 
-        /* =====================================================
-           PAGE RESTORE
-        ====================================================== */
+        /*
+           Save visit log
+        */
 
-        window.addEventListener(
-            "pageshow",
-            () => {
+        const visitsRef =
+            ref(
+                db,
+                "trafficVisits"
+            );
 
-                document.body
-                    .classList
-                    .remove(
-                        "menu-open",
-                        "popup-open"
-                    );
+
+        const newVisit =
+            push(
+                visitsRef
+            );
+
+
+        await set(
+            newVisit,
+            {
+
+                source:
+                    trafficSource,
+
+                utmSource:
+                    params.get(
+                        "utm_source"
+                    ) || "",
+
+                utmMedium:
+                    params.get(
+                        "utm_medium"
+                    ) || "",
+
+                utmCampaign:
+                    params.get(
+                        "utm_campaign"
+                    ) || "",
+
+                landingPage:
+                    window.location.pathname,
+
+                referrer:
+                    document.referrer
+                        .slice(
+                            0,
+                            300
+                        ),
+
+                timestamp:
+                    serverTimestamp()
 
             }
+        );
+
+
+
+        sessionStorage.setItem(
+            sessionKey,
+            "1"
+        );
+
+
+    }catch(error){
+
+
+        console.error(
+            "Traffic tracking error:",
+            error
         );
 
 
     }
+
+}
+
+
+
+countVisitor();
+
+
+
+/* =========================================================
+   REALTIME TRAFFIC DASHBOARD
+========================================================= */
+
+const trafficRef =
+    ref(
+        db,
+        "traffic"
+    );
+
+
+
+onValue(
+    trafficRef,
+    snapshot => {
+
+
+        const raw =
+            snapshot.val() ||
+            {};
+
+
+        const traffic = {
+
+            facebook:
+                Number(
+                    raw.facebook
+                ) || 0,
+
+            tiktok:
+                Number(
+                    raw.tiktok
+                ) || 0,
+
+            instagram:
+                Number(
+                    raw.instagram
+                ) || 0,
+
+            telegram:
+                Number(
+                    raw.telegram
+                ) || 0,
+
+            youtube:
+                Number(
+                    raw.youtube
+                ) || 0,
+
+            google:
+                Number(
+                    raw.google
+                ) || 0,
+
+            direct:
+                Number(
+                    raw.direct
+                ) || 0,
+
+            other:
+                Number(
+                    raw.other
+                ) || 0
+
+        };
+
+
+        renderTraffic(
+            traffic
+        );
+
+    }
 );
+
+
+
+/* =========================================================
+   RENDER RANGE BARS
+========================================================= */
+
+function renderTraffic(
+    traffic
+){
+
+    const entries =
+        Object.entries(
+            traffic
+        );
+
+
+    const total =
+        entries.reduce(
+            (
+                total,
+                [, count]
+            ) => {
+
+                return (
+                    total +
+                    count
+                );
+
+            },
+            0
+        );
+
+
+
+    let topSource =
+        "-";
+
+
+    let topCount =
+        -1;
+
+
+
+    entries.forEach(
+        (
+            [
+                source,
+                count
+            ]
+        ) => {
+
+
+            if(
+                count >
+                topCount
+            ){
+
+                topCount =
+                    count;
+
+
+                topSource =
+                    source;
+
+            }
+
+
+
+            const percent =
+
+                total > 0
+
+                    ?
+
+                    (
+                        count /
+                        total
+                    ) * 100
+
+                    :
+
+                    0;
+
+
+
+            const countEl =
+                document.querySelector(
+                    `[data-count="${source}"]`
+                );
+
+
+            const percentEl =
+                document.querySelector(
+                    `[data-percent="${source}"]`
+                );
+
+
+            const barEl =
+                document.querySelector(
+                    `[data-bar="${source}"]`
+                );
+
+
+
+            if(countEl){
+
+                countEl.textContent =
+                    count
+                        .toLocaleString();
+
+            }
+
+
+
+            if(percentEl){
+
+                percentEl.textContent =
+                    `${percent.toFixed(1)}%`;
+
+            }
+
+
+
+            if(barEl){
+
+                requestAnimationFrame(
+                    () => {
+
+                        barEl.style.width =
+                            `${percent}%`;
+
+                    }
+                );
+
+            }
+
+
+        }
+    );
+
+
+
+    const totalVisitors =
+        document.getElementById(
+            "totalVisitors"
+        );
+
+
+    if(totalVisitors){
+
+        totalVisitors.textContent =
+            total
+                .toLocaleString();
+
+    }
+
+
+
+    const topSourceEl =
+        document.getElementById(
+            "topSource"
+        );
+
+
+    if(topSourceEl){
+
+        topSourceEl.textContent =
+            capitalize(
+                topSource
+            );
+
+    }
+
+}
+
+
+
+function capitalize(
+    value
+){
+
+    if(!value){
+
+        return "-";
+
+    }
+
+
+    return (
+
+        value.charAt(0)
+            .toUpperCase()
+
+        +
+
+        value.slice(1)
+
+    );
+
+}
+
+
+
+/* =========================================================
+   PASS TRACKING TO REFERRAL LINKS
+========================================================= */
+
+const trackingKeys = [
+
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+
+    "fbclid",
+    "ttclid",
+    "gclid",
+
+    "clickid",
+    "subid"
+
+];
+
+
+
+document
+    .querySelectorAll(
+        ".referral-link"
+    )
+    .forEach(
+        link => {
+
+
+            const original =
+                link.getAttribute(
+                    "href"
+                );
+
+
+            if(
+                !original ||
+                original.includes(
+                    "YOUR-REFERRAL"
+                )
+            ){
+
+                return;
+
+            }
+
+
+
+            try{
+
+
+                const destination =
+                    new URL(
+                        original
+                    );
+
+
+                trackingKeys.forEach(
+                    key => {
+
+
+                        if(
+                            params.has(
+                                key
+                            )
+                        ){
+
+                            destination
+                                .searchParams
+                                .set(
+
+                                    key,
+
+                                    params.get(
+                                        key
+                                    )
+
+                                );
+
+                        }
+
+                    }
+                );
+
+
+
+                destination
+                    .searchParams
+                    .set(
+                        "landing_source",
+                        trafficSource
+                    );
+
+
+                link.href =
+                    destination
+                        .toString();
+
+
+            }catch(error){
+
+
+                console.warn(
+                    "Invalid referral:",
+                    original
+                );
+
+
+            }
+
+
+
+            link.addEventListener(
+                "click",
+                async () => {
+
+
+                    const company =
+                        link.dataset
+                            .company ||
+                        "Unknown";
+
+
+                    await saveClick(
+
+                        "referral",
+
+                        company,
+
+                        link.href
+
+                    );
+
+                }
+            );
+
+
+        }
+    );
+
+
+
+/* =========================================================
+   CONTACT TRACKING
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".track-contact"
+    )
+    .forEach(
+        link => {
+
+
+            link.addEventListener(
+                "click",
+                async () => {
+
+
+                    await saveClick(
+
+                        "contact",
+
+                        link.dataset
+                            .channel ||
+                            "Unknown",
+
+                        link.href
+
+                    );
+
+                }
+            );
+
+
+        }
+    );
+
+
+
+/* =========================================================
+   SAVE CLICK TO FIREBASE
+========================================================= */
+
+async function saveClick(
+    type,
+    name,
+    destination
+){
+
+    try{
+
+
+        const clickRef =
+            push(
+                ref(
+                    db,
+                    "clickEvents"
+                )
+            );
+
+
+        await set(
+            clickRef,
+            {
+
+                type:
+                    type,
+
+                name:
+                    name,
+
+                source:
+                    trafficSource,
+
+                destination:
+                    destination,
+
+                campaign:
+                    params.get(
+                        "utm_campaign"
+                    ) || "",
+
+                timestamp:
+                    serverTimestamp()
+
+            }
+        );
+
+
+    }catch(error){
+
+
+        console.warn(
+            "Click tracking failed:",
+            error
+        );
+
+
+    }
+
+}
